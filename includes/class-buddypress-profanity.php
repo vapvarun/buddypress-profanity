@@ -180,6 +180,7 @@ class Buddypress_Profanity {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_filter( 'bp_get_activity_content_body', $plugin_public, 'wbbprof_bp_get_activity_content_body', 1 );
+		$this->loader->add_filter( 'bp_activity_comment_content', $plugin_public, 'wbbprof_bp_activity_comment_content', 1 );
 
 	}
 

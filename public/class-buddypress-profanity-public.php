@@ -164,9 +164,44 @@ class Buddypress_Profanity_Public {
 
 	}
 
+	/**
+	 *
+	 * Function for filtering activity staus updates.
+	 *
+	 * @param string $content Activity status update string.
+	 */
 	public function wbbprof_bp_get_activity_content_body($content) {
 		if ( !empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
 			if ( in_array( 'status_updates', $this->wbbprof_settings['filter_contents'] ) ) {
+				if ( is_array( $this->keywords ) ) {
+					foreach ($this->keywords as $key => $keyword) {
+						$keyword = trim( $keyword );
+						if ( strlen( $keyword ) > 2 ) {
+							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
+							if( $this->case == 'incase' ) {
+								$content = $this->wbbprof_str_replace_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
+							} else {
+								$content = $this->wbbprof_str_replace_word( $keyword, $replacement, $content, $this->whole_word );
+							}
+							
+						}
+						
+					}
+				}
+			}
+		}
+		return $content;
+	}
+
+	/**
+	 *
+	 * Function for filtering activity comment.
+	 *
+	 * @param string $content Activity comment string.
+	 */
+	public function wbbprof_bp_activity_comment_content( $content ) {
+		if ( !empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'activity_comments', $this->wbbprof_settings['filter_contents'] ) ) {
 				if ( is_array( $this->keywords ) ) {
 					foreach ($this->keywords as $key => $keyword) {
 						$keyword = trim( $keyword );
