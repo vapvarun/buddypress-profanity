@@ -96,8 +96,8 @@ class Buddypress_Profanity_Public {
 					$symbol = ' ';
 					break;
 				default:
-					if( apply_filters('wbbprof_my_character',$symbol) ){
-						$symbol = apply_filters('wbbprof_my_character',$symbol);
+					if( apply_filters('wbbprof_custom_character',$symbol) ){
+						$symbol = apply_filters('wbbprof_custom_character',$symbol);
 					} else {
 						$symbol = '*';
 					}
