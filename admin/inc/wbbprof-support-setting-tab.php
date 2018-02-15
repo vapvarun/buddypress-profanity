@@ -25,6 +25,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</p>
 					</div>
 				</div>
+			</div>
+			<div class="wbbprof-faq-row border">
 				<div class="wbbprof-admin-col-12">
 					<button class="wbbprof-accordion">
 						<?php esc_html_e( 'Does this plugin filter multiple keywords?', 'buddypress-profanity' ); ?>
@@ -35,24 +37,70 @@ if ( ! defined( 'ABSPATH' ) ) {
 						</p>
 					</div>
 				</div>
+			</div>	
+			<div class="wbbprof-faq-row border">	
 				<div class="wbbprof-admin-col-12">
 					<button class="wbbprof-accordion">
-						<?php esc_html_e( 'How do I specify a character other than defined characers to replace out keywords?' ); ?>
+						<?php esc_html_e( 'How do I specify a character other than defined characers to replace out keywords?', 'buddypress-profanity' ); ?>
 					</button>
 					<div class="wbbprof-panel">
 						<p> 
-							<?php esc_html_e( 'This can be achieved with the help of filters provided in the plugin. To replace keywords with cutsom character write below coed in your functions.php file of active theme or wherever you want.' ); ?>
-						</p>
-						<pre>
-							add_filter( 'wbbprof_word_rendering_symbols', 'custom_wbbprof_word_rendering_symbols', 10, 1 );
-							function custom_wbbprof_word_rendering_symbols($rendering_symbols) {
-
-								$rendering_symbols['at_the_rate'] = '[ @] At the rate';
-								return $rendering_symbols;
-							}
-						</pre>
+							<?php esc_html_e( 'This can be achieved with the help of filters provided in the plugin. To replace keywords with cutsom character for eg. @ write below coed in your functions.php file of active theme or wherever you want.', 'buddypress-profanity' ); ?>
+						</p><pre>add_filter( 'wbbprof_word_rendering_symbols', 'custom_wbbprof_word_rendering_symbols', 10, 1 );
+function custom_wbbprof_word_rendering_symbols($rendering_symbols) {
+  $rendering_symbols['at_the_rate'] = '[ @] At the rate';
+  return $rendering_symbols;
+}
+add_filter('wbbprof_custom_character', 'custom_wbbprof_custom_character', 10, 1);
+function custom_wbbprof_custom_character($symbol) {
+  $symbol = '@';
+  return $symbol;
+}</pre><p><?php esc_html_e( 'After adding this code an option is created under [Filter Character], select the newly added option and save the settings.', 'buddypress-profanity' ); ?></p>
 					</div>
 				</div>
+			</div>	
+			<div class="wbbprof-faq-row border">	
+				<div class="wbbprof-admin-col-12">
+					<button class="wbbprof-accordion">
+						<?php esc_html_e( 'Does this change the content in BuddyPress database?' ); ?>
+					</button>
+					<div class="wbbprof-panel">
+						<p> 
+							<?php esc_html_e( 'No, the plugin filters the content to display on screen, buddypress database is unaffected from plugin changes.', 'buddypress-profanity' ); ?>
+						</p>
+					</div>
+				</div>
+			</div>	
+			<div class="wbbprof-faq-row border">	
+				<div class="wbbprof-admin-col-12">
+					<button class="wbbprof-accordion">
+						<?php esc_html_e( 'How is Case Matching setting useful?' ); ?>
+					</button>
+					<div class="wbbprof-panel">
+						<p> 
+							<?php esc_html_e( 'The [Case Matching] setting provides two option Case Sensitive and Case Insensitive. Case Sensitive filters keywords with strich case matching and is not recommended while Case Insensitive setting capture more words while filtering.', 'buddypress-profanity' ); ?>
+						</p>
+						<p> 
+							<?php esc_html_e( 'We recommend users to use Case Insensitive matching.', 'buddypress-profanity' ); ?>
+						</p>
+					</div>
+				</div>
+			</div>	
+			<div class="wbbprof-faq-row border">	
+				<div class="wbbprof-admin-col-12">
+					<button class="wbbprof-accordion">
+						<?php esc_html_e( 'How is Strict Filtering setting useful?' ); ?>
+					</button>
+					<div class="wbbprof-panel">
+						<p> 
+							<?php esc_html_e( 'The [Strict Filtering] with strict mode on does not filter embedded keywords.', 'buddypress-profanity' ); ?>
+						</p>
+						<p> 
+							<?php esc_html_e( 'We recommend users to use Strict Filtering ON mode.', 'buddypress-profanity' ); ?>
+						</p>
+					</div>
+				</div>
+			</div>	
 			</div>
 		</div>
 	</div>
