@@ -96,7 +96,11 @@ class Buddypress_Profanity_Public {
 					$symbol = ' ';
 					break;
 				default:
-					$symbol = '*';
+					if( apply_filters('wbbprof_my_character',$symbol) ){
+						$symbol = apply_filters('wbbprof_my_character',$symbol);
+					} else {
+						$symbol = '*';
+					}
 					break;
 			}
 			$this->character = &$symbol;
