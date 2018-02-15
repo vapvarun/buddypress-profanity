@@ -183,9 +183,9 @@ class Buddypress_Profanity_Public {
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
 							if( $this->case == 'incase' ) {
-								$content = $this->wbbprof_str_replace_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
 							} else {
-								$content = $this->wbbprof_str_replace_word( $keyword, $replacement, $content, $this->whole_word );
+								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
 							}
 							
 						}
@@ -212,9 +212,9 @@ class Buddypress_Profanity_Public {
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
 							if( $this->case == 'incase' ) {
-								$content = $this->wbbprof_str_replace_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
 							} else {
-								$content = $this->wbbprof_str_replace_word( $keyword, $replacement, $content, $this->whole_word );
+								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
 							}
 							
 						}
@@ -241,9 +241,9 @@ class Buddypress_Profanity_Public {
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
 							if( $this->case == 'incase' ) {
-								$content = $this->wbbprof_str_replace_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
 							} else {
-								$content = $this->wbbprof_str_replace_word( $keyword, $replacement, $content, $this->whole_word );
+								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
 							}
 							
 						}
@@ -259,23 +259,26 @@ class Buddypress_Profanity_Public {
 	 *
 	 * Function for word sensoring.
 	 *
+	 * @param string $wbbprof_render_type Word Rendering type.
+	 * @param string $keyword             Keyword to remove.
+	 * @param string $char_symbol         Symbol to replace with keywords.
 	 */
-	function wbbprof_censor_word( $wildcard_filter_type, $keyword, $wildcard ) {
-		switch ( $wildcard_filter_type ) {
+	function wbbprof_censor_word( $wbbprof_render_type, $keyword, $char_symbol ) {
+		switch ( $wbbprof_render_type ) {
 			case 'first':
-				$keyword = substr( $keyword, 0, 1 ) . str_repeat( $wildcard, strlen( substr( $keyword, 1 ) ) );
+				$keyword = substr( $keyword, 0, 1 ) . str_repeat( $char_symbol, strlen( substr( $keyword, 1 ) ) );
 				break;
 			case 'all':
-				$keyword = str_repeat( $wildcard, strlen( substr( $keyword, 0 ) ) );
+				$keyword = str_repeat( $char_symbol, strlen( substr( $keyword, 0 ) ) );
 				break;
 			case 'first_last':
-				$keyword = substr( $keyword, 0, 1 ) . str_repeat( $wildcard, strlen( substr( $keyword, 2 ) ) ) . substr( $keyword, - 1, 1 );
+				$keyword = substr( $keyword, 0, 1 ) . str_repeat( $char_symbol, strlen( substr( $keyword, 2 ) ) ) . substr( $keyword, - 1, 1 );
 				break;
 			case 'last':
-				$keyword = str_repeat( $wildcard, strlen( substr( $keyword, 0, -1 ) ) ) . substr( $keyword, - 1, 1 );
+				$keyword = str_repeat( $char_symbol, strlen( substr( $keyword, 0, -1 ) ) ) . substr( $keyword, - 1, 1 );
 				break;
 			default:
-				$keyword = substr( $keyword, 0, 1 ) . str_repeat( $wildcard, strlen( substr( $keyword, 2 ) ) ) . substr( $keyword, - 1, 1 );
+				$keyword = substr( $keyword, 0, 1 ) . str_repeat( $char_symbol, strlen( substr( $keyword, 2 ) ) ) . substr( $keyword, - 1, 1 );
 				break;
 		}
 		return $keyword;
@@ -285,31 +288,42 @@ class Buddypress_Profanity_Public {
 	 *
 	 * Function to replace words with character when case sensitive.
 	 *
+	 * @param string  $fword           The keyword to be replaced.
+	 * @param string  $replacement     The keyword to be replaced with.
+	 * @param string  $wbbprof_content The content to find the keyword.
+	 * @param boolean $whole_word      Strict filtering or not.
 	 */
-	function wbbprof_str_replace_word( $needle, $replacement, $haystack, $whole_word = true ) {
-		$needle   = str_replace( '/', '\\/', preg_quote( $needle ) ); // allow '/' in keywords
-		$pattern  = $whole_word ? "/\b$needle\b/" : "/$needle/";
-		$haystack = preg_replace( $pattern, $replacement, $haystack );
+	function wbbprof_profain_word( $fword, $replacement, $wbbprof_content, $whole_word = true ) {
+		$fword   = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords
+		$pattern  = $whole_word ? "/\b$fword\b/" : "/$fword/";
+		$wbbprof_content = preg_replace( $pattern, $replacement, $wbbprof_content );
 
-		return $haystack;
+		return $wbbprof_content;
 	}
 
 	/**
 	 *
 	 * Function to replace words with character when case insensitive.
 	 *
+	 * @param string  $fword               The keyword to be replaced.
+	 * @param string  $replacement         The keyword to be replaced with.
+	 * @param string  $wbbprof_content     The content to find the keyword.
+	 * @param string  $wbbprof_render_type Word Rendering type.
+	 * @param string  $keyword             Keyword to remove.
+	 * @param string  $char_symbol         Symbol to replace with keywords.
+	 * @param boolean $whole_word          Strict filtering or not.
 	 */
-	function wbbprof_str_replace_word_i( $needle, $replacement, $haystack, $wildcard_filter_type, $keyword, $wildcard, $whole_word = true ) {
+	function wbbprof_profain_word_i( $fword, $replacement, $wbbprof_content, $wbbprof_render_type, $keyword, $char_symbol, $whole_word = true ) {
 
-		$needle   = str_replace( '/', '\\/', preg_quote( $needle ) ); // allow '/' in keywords
-		$pattern  = $whole_word ? "/\b$needle\b/i" : "/$needle/i";
-		$haystack = preg_replace_callback(
+		$fword   = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords
+		$pattern  = $whole_word ? "/\b$fword\b/i" : "/$fword/i";
+		$wbbprof_content = preg_replace_callback(
 			$pattern,
-			function($m) use($wildcard_filter_type, $keyword, $wildcard) {
-				return $this->wbbprof_censor_word( $wildcard_filter_type, $m[0], $wildcard );
+			function($m) use($wbbprof_render_type, $keyword, $char_symbol) {
+				return $this->wbbprof_censor_word( $wbbprof_render_type, $m[0], $char_symbol );
 			},
-			$haystack);
-		return $haystack;
+			$wbbprof_content);
+		return $wbbprof_content;
     }
 
 }
