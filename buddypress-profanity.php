@@ -150,6 +150,22 @@ function wbbprof_update_blog( $blog_id = null ) {
 	if ( $blog_id ) {
 		switch_to_blog( $blog_id );
 	}
+	$wbbprof_settings = get_option('wbbprof_settings');
+	if( empty( $wbbprof_settings ) ){
+		$wbbprof_settings = array(
+			'keywords'        => 'FrontGate,Profanity',
+			'filter_contents' =>  array(
+				'0' => 'status_updates',
+				'1' => 'activity_comments',
+				'2' => 'messages',
+			),
+			'word_render'   => 'first_last',
+			'character'     => 'asterisk',
+			'case'          => 'incase',
+			'strict_filter' => 'on',
+		);
+		update_option( 'wbbprof_settings', $wbbprof_settings );
+	}
 	if ( $blog_id ) {
 		restore_current_blog();
 	}

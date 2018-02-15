@@ -52,25 +52,25 @@ $rendering_symbols = word_rendering_symbols();
 				<fieldset>
 					<legend class="screen-reader-text"><span><?php esc_html_e( 'Word rendering', 'buddypress-profanity' ); ?></span></legend>
 					<label>
-						<input name="wbbprof_settings[word_render]" value="first" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'], 'first'):''; ?>>
+						<input name="wbbprof_settings[word_render]" value="first" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'],'first'):''; ?>>
 						<span class="wbbprof-span-text"><?php esc_html_e( 'First letter retainded', 'buddypress-profanity' ); ?></span>
 						<code>[blog => b***]</code>
 					</label>
 					<br>
 					<label>
-						<input name="wbbprof_settings[word_render]" value="last" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'], 'last'):''; ?>>
+						<input name="wbbprof_settings[word_render]" value="last" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'],'last'):''; ?>>
 						<span class="wbbprof-span-text"><?php esc_html_e( 'Last letter retained', 'buddypress-profanity' ); ?></span>
 						<code>[blog => ***g]</code>
 					</label>
 					<br>
 					<label>
-						<input name="wbbprof_settings[word_render]" value="fisrt_last" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'], 'fisrt_last'):''; ?>>
+						<input name="wbbprof_settings[word_render]" value="fisrt_last" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'],'fisrt_last'):''; ?>>
 						<span class="wbbprof-span-text"><?php esc_html_e( 'Fisrt and Last letter retained', 'buddypress-profanity' ); ?></span>
 						<code>[blog => b**g]</code>
 					</label>
 					<br>
 					<label>
-						<input name="wbbprof_settings[word_render]" value="all" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'], 'all'):''; ?>>
+						<input name="wbbprof_settings[word_render]" value="all" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'],'all'):''; ?>>
 						<span class="wbbprof-span-text"><?php esc_html_e( 'All letter removed', 'buddypress-profanity' ); ?></span>
 						<code>[blog => b**g]</code>
 					</label>
