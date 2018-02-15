@@ -123,13 +123,13 @@ $rendering_symbols = word_rendering_symbols();
 					<legend class="screen-reader-text"><span><?php esc_html_e( 'Strict Filtering', 'buddypress-profanity' ); ?></span></legend>
 					<label>
 						<input name="wbbprof_settings[strict_filter]" value="off" type="radio" <?php ( isset( $wbbprof_settings['strict_filter'] ) )? checked($wbbprof_settings['strict_filter'], 'off'):''; ?>>
-						<span class="wbbprof-span-text"><?php esc_html_e( 'Strict Filtering OFF', 'buddypress-profanity' ); ?></span>
+						<span class="wbbprof-case-span-text"><?php esc_html_e( 'Strict Filtering OFF', 'buddypress-profanity' ); ?></span>
 						<code>[eg. ass becomes p***able]</code>
 					</label>
 					<br>
 					<label>
 						<input name="wbbprof_settings[strict_filter]" value="on" type="radio" <?php ( isset( $wbbprof_settings['strict_filter'] ) )? checked($wbbprof_settings['strict_filter'], 'on'):''; ?>>
-						<span class="wbbprof-span-text"><?php esc_html_e( 'Strict Filtering ON (recommended)', 'buddypress-profanity' ); ?></span>
+						<span class="wbbprof-case-span-text"><?php esc_html_e( 'Strict Filtering ON (recommended)', 'buddypress-profanity' ); ?></span>
 						<code>[eg. ass becomes passable]</code>
 					</label>
 					<br>
