@@ -224,6 +224,35 @@ class Buddypress_Profanity_Public {
 
 	/**
 	 *
+	 * Function for filtering message content.
+	 *
+	 * @param string $content Message string.
+	 */
+	public function wbbprof_bp_get_the_thread_message_content( $content ) {
+		if ( !empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'messages', $this->wbbprof_settings['filter_contents'] ) ) {
+				if ( is_array( $this->keywords ) ) {
+					foreach ($this->keywords as $key => $keyword) {
+						$keyword = trim( $keyword );
+						if ( strlen( $keyword ) > 2 ) {
+							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
+							if( $this->case == 'incase' ) {
+								$content = $this->wbbprof_str_replace_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
+							} else {
+								$content = $this->wbbprof_str_replace_word( $keyword, $replacement, $content, $this->whole_word );
+							}
+							
+						}
+						
+					}
+				}
+			}
+		}
+		return $content;
+	}
+
+	/**
+	 *
 	 * Function for word sensoring.
 	 *
 	 */
