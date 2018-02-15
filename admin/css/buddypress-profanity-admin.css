@@ -1,0 +1,16 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+ /*----------  Active tab design  ----------*/
+ .nav-tab.active {
+  background: #f1f1f1;
+  color: #000;
+ }
+
+/*----------  Design for checkbox code text inline  ----------*/
+ .buddypress-profanity-admin-table .wbbprof-span-text {
+	min-width: 13em;
+	display: inline-block;
+}
