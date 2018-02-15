@@ -72,14 +72,10 @@ function activate_buddypress_profanity() {
 			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wbbprof_plugin_links' );
 			wbbprof_update_blog( $blog->blog_id );
 		}
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-buddypress-profanity-activator.php';
-		Buddypress_Profanity_Activator::activate();
 	} else {
 		run_buddypress_profanity();
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wbbprof_plugin_links' );
 		wbbprof_update_blog();
-		require_once plugin_dir_path( __FILE__ ) . 'includes/class-buddypress-profanity-activator.php';
-	    Buddypress_Profanity_Activator::activate();
 	}
 }
 
@@ -88,8 +84,8 @@ function activate_buddypress_profanity() {
  * This action is documented in includes/class-buddypress-profanity-deactivator.php
  */
 function deactivate_buddypress_profanity() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-buddypress-profanity-deactivator.php';
-	Buddypress_Profanity_Deactivator::deactivate();
+	if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+	}
 }
 
 register_activation_hook( __FILE__, 'activate_buddypress_profanity' );
