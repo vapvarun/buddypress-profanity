@@ -47,10 +47,10 @@ $rendering_symbols = word_rendering_symbols();
 		    </td>
 	    </tr>
 	    <tr>
-			<th scope="row"><label for="blogname"><?php esc_html_e( 'Word Rendering', 'buddypress-profanity' ); ?></label></th>
+			<th scope="row"><label for="blogname"><?php esc_html_e( 'Word rendering', 'buddypress-profanity' ); ?></label></th>
 			<td>
 				<fieldset>
-					<legend class="screen-reader-text"><span><?php esc_html_e( 'Word Rendering', 'buddypress-profanity' ); ?></span></legend>
+					<legend class="screen-reader-text"><span><?php esc_html_e( 'Word rendering', 'buddypress-profanity' ); ?></span></legend>
 					<label>
 						<input name="wbbprof_settings[word_render]" value="first" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'], 'first'):''; ?>>
 						<span class="wbbprof-span-text"><?php esc_html_e( 'First letter retainded', 'buddypress-profanity' ); ?></span>
@@ -79,7 +79,7 @@ $rendering_symbols = word_rendering_symbols();
 		    </td>
 	    </tr>
 	    <tr>
-			<th scope="row"><label for="blogname"><?php esc_html_e( 'Filter Character', 'buddypress-profanity' ); ?></label></th>
+			<th scope="row"><label for="blogname"><?php esc_html_e( 'Filter character', 'buddypress-profanity' ); ?></label></th>
 			<td>
 				<select name="wbbprof_settings[character]">
 					<?php
@@ -97,10 +97,10 @@ $rendering_symbols = word_rendering_symbols();
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="blogname"><?php esc_html_e( 'Case Matching', 'buddypress-profanity' ); ?></label></th>
+			<th scope="row"><label for="blogname"><?php esc_html_e( 'Case matching', 'buddypress-profanity' ); ?></label></th>
 			<td>
 				<fieldset>
-					<legend class="screen-reader-text"><span><?php esc_html_e( 'Case Matching', 'buddypress-profanity' ); ?></span></legend>
+					<legend class="screen-reader-text"><span><?php esc_html_e( 'Case matching', 'buddypress-profanity' ); ?></span></legend>
 					<label>
 						<input name="wbbprof_settings[case]" value="case" type="radio" <?php ( isset( $wbbprof_settings['case'] ) )? checked($wbbprof_settings['case'], 'case'):''; ?>>
 						<span class="wbbprof-span-text"><?php esc_html_e( 'Case Sensitive', 'buddypress-profanity' ); ?></span>
@@ -117,10 +117,10 @@ $rendering_symbols = word_rendering_symbols();
 			</td>
 		</tr>
 		<tr>
-			<th scope="row"><label for="blogname"><?php esc_html_e( 'Strict Filtering', 'buddypress-profanity' ); ?></label></th>
+			<th scope="row"><label for="blogname"><?php esc_html_e( 'Strict filtering', 'buddypress-profanity' ); ?></label></th>
 			<td>
 				<fieldset>
-					<legend class="screen-reader-text"><span><?php esc_html_e( 'Strict Filtering', 'buddypress-profanity' ); ?></span></legend>
+					<legend class="screen-reader-text"><span><?php esc_html_e( 'Strict filtering', 'buddypress-profanity' ); ?></span></legend>
 					<label>
 						<input name="wbbprof_settings[strict_filter]" value="off" type="radio" <?php ( isset( $wbbprof_settings['strict_filter'] ) )? checked($wbbprof_settings['strict_filter'], 'off'):''; ?>>
 						<span class="wbbprof-case-span-text"><?php esc_html_e( 'Strict Filtering OFF', 'buddypress-profanity' ); ?></span>
