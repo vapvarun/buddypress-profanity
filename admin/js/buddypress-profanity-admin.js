@@ -44,4 +44,20 @@ jQuery( document ).ready(
 			}
 		}
 		);
+
+		/*support tab accordion*/
+		var wbbprof_elmt = document.getElementsByClassName( "wbbprof-accordion" );
+		var k;
+		var wbbprof_elmt_len = wbbprof_elmt.length;
+		for (k = 0; k < wbbprof_elmt_len; k++) {
+			wbbprof_elmt[k].onclick = function() {
+				this.classList.toggle( "active" );
+				var panel = this.nextElementSibling;
+				if (panel.style.maxHeight) {
+					panel.style.maxHeight = null;
+				} else {
+					panel.style.maxHeight = panel.scrollHeight + "px";
+				}
+			}
+		}
 });

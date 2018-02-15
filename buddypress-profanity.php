@@ -133,7 +133,7 @@ function wbbprof_network_admin_notices() {
  *
  * @param array $links Plugin action links array.
  */
-function bprm_plugin_links( $links ) {
+function wbbprof_plugin_links( $links ) {
 	$wbbprof_links = array(
 		'<a href="' . admin_url( 'admin.php?page=buddypress_profanity' ) . '">' . __( 'Settings', 'buddypress-profanity' ) . '</a>',
 		'<a href="https://wbcomdesigns.com/contact/" target="_blank">' . __( 'Support', 'buddypress-profanity' ) . '</a>',
@@ -146,7 +146,7 @@ function bprm_plugin_links( $links ) {
  *
  * @param int $blog_id Blog id.
  */
-function bprm_update_blog( $blog_id = null ) {
+function wbbprof_update_blog( $blog_id = null ) {
 	if ( $blog_id ) {
 		switch_to_blog( $blog_id );
 	}
@@ -168,7 +168,7 @@ function wbbprof_plugin_init() {
 		add_action( 'admin_notices', 'wbbprof_plugin_admin_notice' );
 	} else {
 		run_buddypress_profanity();
-		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'bprm_plugin_links' );
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wbbprof_plugin_links' );
 	}
 }
 
