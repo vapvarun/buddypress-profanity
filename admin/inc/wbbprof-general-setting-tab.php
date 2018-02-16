@@ -16,7 +16,6 @@ if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ )
 }
 $content_to_filter = content_to_filter_array();
 $rendering_symbols = word_rendering_symbols();
-
 ?>
 <form method="post" action="options.php">
 	<?php
@@ -64,7 +63,7 @@ $rendering_symbols = word_rendering_symbols();
 					</label>
 					<br>
 					<label>
-						<input name="wbbprof_settings[word_render]" value="fisrt_last" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'],'fisrt_last'):''; ?>>
+						<input name="wbbprof_settings[word_render]" value="fisrt_last" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'], 'fisrt_last'):''; ?>>
 						<span class="wbbprof-span-text"><?php esc_html_e( 'Fisrt and Last letter retained', 'buddypress-profanity' ); ?></span>
 						<code>[blog => b**g]</code>
 					</label>
