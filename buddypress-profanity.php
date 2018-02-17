@@ -153,7 +153,7 @@ function wbbprof_update_blog( $blog_id = null ) {
 	$wbbprof_settings = get_option('wbbprof_settings');
 	if( empty( $wbbprof_settings ) ){
 		$wbbprof_settings = array(
-			'keywords'        => 'FrontGate,Profanity',
+			'keywords'        => 'FrontGate,Profanity,aeolus,ahole,b1tch,bang,bollock,breast,enlargement,erotic,goddamn,heroin,hell,kooch,nad,nigger,pecker,tubgirl,unwed,woody,yeasty,yobbo,zoophile',
 			'filter_contents' =>  array(
 				'0' => 'status_updates',
 				'1' => 'activity_comments',
