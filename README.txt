@@ -1,10 +1,10 @@
 === BuddyPress Profanity ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: http://www.wbcomdesigns.com
+Contributors: wbcomdesigns
+Donate link: https://wbcomdesigns.com
 Tags: buddypress, profanity, filter, community, activity, comments, messages
 Requires at least: 3.0.1
-Tested up to: 4.9.3
-Stable tag: 4.9.3
+Tested up to: 4.9.4
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
