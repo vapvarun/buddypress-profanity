@@ -9,15 +9,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
-	$wbbprof_settings = get_site_option( 'wbbprof_settings' );
-} else {
-	$wbbprof_settings = get_option( 'wbbprof_settings' );
-}
+
+$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
 $content_to_filter = content_to_filter_array();
 $rendering_symbols = word_rendering_symbols();
 ?>
-<form method="post" action="options.php">
+<form method="post" action="admin.php?action=update_network_options">
 	<?php
 	settings_fields( 'buddypress_profanity_general' );
 	do_settings_sections( 'buddypress_profanity_general' );

@@ -156,9 +156,11 @@ class Buddypress_Profanity_Admin {
 	 * @since    1.0.0
 	 */
 	public function wbbprof_admin_register_settings() {
-
-		register_setting( 'buddypress_profanity_general', 'wbbprof_settings' );
-
+		if(isset($_POST['wbbprof_settings'])){
+			bp_update_option('wbbprof_settings',$_POST['wbbprof_settings']);
+			wp_redirect($_POST['_wp_http_referer']);
+			exit();
+		}
 	}
 
 }

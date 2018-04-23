@@ -161,7 +161,7 @@ class Buddypress_Profanity {
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wbbprof_add_admin_menu' );
+		$this->loader->add_action( bp_core_admin_hook(), $plugin_admin, 'wbbprof_add_admin_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'wbbprof_admin_register_settings' );
 
 	}

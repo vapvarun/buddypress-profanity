@@ -52,13 +52,7 @@ class Buddypress_Profanity_Public {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
-		if ( is_multisite() && is_plugin_active_for_network( plugin_basename( __FILE__ ) ) ) {
-			$wbbprof_settings = get_site_option( 'wbbprof_settings' );
-		} else {
-			$wbbprof_settings = get_option( 'wbbprof_settings' );
-		}
-
+		$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
 		$this->wbbprof_settings = &$wbbprof_settings;
 
 		if( isset( $this->wbbprof_settings['keywords'] ) ){
