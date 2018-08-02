@@ -136,6 +136,8 @@ register_deactivation_hook( __FILE__, 'deactivate_buddypress_profanity' );
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-buddypress-profanity.php';
 
+require plugin_dir_path(__FILE__) . 'edd-license/edd-plugin-license.php';
+
 /**
  * Begins execution of the plugin.
  *
