@@ -55,5 +55,8 @@ The [Strict Filtering] with strict mode on does not filter embedded keywords.We 
 
 == Changelog ==
 
+= 1.0.1 =
+* Enhancement : Added plugin license code.
+
 = 1.0.0 =
 * first version.
