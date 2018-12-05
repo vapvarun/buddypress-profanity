@@ -39,9 +39,9 @@ $rendering_symbols = word_rendering_symbols();
 							$checked = '';
 						}
 						echo '<label class="bpprof-switch">
-						<input name="wbbprof_settings[filter_contents][]" value="'.$key.'" type="checkbox" '.$checked.'><span class="wbbprof-span-text">'.$value.'</span>
+						<input name="wbbprof_settings[filter_contents][]" value="'.$key.'" type="checkbox" '.$checked.'>
 						<div class="bpprof-slider bpprof-round"></div>
-						</label><br>';
+						</label><span class="wbbprof-span-text">'.$value.'</span><br>';
 						//echo '<label><input name="wbbprof_settings[filter_contents][]" value="'.$key.'" type="checkbox" '.$checked.'> <span class="wbbprof-span-text">'.$value.'</span></label><br>';
 					} ?>
 				</fieldset>
