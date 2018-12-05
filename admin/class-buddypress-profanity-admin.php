@@ -117,7 +117,12 @@ class Buddypress_Profanity_Admin {
 	 */
 	public function wbbprof_add_admin_menu() {
 
-		add_menu_page( __( 'Buddypress Profanity Settings Page', 'buddypress-profanity' ), __( 'BuddyPress Profanity', 'buddypress-profanity' ), 'manage_options', 'buddypress_profanity', array( $this, 'wbbprof_buddypress_profanity_settings_page' ), 'dashicons-filter', 60 );
+		if ( empty ( $GLOBALS['admin_page_hooks']['wbcomplugins'] ) ) {
+				add_menu_page( esc_html__( 'WBCOM', 'buddypress-profanity' ), __( 'WBCOM', 'buddypress-profanity' ), 'manage_options', 'wbcomplugins', array( $this, 'wbbprof_buddypress_profanity_settings_page' ), BPPROF_PLUGIN_URL . 'admin/wbcom/assets/imgs/bulb.png', 59 );
+			}
+		add_submenu_page( 'wbcomplugins', esc_html__( 'Buddypress Profanity Settings Page', 'buddypress-profanity' ), esc_html__( 'BuddyPress Profanity', 'buddypress-profanity' ), 'manage_options', 'buddypress_profanity', array( $this, 'wbbprof_buddypress_profanity_settings_page' ) );
+
+		// add_menu_page( __( 'Buddypress Profanity Settings Page', 'buddypress-profanity' ), __( 'BuddyPress Profanity', 'buddypress-profanity' ), 'manage_options', 'buddypress_profanity', array( $this, 'wbbprof_buddypress_profanity_settings_page' ), 'dashicons-filter', 60 );
 
 	}
 
@@ -131,22 +136,29 @@ class Buddypress_Profanity_Admin {
 		$current = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'general';
 		?>
 		<div class="wrap">
-			<h1> <?php esc_html_e( 'BuddyPress Profanity Settings', 'buddypress-profanity' ); ?></h1>
-		</div>
+			<div class="bpprof-header">
+				<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
+				<h1 class="wbcom-plugin-heading">
+					<?php esc_html_e( 'BuddyPress Profanity Settings', 'buddypress-profanity' ); ?>
+				</h1>
+			</div>
+		<div class="wbcom-admin-settings-page">
 		<?php
 		$wbbprof_tabs = array(
 			'general'        => __( 'General', 'bp-resume-manager' ),
 			'support'        => __( 'Support', 'bp-resume-manager' ),
 		);
 
-    	$tab_html = '<h2 class="nav-tab-wrapper">';
+    	$tab_html = '<div class="wbcom-tabs-section"><h2 class="nav-tab-wrapper">';
 		foreach ( $wbbprof_tabs as $wbbprof_tab => $wbbpro_name ) {
-			$class     = ( $wbbprof_tab == $current ) ? 'active' : '';
+			$class     = ( $wbbprof_tab == $current ) ? 'nav-tab-active' : '';
 			$tab_html .= '<a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a>';
 		}
-		$tab_html .= '</h2>';
+		$tab_html .= '</h2></div>';
 		echo $tab_html;
 		include 'inc/wbbprof-tabs-options.php';
+		echo '</div>'; /* end of .wbcom-admin-settings-page */
+		echo '</div>'; /* end of .wrap div. */
 
 	}
 

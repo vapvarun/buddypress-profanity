@@ -14,6 +14,7 @@ $wbbprof_settings = bp_get_option( 'wbbprof_settings' );
 $content_to_filter = content_to_filter_array();
 $rendering_symbols = word_rendering_symbols();
 ?>
+<div class="wbcom-tab-content">
 <form method="post" action="admin.php?action=update_network_options">
 	<?php
 	settings_fields( 'buddypress_profanity_general' );
@@ -37,7 +38,11 @@ $rendering_symbols = word_rendering_symbols();
 						}else{
 							$checked = '';
 						}
-						echo '<label><input name="wbbprof_settings[filter_contents][]" value="'.$key.'" type="checkbox" '.$checked.'> <span class="wbbprof-span-text">'.$value.'</span></label><br>';
+						echo '<label class="bpprof-switch">
+						<input name="wbbprof_settings[filter_contents][]" value="'.$key.'" type="checkbox" '.$checked.'><span class="wbbprof-span-text">'.$value.'</span>
+						<div class="bpprof-slider bpprof-round"></div>
+						</label><br>';
+						//echo '<label><input name="wbbprof_settings[filter_contents][]" value="'.$key.'" type="checkbox" '.$checked.'> <span class="wbbprof-span-text">'.$value.'</span></label><br>';
 					} ?>
 				</fieldset>
 		    </td>
@@ -137,3 +142,4 @@ $rendering_symbols = word_rendering_symbols();
 	</table>
 	<?php submit_button(); ?>
 </form>
+</div>

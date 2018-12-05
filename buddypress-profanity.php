@@ -41,6 +41,7 @@ define( 'BP_PROFANITY_PLUGIN_BASENAME',  plugin_basename( __FILE__ ) );
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'BPPROF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 /**
  * The code that runs during plugin activation.

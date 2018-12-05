@@ -127,6 +127,9 @@ class Buddypress_Profanity {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/wbbprof-admin-public-functions.php';
 
+		/* Enqueue wbcom plugin folder file. */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/wbcom/wbcom-admin-settings.php';
+
 		$this->loader = new Buddypress_Profanity_Loader();
 
 	}

@@ -8,6 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 ?>
+<div class="wbcom-tab-content">
 <div class="wbbprof-support-setting">
 	<div class="wbbprof-tab-header">
 		<h3><?php esc_html_e( 'FAQ(s) ', 'buddypress-profanity' ); ?></h3>
@@ -104,4 +105,5 @@ function custom_wbbprof_custom_character($symbol) {
 			</div>
 		</div>
 	</div>
+</div>
 </div>
