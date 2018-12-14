@@ -130,6 +130,9 @@ class Buddypress_Profanity {
 		/* Enqueue wbcom plugin folder file. */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/wbcom/wbcom-admin-settings.php';
 
+		/* Enqueue wbcom plugin license file. */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/wbcom/wbcom-paid-plugin-settings.php';
+
 		$this->loader = new Buddypress_Profanity_Loader();
 
 	}
