@@ -326,6 +326,18 @@ function wbcom_render_wbbprof_license_section(){
         $status_text = 'Inactive';
     }
     ?>
+    <table class="form-table wb-license-form-table mobile-license-headings">
+        <thead>
+            <tr>
+                <th class="wb-product-th"><?php esc_html_e( 'Product', 'buddypress-profanity' ); ?></th>
+                <th class="wb-version-th"><?php esc_html_e( 'Version', 'buddypress-profanity' ); ?></th>
+                <th class="wb-key-th"><?php esc_html_e( 'Key', 'buddypress-profanity' ); ?></th>
+                <th class="wb-status-th"><?php esc_html_e( 'Status', 'buddypress-profanity' ); ?></th>
+                <th class="wb-action-th"><?php esc_html_e( 'Action', 'buddypress-profanity' ); ?></th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
     <form method="post" action="options.php">
         <?php settings_fields( 'edd_wbcom_WBBPROF_license' ); ?>
         <table class="form-table wb-license-form-table">

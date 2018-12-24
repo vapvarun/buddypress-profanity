@@ -2,7 +2,7 @@
 	<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
     <h1 class="wbcom-plugin-heading"><?php esc_html_e( 'Plugin License Settings', 'buddypress-profanity' ); ?></h1>
     <div class="wb-plugins-license-tables-wrap">
-    	<table class="form-table wb-license-form-table">
+    	<table class="form-table wb-license-form-table desktop-license-headings">
 			<thead>
 				<tr>
 					<th class="wb-product-th"><?php esc_html_e( 'Product', 'buddypress-profanity' ); ?></th>
