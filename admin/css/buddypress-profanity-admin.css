@@ -87,6 +87,11 @@ button.wbbprof-accordion.active::after {
     color:white;
 }
 
+.buddypress-profanity-admin-table code {
+    display: inline-block;
+    margin: 10px 0;
+}
+
 /* check box design */
 .bpprof-switch {
     position: relative;
