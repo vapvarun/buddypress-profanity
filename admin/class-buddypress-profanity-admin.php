@@ -118,7 +118,11 @@ class Buddypress_Profanity_Admin {
 	public function wbbprof_add_admin_menu() {
 
 		if ( empty ( $GLOBALS['admin_page_hooks']['wbcomplugins'] ) ) {
-				add_menu_page( esc_html__( 'WBCOM', 'buddypress-profanity' ), __( 'WBCOM', 'buddypress-profanity' ), 'manage_options', 'wbcomplugins', array( $this, 'wbbprof_buddypress_profanity_settings_page' ), BPPROF_PLUGIN_URL . 'admin/wbcom/assets/imgs/bulb.png', 59 );
+			
+			// add_menu_page( esc_html__( 'WBCOM', 'buddypress-profanity' ), __( 'WBCOM', 'buddypress-profanity' ), 'manage_options', 'wbcomplugins', array( $this, 'wbbprof_buddypress_profanity_settings_page' ), BPPROF_PLUGIN_URL . 'admin/wbcom/assets/imgs/bulb.png', 59 );
+
+			add_menu_page( esc_html__( 'WB Plugins', 'buddypress-profanity' ), esc_html__( 'WB Plugins', 'buddypress-profanity' ), 'manage_options', 'wbcomplugins', array( $this, 'wbbprof_buddypress_profanity_settings_page' ), 'dashicons-lightbulb', 59 );
+		 	add_submenu_page( 'wbcomplugins', esc_html__( 'General', 'buddypress-profanity' ), esc_html__( 'General', 'buddypress-profanity' ), 'manage_options', 'wbcomplugins' );
 			}
 		add_submenu_page( 'wbcomplugins', esc_html__( 'Buddypress Profanity Settings Page', 'buddypress-profanity' ), esc_html__( 'BuddyPress Profanity', 'buddypress-profanity' ), 'manage_options', 'buddypress_profanity', array( $this, 'wbbprof_buddypress_profanity_settings_page' ) );
 
