@@ -649,3 +649,84 @@
     box-shadow: none;
 }
 /* License style : End */
+
+/* Media Queries : Start */
+ 
+ @media screen and (max-width: 1199px) {
+     .wbcom-demo-title ul li {
+         width: 100%;
+     }
+ }
+ 
+ @media screen and (max-width: 767px) {
+     #wb_admin_header #wb_admin_logo,
+     #wb_admin_header #wb_admin_logo .wb_admin_right, #wb_admin_header #wb_admin_nav {
+         float: none;
+     }
+ 
+     #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a {
+         min-width: inherit;
+         padding: 26px 15px;
+     }
+ }
+ 
+ @media screen and (max-width: 479px) {
+     #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a {
+         font-size: 12px;
+         border: 0;
+         min-width: inherit;
+         padding: 10px;
+     }
+ 
+     .wbcom-admin-settings-page {
+         display: block;
+     }
+ 
+     .wbcom-admin-settings-page .nav-tab-wrapper,
+     .wrap .wbcom-admin-settings-page h2.nav-tab-wrapper,
+     .wbcom-admin-settings-page h1.nav-tab-wrapper {
+         width: 100%;
+         padding-bottom: 0;
+     }
+ 
+     .wbcom-admin-settings-page .nav-tab-wrapper .nav-tab {
+         float: left;
+         margin: 10px;
+     }
+ 
+     .wbcom-admin-settings-page .wbcom-tab-content {
+         width: fit-content;
+         padding: 20px;
+     }
+ 
+     .wbcom-admin-settings-page .wbcom-tab-content .button.button-primary {
+         float: none;
+     }
+ 
+     .reign-importer-section {
+         padding: 16px 0;
+     }
+ 
+     .wbcom_admin_tab_content {
+         padding: 16px 15px;
+     }
+ 
+     .wbcom-demo-content-wrap .wbcom-demo-importer .container {
+         display: block;
+     }
+ 
+     .wbcom-demo-title {
+         width: fit-content;
+         padding: 15px;
+         display: block;
+     }
+ 
+     .wbcom-demo-content-wrap {
+         padding: 16px 15px;
+     }
+ 
+     .wbcom_single_box {
+         margin: 15px 0;
+     }
+ }
+ /* Media Queries : End */
