@@ -106,4 +106,3 @@ function custom_wbbprof_custom_character($symbol) {
 		</div>
 	</div>
 </div>
-</div>
