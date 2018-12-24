@@ -521,18 +521,20 @@
     margin-right: 5px;
 }
 
-@media screen and (max-width: 767px) {
-    .reign-demos-inner-wrapper,
-    .wbcom_boxes_list {
-        display: block;
-    }
-
+@media screen and (max-width: 1100px) {
     .wbcom-req-plugin-card,
     .wbcom_single_box {
         -webkit-box-flex: 0;
         -ms-flex: 0 0 100%;
         flex: 0 0 100%;
         max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .reign-demos-inner-wrapper,
+    .wbcom_boxes_list {
+        display: block;
     }
 }
 /* Components/Support style : End */
