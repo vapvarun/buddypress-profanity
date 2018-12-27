@@ -16,7 +16,7 @@
  * Plugin Name:       BuddyPress Profanity
  * Plugin URI:        http://www.wbcomdesigns.com/plugins/
  * Description:       This buddypress plugin filter out any kind of bad language and gives your community peace of mind.The plugin keeps your content family-friendly and don't show any profanity in your community’s posts or comments.
- * Version:           1.0.2
+ * Version:           1.1.0
  * Author:            wbcomdesigns
  * Author URI:        http://www.wbcomdesigns.com
  * License:           GPL-2.0+
@@ -40,7 +40,7 @@ define( 'BP_PROFANITY_PLUGIN_BASENAME',  plugin_basename( __FILE__ ) );
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'PLUGIN_NAME_VERSION', '1.1.0' );
 define( 'BPPROF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'BPPROF_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 
@@ -55,18 +55,18 @@ function activate_buddypress_profanity() {
 		wbbprof_update_blog();
 	}
 }
-	
+
 function bp_profanity_check_config(){
 	global $bp;
 	$config = array(
-		'blog_status'    => false, 
-		'network_active' => false, 
-		'network_status' => true 
+		'blog_status'    => false,
+		'network_active' => false,
+		'network_status' => true
 	);
 	if ( get_current_blog_id() == bp_get_root_blog_id() ) {
 		$config['blog_status'] = true;
 	}
-	
+
 	$network_plugins = get_site_option( 'active_sitewide_plugins', array() );
 
 	// No Network plugins
@@ -78,7 +78,7 @@ function bp_profanity_check_config(){
 
 	// Are they active on the network ?
 	$network_active = array_diff( $check, array_keys( $network_plugins ) );
-	
+
 	// If result is 1, your plugin is network activated
 	// and not BuddyPress or vice & versa. Config is not ok
 	if ( count( $network_active ) == 1 )

@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com
 Tags: buddypress, profanity, filter, community, activity, comments, messages
 Requires at least: 3.0.1
-Tested up to: 5.0.1
-Stable tag: 1.0.2
+Tested up to: 5.0.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,7 +43,7 @@ This can be achieved with the help of filters provided in the plugin.An example 
 
 = Does this change the content in BuddyPress database? =
 
-No, the plugin filters the content to display on screen, buddypress database is unaffected from plugin changes.
+No, the plugin filters the content to display on screen, BuddyPress database is unaffected from plugin changes.
 
 = How is Case Matching setting useful? =
 
@@ -51,11 +51,11 @@ The [Case Matching] setting provides two option Case Sensitive and Case Insensit
 
 = How is Strict Filtering setting useful? =
 
-The [Strict Filtering] with strict mode on does not filter embedded keywords.We recommend users to use Strict Filtering ON mode.
+The [Strict Filtering] with strict mode on does not filter embedded keywords. We recommend users to use Strict Filtering ON mode.
 
 == Changelog ==
 
-= 1.0.2 =
+= 1.1.0 =
 * Enhancement: Plugin backend settings ui enhancement.
 
 = 1.0.1 =
