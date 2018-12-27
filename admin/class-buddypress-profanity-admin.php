@@ -149,8 +149,8 @@ class Buddypress_Profanity_Admin {
 		<div class="wbcom-admin-settings-page">
 		<?php
 		$wbbprof_tabs = array(
-			'general'        => __( 'General', 'bp-resume-manager' ),
-			'support'        => __( 'Support', 'bp-resume-manager' ),
+			'general'        => __( 'General', 'buddypress-profanity' ),
+			'support'        => __( 'Support', 'buddypress-profanity' ),
 		);
 
     	$tab_html = '<div class="wbcom-tabs-section"><h2 class="nav-tab-wrapper">';
