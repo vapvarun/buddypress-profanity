@@ -16,7 +16,7 @@
  * Plugin Name:       BuddyPress Profanity
  * Plugin URI:        http://www.wbcomdesigns.com/plugins/
  * Description:       This buddypress plugin filter out any kind of bad language and gives your community peace of mind.The plugin keeps your content family-friendly and don't show any profanity in your community’s posts or comments.
- * Version:           1.1.0
+ * Version:           1.2.0
  * Author:            wbcomdesigns
  * Author URI:        http://www.wbcomdesigns.com
  * License:           GPL-2.0+
@@ -33,16 +33,27 @@ if ( ! defined( 'WPINC' ) ) {
 if ( ! defined( 'BP_ENABLE_MULTIBLOG' ) ) {
 	define( 'BP_ENABLE_MULTIBLOG', false );
 }
-define( 'BP_PROFANITY_PLUGIN_BASENAME',  plugin_basename( __FILE__ ) );
 
 /**
  * Currently plugin version.
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'PLUGIN_NAME_VERSION', '1.1.0' );
-define( 'BPPROF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'BPPROF_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+if ( ! defined( 'BPPROF_PLUGIN_VERSION' ) ) {
+	define( 'BPPROF_PLUGIN_VERSION', '1.2.0' );
+}
+if ( ! defined( 'BPPROF_PLUGIN_FILE' ) ) {
+	define( 'BPPROF_PLUGIN_FILE', __FILE__ );
+}
+if ( ! defined( 'BPPROF_PLUGIN_BASENAME' ) ) {
+	define( 'BPPROF_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+}
+if ( ! defined( 'BPPROF_PLUGIN_URL' ) ) {
+	define( 'BPPROF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+}
+if ( ! defined( 'BPPROF_PLUGIN_PATH' ) ) {
+	define( 'BPPROF_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+}
 
 /**
  * The code that runs during plugin activation.
@@ -74,7 +85,7 @@ function bp_profanity_check_config(){
 
 	// Looking for BuddyPress and bp-activity plugin
 	$check[] = $bp->basename;
-	$check[] = BP_PROFANITY_PLUGIN_BASENAME;
+	$check[] = BPPROF_PLUGIN_BASENAME;
 
 	// Are they active on the network ?
 	$network_active = array_diff( $check, array_keys( $network_plugins ) );
@@ -86,7 +97,7 @@ function bp_profanity_check_config(){
 
 	// We need to know if the plugin is network activated to choose the right
 	// notice ( admin or network_admin ) to display the warning message.
-	$config['network_active'] = isset( $network_plugins[ BP_PROFANITY_PLUGIN_BASENAME ] );
+	$config['network_active'] = isset( $network_plugins[ BPPROF_PLUGIN_BASENAME ] );
 
 	// if BuddyPress config is different than bp-activity plugin
 	if ( !$config['blog_status'] || !$config['network_status'] ) {

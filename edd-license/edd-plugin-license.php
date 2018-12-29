@@ -4,7 +4,7 @@ define('EDD_WBBPROF_STORE_URL', 'https://wbcomdesigns.com/'); // you should use 
 
 // the name of your product. This should match the download name in EDD exactly
 //define('EDD_WBBPROF_ITEM_NAME', 'PeepSo bbPress Integration'); // you should use your own CONSTANT name, and be sure to replace it throughout this file
-define('EDD_WBBPROF_ITEM_NAME', 'buddypress-profanity'); // you should use your own CONSTANT name, and be sure to replace it throughout this file
+define('EDD_WBBPROF_ITEM_NAME', 'BuddyPress Profanity'); // you should use your own CONSTANT name, and be sure to replace it throughout this file
 
 // the name of the settings page for the license input to be displayed
 define('EDD_WBBPROF_PLUGIN_LICENSE_PAGE', 'wbcom-license-page');
@@ -21,15 +21,13 @@ function edd_WBBPROF_plugin_updater()
     $license_key = trim(get_option('edd_wbcom_WBBPROF_license_key'));
 
     // setup the updater
-    $edd_updater = new EDD_WBBPROF_Plugin_Updater(
-        EDD_WBBPROF_STORE_URL,
-        __FILE__,
+    $edd_updater = new EDD_WBBPROF_Plugin_Updater(EDD_WBBPROF_STORE_URL,BPPROF_PLUGIN_FILE,
         array(
-            'version'   => '1.0.0',             // current version number.
+            'version'   => BPPROF_PLUGIN_VERSION,             // current version number.
             'license'   => $license_key,        // license key (used get_option above to retrieve from DB).
             'item_name' => EDD_WBBPROF_ITEM_NAME,  // name of this plugin.
             'author'    => 'wbcomdesigns',  // author of this plugin.
-            'beta'      => false,
+            'url'		=> home_url(),
         )
     );
 }
@@ -347,7 +345,7 @@ function wbcom_render_wbbprof_license_section(){
                 <td class="wb-plugin-license-key"><input id="edd_wbcom_WBBPROF_license_key" name="edd_wbcom_WBBPROF_license_key" type="text" class="regular-text" value="<?php esc_attr_e($license, 'buddypress-profanity'); ?>" /></td>
                 <td class="wb-license-status <?php echo $status_class; ?>"><?php esc_attr_e( $status_text, 'buddypress-profanity' ); ?></td>
                 <td class="wb-license-action">
-                    <?php if ($status !== false && $status == 'valid') {  
+                    <?php if ($status !== false && $status == 'valid') {
                         wp_nonce_field('edd_wbcom_WBBPROF_nonce', 'edd_wbcom_WBBPROF_nonce'); ?>
                          <input type="submit" class="button-secondary" name="edd_WBBPROF_license_deactivate" value="<?php _e('Deactivate License', 'buddypress-profanity'); ?>"/>
                         <?php
@@ -360,7 +358,7 @@ function wbcom_render_wbbprof_license_section(){
             </tr>
         </table>
     </form>
-    <?php   
+    <?php
 }
 
 function edd_wbcom_WBBPROF_activate_license_button()
