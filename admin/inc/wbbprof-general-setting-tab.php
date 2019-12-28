@@ -73,7 +73,7 @@ $rendering_symbols = word_rendering_symbols();
 					<label>
 						<input name="wbbprof_settings[word_render]" value="all" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'],'all'):''; ?>>
 						<span class="wbbprof-span-text"><?php esc_html_e( 'All letter removed', 'buddypress-profanity' ); ?></span>
-						<code>[blog => b**g]</code>
+						<code>[blog => ****]</code>
 					</label>
 					<br>
 				</fieldset>
