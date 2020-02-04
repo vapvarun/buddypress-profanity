@@ -47,7 +47,7 @@ jQuery( document ).ready(
 		jQuery('.wbbprof-keywords-text').selectize({
 
 			plugins: ['remove_button'],
-			options: options.map(items_mapping),
+			/*options: options.map(items_mapping),*/
 			delimiter: ',',
 			create: function(input) {
 				return isReadonly ? false : items_mapping(input);
