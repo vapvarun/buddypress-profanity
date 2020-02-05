@@ -60,11 +60,15 @@ if ( ! defined( 'BPPROF_PLUGIN_PATH' ) ) {
  * This action is documented in includes/class-buddypress-profanity-activator.php
  */
 function activate_buddypress_profanity() {
-	if ( bp_profanity_check_config() ){
-		run_buddypress_profanity();
-		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wbbprof_plugin_links' );
-		wbbprof_update_blog();
-	}
+    if( class_exists( 'Buddypress' ) ){
+        if ( bp_profanity_check_config() ){
+            run_buddypress_profanity();
+            add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wbbprof_plugin_links' );
+            wbbprof_update_blog();
+        }
+    }
+
+
 }
 
 function bp_profanity_check_config(){
@@ -235,4 +239,38 @@ function wbbprof_plugin_init() {
 		run_buddypress_profanity();
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wbbprof_plugin_links' );
 	}
+}
+
+/**
+ *  Check if buddypress activate.
+ */
+function bpprofanity_requires_buddypress()
+{
+
+    if ( !class_exists( 'Buddypress' ) ) {
+        deactivate_plugins( plugin_basename( __FILE__ ) );
+        //deactivate_plugins('buddypress-polls/buddypress-polls.php');
+        add_action( 'admin_notices', 'bpprofanity_required_plugin_admin_notice' );
+        unset($_GET['activate']);
+    }
+}
+
+add_action( 'admin_init', 'bpprofanity_requires_buddypress' );
+/**
+ * Throw an Alert to tell the Admin why it didn't activate.
+ *
+ * @author wbcomdesigns
+ * @since  1.2.0
+ */
+function bpprofanity_required_plugin_admin_notice()
+{
+
+    $bpquotes_plugin          = esc_html__('BuddyPress Profanity', 'buddypress-profanity');
+    $bp_plugin                = esc_html__('BuddyPress', 'buddypress-profanity');
+    echo '<div class="error"><p>';
+    echo sprintf(esc_html__('%1$s is ineffective now as it requires %2$s to be installed and active.', 'buddypress-profanity'), '<strong>' . esc_html($bpquotes_plugin) . '</strong>', '<strong>' . esc_html($bp_plugin) . '</strong>');
+    echo '</p></div>';
+    if (isset($_GET['activate']) ) {
+        unset($_GET['activate']);
+    }
 }
