@@ -45,25 +45,25 @@ class Buddypress_Profanity_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of the plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
-		$this->plugin_name = $plugin_name;
-		$this->version = $version;
-		$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
+		$this->plugin_name      = $plugin_name;
+		$this->version          = $version;
+		$wbbprof_settings       = bp_get_option( 'wbbprof_settings' );
 		$this->wbbprof_settings = &$wbbprof_settings;
 
-		if( isset( $this->wbbprof_settings['keywords'] ) ){
-			$keywords = array_map( 'trim', explode( ',', $this->wbbprof_settings['keywords'] ) );
-			$keywords = array_unique( $keywords );
+		if ( isset( $this->wbbprof_settings['keywords'] ) ) {
+			$keywords       = array_map( 'trim', explode( ',', $this->wbbprof_settings['keywords'] ) );
+			$keywords       = array_unique( $keywords );
 			$this->keywords = &$keywords;
 		}
 
-		if( isset( $this->wbbprof_settings['character'] ) ){
+		if ( isset( $this->wbbprof_settings['character'] ) ) {
 			$character = $this->wbbprof_settings['character'];
-			$symbol = '';
+			$symbol    = '';
 			switch ( $character ) {
 				case 'asterisk':
 					$symbol = '*';
@@ -90,8 +90,8 @@ class Buddypress_Profanity_Public {
 					$symbol = ' ';
 					break;
 				default:
-					if( apply_filters('wbbprof_custom_character',$symbol) ){
-						$symbol = apply_filters('wbbprof_custom_character',$symbol);
+					if ( apply_filters( 'wbbprof_custom_character', $symbol ) ) {
+						$symbol = apply_filters( 'wbbprof_custom_character', $symbol );
 					} else {
 						$symbol = '*';
 					}
@@ -100,18 +100,18 @@ class Buddypress_Profanity_Public {
 			$this->character = &$symbol;
 		}
 
-		if( isset( $this->wbbprof_settings['word_render'] ) ){
-			$word_rendering = $this->wbbprof_settings['word_render'];
+		if ( isset( $this->wbbprof_settings['word_render'] ) ) {
+			$word_rendering       = $this->wbbprof_settings['word_render'];
 			$this->word_rendering = &$word_rendering;
 		}
 
-		if( isset( $this->wbbprof_settings['case'] ) ) {
-			$case = $this->wbbprof_settings['case'];
+		if ( isset( $this->wbbprof_settings['case'] ) ) {
+			$case       = $this->wbbprof_settings['case'];
 			$this->case = &$case;
 		}
 
-		if( isset( $this->wbbprof_settings['strict_filter'] ) ) {
-			$whole_word = $this->wbbprof_settings['strict_filter'] == 'off' ? false : true;
+		if ( isset( $this->wbbprof_settings['strict_filter'] ) ) {
+			$whole_word       = $this->wbbprof_settings['strict_filter'] == 'off' ? false : true;
 			$this->whole_word = &$whole_word;
 		}
 	}
@@ -134,8 +134,9 @@ class Buddypress_Profanity_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-profanity-public.css', array(), $this->version, 'all' );
+		if ( is_buddypress() ) {
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-profanity-public.css', array(), $this->version, 'all' );
+		}
 
 	}
 
@@ -157,8 +158,9 @@ class Buddypress_Profanity_Public {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-profanity-public.js', array( 'jquery' ), $this->version, false );
+		if ( is_buddypress() ) {
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-profanity-public.js', array( 'jquery' ), $this->version, false );
+		}
 
 	}
 
@@ -168,22 +170,20 @@ class Buddypress_Profanity_Public {
 	 *
 	 * @param string $content Activity status update string.
 	 */
-	public function wbbprof_bp_get_activity_content_body($content) {
-		if ( !empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+	public function wbbprof_bp_get_activity_content_body( $content ) {
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
 			if ( in_array( 'status_updates', $this->wbbprof_settings['filter_contents'] ) ) {
 				if ( is_array( $this->keywords ) ) {
-					foreach ($this->keywords as $key => $keyword) {
+					foreach ( $this->keywords as $key => $keyword ) {
 						$keyword = trim( $keyword );
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if( $this->case == 'incase' ) {
-								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
+							if ( $this->case == 'incase' ) {
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
 							} else {
 								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
 							}
-							
 						}
-						
 					}
 				}
 			}
@@ -198,21 +198,19 @@ class Buddypress_Profanity_Public {
 	 * @param string $content Activity comment string.
 	 */
 	public function wbbprof_bp_activity_comment_content( $content ) {
-		if ( !empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
 			if ( in_array( 'activity_comments', $this->wbbprof_settings['filter_contents'] ) ) {
 				if ( is_array( $this->keywords ) ) {
-					foreach ($this->keywords as $key => $keyword) {
+					foreach ( $this->keywords as $key => $keyword ) {
 						$keyword = trim( $keyword );
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if( $this->case == 'incase' ) {
-								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
+							if ( $this->case == 'incase' ) {
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
 							} else {
 								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
 							}
-							
 						}
-						
 					}
 				}
 			}
@@ -227,21 +225,19 @@ class Buddypress_Profanity_Public {
 	 * @param string $content Message string.
 	 */
 	public function wbbprof_bp_get_the_thread_message_content( $content ) {
-		if ( !empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
 			if ( in_array( 'messages', $this->wbbprof_settings['filter_contents'] ) ) {
 				if ( is_array( $this->keywords ) ) {
-					foreach ($this->keywords as $key => $keyword) {
+					foreach ( $this->keywords as $key => $keyword ) {
 						$keyword = trim( $keyword );
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if( $this->case == 'incase' ) {
-								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
+							if ( $this->case == 'incase' ) {
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
 							} else {
 								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
 							}
-							
 						}
-						
 					}
 				}
 			}
@@ -256,21 +252,19 @@ class Buddypress_Profanity_Public {
 	 * @param string $content Message string.
 	 */
 	public function wbbprof_bp_get_message_thread_subject( $content ) {
-		if ( !empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
 			if ( in_array( 'messages', $this->wbbprof_settings['filter_contents'] ) ) {
 				if ( is_array( $this->keywords ) ) {
-					foreach ($this->keywords as $key => $keyword) {
+					foreach ( $this->keywords as $key => $keyword ) {
 						$keyword = trim( $keyword );
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if( $this->case == 'incase' ) {
-								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word ); 
+							if ( $this->case == 'incase' ) {
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
 							} else {
 								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
 							}
-							
 						}
-						
 					}
 				}
 			}
@@ -317,8 +311,8 @@ class Buddypress_Profanity_Public {
 	 * @param boolean $whole_word      Strict filtering or not.
 	 */
 	function wbbprof_profain_word( $fword, $replacement, $wbbprof_content, $whole_word = true ) {
-		$fword   = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords
-		$pattern  = $whole_word ? "/\b$fword\b/" : "/$fword/";
+		$fword           = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords
+		$pattern         = $whole_word ? "/\b$fword\b/" : "/$fword/";
 		$wbbprof_content = preg_replace( $pattern, $replacement, $wbbprof_content );
 
 		return $wbbprof_content;
@@ -338,15 +332,16 @@ class Buddypress_Profanity_Public {
 	 */
 	function wbbprof_profain_word_i( $fword, $replacement, $wbbprof_content, $wbbprof_render_type, $keyword, $char_symbol, $whole_word = true ) {
 
-		$fword   = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords
-		$pattern  = $whole_word ? "/\b$fword\b/i" : "/$fword/i";
+		$fword           = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords
+		$pattern         = $whole_word ? "/\b$fword\b/i" : "/$fword/i";
 		$wbbprof_content = preg_replace_callback(
 			$pattern,
-			function($m) use($wbbprof_render_type, $keyword, $char_symbol) {
+			function( $m ) use ( $wbbprof_render_type, $keyword, $char_symbol ) {
 				return $this->wbbprof_censor_word( $wbbprof_render_type, $m[0], $char_symbol );
 			},
-			$wbbprof_content);
+			$wbbprof_content
+		);
 		return $wbbprof_content;
-    }
+	}
 
 }
