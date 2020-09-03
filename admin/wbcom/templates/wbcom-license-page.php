@@ -9,8 +9,7 @@
 					<th class="wb-version-th"><?php esc_html_e( 'Version', 'buddypress-profanity' ); ?></th>
 					<th class="wb-key-th"><?php esc_html_e( 'Key', 'buddypress-profanity' ); ?></th>
 					<th class="wb-status-th"><?php esc_html_e( 'Status', 'buddypress-profanity' ); ?></th>
-					<th class="wb-action-th"><?php esc_html_e( 'Action', 'buddypress-profanity' ); ?></th>
-					<th></th>
+					<th class="wb-action-th"><?php esc_html_e( 'Action', 'buddypress-profanity' ); ?></th>					
 				</tr>
 			</thead>
 		</table>
@@ -22,8 +21,7 @@
 					<th class="wb-version-th"><?php esc_html_e( 'Version', 'buddypress-profanity' ); ?></th>
 					<th class="wb-key-th"><?php esc_html_e( 'Key', 'buddypress-profanity' ); ?></th>
 					<th class="wb-status-th"><?php esc_html_e( 'Status', 'buddypress-profanity' ); ?></th>
-					<th class="wb-action-th"><?php esc_html_e( 'Action', 'buddypress-profanity' ); ?></th>
-					<th></th>
+					<th class="wb-action-th"><?php esc_html_e( 'Action', 'buddypress-profanity' ); ?></th>					
 				</tr>
 			</tfoot>
 		</table>
