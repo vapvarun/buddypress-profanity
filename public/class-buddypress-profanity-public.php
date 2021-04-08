@@ -323,7 +323,7 @@ class Buddypress_Profanity_Public {
 	function wbbprof_profain_word( $fword, $replacement, $wbbprof_content, $whole_word = true ) {
 		$fword           = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords
 		$pattern         = $whole_word ? "/\b$fword\b/" : "/$fword/";
-		$pattern         = "/$fword/";		
+		
 		$wbbprof_content = preg_replace( $pattern, $replacement, $wbbprof_content );
 
 		return $wbbprof_content;
@@ -345,7 +345,7 @@ class Buddypress_Profanity_Public {
 
 		$fword           = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords
 		$pattern         = $whole_word ? "/\b$fword\b/i" : "/$fword/i";
-		$pattern         = "/$fword/";
+		
 		$wbbprof_content = preg_replace_callback(
 			$pattern,
 			function( $m ) use ( $wbbprof_render_type, $keyword, $char_symbol ) {
