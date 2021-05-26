@@ -274,3 +274,17 @@ function bpprofanity_required_plugin_admin_notice()
         unset($_GET['activate']);
     }
 }
+
+
+/**
+ * redirect to plugin settings page after activated
+ */
+
+add_action( 'activated_plugin', 'bpprofanity_activation_redirect_settings' );
+function bpprofanity_activation_redirect_settings( $plugin ){
+
+	if( $plugin == plugin_basename( __FILE__ ) ) {
+		wp_redirect( admin_url( 'admin.php?page=buddypress_profanity' ) ) ;
+		exit;
+	}
+}

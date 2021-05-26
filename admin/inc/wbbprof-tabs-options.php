@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( isset( $_GET['tab'] ) ) {
 	$wbbprof_tab = sanitize_text_field( $_GET['tab'] );
 } else {
-	$wbbprof_tab = 'general';
+	$wbbprof_tab = 'welcome';
 }
 
 wbbprof_include_setting_tabs( $wbbprof_tab );
@@ -27,6 +27,9 @@ wbbprof_include_setting_tabs( $wbbprof_tab );
 function wbbprof_include_setting_tabs( $wbbprof_tab ) {
 
 	switch ( $wbbprof_tab ) {
+		case 'welcome':
+			include 'wbbprof-welcome-page.php';
+			break;
 		case 'general':
 			include 'wbbprof-general-setting-tab.php';
 			break;
@@ -34,7 +37,7 @@ function wbbprof_include_setting_tabs( $wbbprof_tab ) {
 			include 'wbbprof-support-setting-tab.php';
 			break;
 		default:
-			include 'wbbprof-general-setting-tab.php';
+			include 'wbbprof-welcome-page.php';
 			break;
 	}
 

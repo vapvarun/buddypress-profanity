@@ -142,7 +142,7 @@ class Buddypress_Profanity_Admin {
 	 */
 	public function wbbprof_buddypress_profanity_settings_page() {
 
-		$current = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'general';
+		$current = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'welcome';
 		?>
 		<div class="wrap">
 			<div class="bpprof-header">
@@ -154,6 +154,7 @@ class Buddypress_Profanity_Admin {
 		<div class="wbcom-admin-settings-page">
 		<?php
 		$wbbprof_tabs = array(
+			'welcome'        => __( 'Welcome', 'buddypress-profanity' ),
 			'general'        => __( 'General', 'buddypress-profanity' ),
 			'support'        => __( 'Support', 'buddypress-profanity' ),
 		);
