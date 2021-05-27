@@ -145,6 +145,8 @@ class Buddypress_Profanity_Admin {
 		$current = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'welcome';
 		?>
 		<div class="wrap">
+                    <hr class="wp-header-end">
+                    <div class="wbcom-wrap">
 			<div class="bpprof-header">
 				<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
 				<h1 class="wbcom-plugin-heading">
@@ -159,15 +161,16 @@ class Buddypress_Profanity_Admin {
 			'support'        => __( 'Support', 'buddypress-profanity' ),
 		);
 
-    	$tab_html = '<div class="wbcom-tabs-section"><h2 class="nav-tab-wrapper">';
+                $tab_html = '<div class="wbcom-tabs-section"><div class="nav-tab-wrapper"><div class="wb-responsive-menu"><span>' . esc_html( 'Menu' ) . '</span><input class="wb-toggle-btn" type="checkbox" id="wb-toggle-btn"><label class="wb-toggle-icon" for="wb-toggle-btn"><span class="wb-icon-bars"></span></label></div><ul>';
 		foreach ( $wbbprof_tabs as $wbbprof_tab => $wbbpro_name ) {
 			$class     = ( $wbbprof_tab == $current ) ? 'nav-tab-active' : '';
-			$tab_html .= '<a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a>';
+			$tab_html .= '<li><a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a></li>';
 		}
-		$tab_html .= '</h2></div>';
+		$tab_html .= '</div></ul></div>';
 		echo $tab_html;
 		include 'inc/wbbprof-tabs-options.php';
 		echo '</div>'; /* end of .wbcom-admin-settings-page */
+		echo '</div>'; /* end of .wbcom-wrpa div. */
 		echo '</div>'; /* end of .wrap div. */
 
 	}
