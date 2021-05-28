@@ -24,13 +24,13 @@ jQuery( document ).ready( function ( event ) {
             complete: function() {
                 if( 'install_plugin' == action ) {
                     thisRef.parent('.activation_button_wrap').siblings( '.plugin-action' ).val( 'activate_plugin' );
-                    thisRef.html('<i class="fa fa-toggle-off"></i>'+ wbcom_plugin_installer_params.activate_text + '<i class="fa fa-spinner fa-spin" style="display:none"></i>' );
+                    thisRef.html('<i class="fas fa-toggle-off"></i>'+ wbcom_plugin_installer_params.activate_text + '<i class="fas fa-spinner fa-pulse" style="display:none"></i>' );
                 } else if( 'activate_plugin' == action ) {
                     thisRef.parent('.activation_button_wrap').siblings( '.plugin-action' ).val( 'deactivate_plugin' );
-                    thisRef.html('<i class="fa fa-toggle-on"></i>'+ wbcom_plugin_installer_params.deactivate_text + '<i class="fa fa-spinner fa-spin" style="display:none"></i>' );
+                    thisRef.html('<i class="fas fa-toggle-on"></i>'+ wbcom_plugin_installer_params.deactivate_text + '<i class="fas fa-spinner fa-pulse" style="display:none"></i>' );
                 } else {
                     thisRef.parent('.activation_button_wrap').siblings( '.plugin-action' ).val( 'activate_plugin' );
-                    thisRef.html('<i class="fa fa-toggle-off"></i>'+ wbcom_plugin_installer_params.activate_text + '<i class="fa fa-spinner fa-spin" style="display:none"></i>' );
+                    thisRef.html('<i class="fas fa-toggle-off"></i>'+ wbcom_plugin_installer_params.activate_text + '<i class="fas fa-spinner fa-pulse" style="display:none"></i>' );
                 }
             }
         } );
@@ -71,7 +71,7 @@ jQuery( document ).ready( function ( event ) {
 	/**
         * Responsive Navbar Menu
         */
-        var kl_panel_tabs = $( '.nav-tab-wrapper > ul' );
+        var wb_panel_tabs = $( '.nav-tab-wrapper > ul' );
 
         $( '.wb-toggle-btn' ).change( function( e ) {
                 $.initResponsivePanel();
@@ -79,16 +79,16 @@ jQuery( document ).ready( function ( event ) {
 
         $.initResponsivePanel = function () {
                 if ( $( '.wb-toggle-btn' ).is( ':checked' ) ) {
-                        kl_panel_tabs.slideDown();
+                        wb_panel_tabs.slideDown();
                 } else {
-                kl_panel_tabs.slideUp();
+                wb_panel_tabs.slideUp();
                 }
-        }
+        },
 
         $( window ).on( 'resize', function ( e ) {
                 e.preventDefault();
         if ( $( window ).width() > 768 ) {
-                kl_panel_tabs.fadeIn( 1000 );
+                wb_panel_tabs.fadeIn( 1000 );
         } else {
                 $.initResponsivePanel();
         }
