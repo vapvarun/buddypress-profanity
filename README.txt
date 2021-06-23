@@ -1,4 +1,4 @@
-=== BuddyPress Profanity ===
+=== Wbcom Designs - BuddyPress Profanity ===
 Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com
 Tags: buddypress, profanity, filter, community, activity, comments, messages
@@ -54,6 +54,9 @@ The [Case Matching] setting provides two option Case Sensitive and Case Insensit
 The [Strict Filtering] with strict mode on does not filter embedded keywords. We recommend users to use Strict Filtering ON mode.
 
 == Changelog ==
+
+= 1.6.0 =
+* Fix: Scheduled Updates
 
 = 1.5.5 =
 * Fix: (#25) - censoring word issue
