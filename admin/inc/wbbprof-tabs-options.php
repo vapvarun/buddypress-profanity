@@ -33,6 +33,9 @@ function wbbprof_include_setting_tabs( $wbbprof_tab ) {
 		case 'general':
 			include 'wbbprof-general-setting-tab.php';
 			break;
+		case 'import':
+			include 'wbbprof-import-setting-tab.php';
+			break;
 		case 'support':
 			include 'wbbprof-support-setting-tab.php';
 			break;

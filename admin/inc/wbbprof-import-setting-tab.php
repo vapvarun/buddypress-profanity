@@ -1,0 +1,36 @@
+<?php
+/**
+ *
+ * This file is used for rendering and saving plugin general settings.
+ *
+ */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+?>
+<div class="wbcom-tab-content">
+<form method="post" action="admin.php?action=update_network_options" enctype='multipart/form-data'>
+	<?php
+	settings_fields( 'buddypress_profanity_general' );
+	do_settings_sections( 'buddypress_profanity_general' );
+	?>
+	<table class="form-table buddypress-profanity-admin-table">
+		<tr>
+			<th scope="row">
+				<label for="blogname"><?php esc_html_e( 'Import Keywords', 'buddypress-profanity' ); ?></label>
+			</th>
+			<td>
+				<input type='file' name='wbbprof_import[keywords]' value=''  />
+				
+				<input type='hidden' name='wbbprof_import[import]' value='import'  />
+				<p class="description" id="tagline-description">
+					<?php esc_html_e( 'Import csv file for remove keywords from community.', 'buddypress-profanity' ); ?>
+				</p>
+		    </td>
+	    </tr>	    
+	</table>
+	<?php submit_button(); ?>
+</form>
+</div>
