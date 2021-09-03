@@ -9,6 +9,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+if ( isset($_GET['msg']) && $_GET['msg'] == 'success') {
+	?>
+	<div id="setting-error-settings_updated" class="notice notice-success settings-error is-dismissible"> 
+		<p><strong><?php esc_html_e( 'CSV File is successfully imported', 'buddypress-profanity' )?></strong></p>
+	</div>
+	<?php
+}
 ?>
 <div class="wbcom-tab-content">
 <form method="post" action="admin.php?action=update_network_options" enctype='multipart/form-data'>

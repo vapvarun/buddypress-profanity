@@ -207,6 +207,8 @@ class Buddypress_Profanity_Admin {
 				if ( !empty($keywords) ) {					
 					$wbbprof_settings['keywords'] = implode(',', array_merge( explode(',',$wbbprof_settings['keywords']) ,  $keywords));					
 					bp_update_option('wbbprof_settings',$wbbprof_settings);
+					wp_redirect($_POST['_wp_http_referer'] .'&msg=success');
+					exit;
 				}
 			}
 			wp_redirect($_POST['_wp_http_referer']);
