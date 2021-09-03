@@ -193,6 +193,9 @@ class Buddypress_Profanity {
 		$this->loader->add_filter( 'bp_get_message_thread_excerpt', $plugin_public, 'wbbprof_bp_get_the_thread_message_content', 1 );
 		$this->loader->add_filter( 'bp_get_message_thread_subject', $plugin_public, 'wbbprof_bp_get_message_thread_subject', 1 );
 		$this->loader->add_filter( 'bp_get_the_thread_subject', $plugin_public, 'wbbprof_bp_get_message_thread_subject', 1 );
+		$this->loader->add_filter( 'bp_better_messages_after_format_message', $plugin_public, 'wbbprof_bp_get_the_thread_message_content', 1 );
+		
+		
 
 	}
 
