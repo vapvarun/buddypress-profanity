@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				
 				<input type='hidden' name='wbbprof_import[import]' value='import'  />
 				<p class="description" id="tagline-description">
-					<?php esc_html_e( 'Import csv file for remove keywords from community.', 'buddypress-profanity' ); ?>
+					<?php echo sprintf(esc_html__( 'Import csv file for remove keywords from community. %s', 'buddypress-profanity' ), '<a href="' . esc_url(BPPROF_PLUGIN_URL. 'admin/css/sample-keywords.csv'). '" target="_blank"/>Sample CSV</a>' ); ?>
 				</p>
 		    </td>
 	    </tr>	    
