@@ -111,6 +111,15 @@ class Buddypress_Profanity_Admin {
 			wp_enqueue_script( $this->plugin_name.'selectize', plugin_dir_url( __FILE__ ) . 'js/selectize.min.js', array( 'jquery' ), '1.0.0', false );
 
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-profanity-admin.js', array( 'jquery' ), $this->version, false );
+			
+			wp_localize_script(
+				$this->plugin_name,
+				'bp_profanity',
+				array(
+					'ajax_url'   => admin_url( 'admin-ajax.php' ),
+					'ajax_nonce' => wp_create_nonce( 'bp_profanity_ajax_security' ),
+				)
+			);
 		}
 
 	}
@@ -158,6 +167,7 @@ class Buddypress_Profanity_Admin {
 		$wbbprof_tabs = array(
 			'welcome'        => __( 'Welcome', 'buddypress-profanity' ),
 			'general'        => __( 'General', 'buddypress-profanity' ),
+			'import'         => __( 'Import', 'buddypress-profanity' ),
 			'support'        => __( 'Support', 'buddypress-profanity' ),
 		);
 
@@ -186,6 +196,35 @@ class Buddypress_Profanity_Admin {
 			wp_redirect($_POST['_wp_http_referer']);
 			exit();
 		}
+		
+		if(isset($_POST['wbbprof_import'])){
+			$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
+			$keywords = array();			
+			if (($open = fopen($_FILES['wbbprof_import']['tmp_name']['keywords'], "r")) !== FALSE) {
+				while (($data = fgetcsv($open, 10000, ",")) !== FALSE) {
+					$keywords[] = $data[0];				
+				}
+				if ( !empty($keywords) ) {					
+					$wbbprof_settings['keywords'] = implode(',', array_merge( explode(',',$wbbprof_settings['keywords']) ,  $keywords));					
+					bp_update_option('wbbprof_settings',$wbbprof_settings);
+					wp_redirect($_POST['_wp_http_referer'] .'&msg=success');
+					exit;
+				}
+			}
+			wp_redirect($_POST['_wp_http_referer']);
+			exit;
+		}
+	}
+	
+	public function wbbprof_reset_keywords() {
+		if ( isset($_POST['action']) && $_POST['action'] == 'wbbprof_reset_keywords' ) {
+			check_ajax_referer( 'bp_profanity_ajax_security', 'ajax_nonce' );
+			$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
+			$wbbprof_settings['keywords'] = 'FrontGate,Profanity,aeolus,ahole,b1tch,bang,bollock,breast,enlargement,erotic,goddamn,heroin,hell,kooch,nad,nigger,pecker,tubgirl,unwed,woody,yeasty,yobbo,zoophile';	
+						
+			update_option('wbbprof_settings',$wbbprof_settings);
+		}
+		wp_die();
 	}
 
 }

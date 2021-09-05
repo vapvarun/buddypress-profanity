@@ -23,8 +23,14 @@ $rendering_symbols = word_rendering_symbols();
 	<table class="form-table buddypress-profanity-admin-table">
 		<tr>
 			<th scope="row"><label for="blogname"><?php esc_html_e( 'Keywords to remove', 'buddypress-profanity' ); ?></label></th>
-			<td><input name='wbbprof_settings[keywords]' type='text' class="regular-text wbbprof-keywords-text" value='<?php echo isset( $wbbprof_settings['keywords'] ) ? $wbbprof_settings['keywords'] : ''; ?>' placeholder="<?php esc_html_e( 'Keywords to remove', 'buddypress-profanity' ); ?>" /><p class="description" id="tagline-description"><?php esc_html_e( 'Enter keywords here which you want to remove from community.', 'buddypress-profanity' ); ?>
-			</p>
+			<td>
+				<input name='wbbprof_settings[keywords]' type='text' class="regular-text wbbprof-keywords-text" value='<?php echo isset( $wbbprof_settings['keywords'] ) ? $wbbprof_settings['keywords'] : ''; ?>' placeholder="<?php esc_html_e( 'Keywords to remove', 'buddypress-profanity' ); ?>" />
+				<p class="description" id="tagline-description">
+					<?php esc_html_e( 'Enter keywords here which you want to remove from community.', 'buddypress-profanity' ); ?>
+				</p>
+				<p>
+					<a href="javascript:void(0)" class="button" id="wbbprof_to_reset"><?php esc_html_e('Reset to default', 'buddypress-profanity');?></a>
+				</p>
 		    </td>
 	    </tr>
 	    <tr>
