@@ -103,6 +103,8 @@ class Buddypress_Profanity_Public {
 		if ( isset( $this->wbbprof_settings['word_render'] ) ) {
 			$word_rendering       = $this->wbbprof_settings['word_render'];
 			$this->word_rendering = &$word_rendering;
+		} else {
+			$this->word_rendering = 'first';
 		}
 
 		if ( isset( $this->wbbprof_settings['case'] ) ) {
