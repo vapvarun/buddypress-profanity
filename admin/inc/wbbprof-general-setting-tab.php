@@ -71,7 +71,8 @@ $rendering_symbols = word_rendering_symbols();
 					</label>
 					<br>
 					<label>
-						<input name="wbbprof_settings[word_render]" value="fisrt_last" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'], 'fisrt_last'):''; ?>>
+						<?php $first_last = ( isset($wbbprof_settings['word_render']) && $wbbprof_settings['word_render'] =='fisrt_last') ? 'fisrt_last' : 'first_last';?>
+						<input name="wbbprof_settings[word_render]" value="first_last" type="radio" <?php ( isset( $wbbprof_settings['word_render'] ) )? checked($wbbprof_settings['word_render'], $first_last):''; ?>>
 						<span class="wbbprof-span-text"><?php esc_html_e( 'Fisrt and Last letter retained', 'buddypress-profanity' ); ?></span>
 						<code>[blog => b**g]</code>
 					</label>

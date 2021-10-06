@@ -295,6 +295,7 @@ class Buddypress_Profanity_Public {
 				$keyword = str_repeat( $char_symbol, mb_strlen( substr( $keyword, 0 ), 'UTF-8' ) );
 				break;
 			case 'fisrt_last':
+			case 'first_last':
 				$first_keyword = mb_substr($keyword,0,1,'UTF-8');
 				$last_keyword = mb_substr($keyword, -1, 1,'UTF-8');				
 				$keyword = $first_keyword . str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 2 ), 'UTF-8' ) ) . $last_keyword;				
