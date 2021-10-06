@@ -283,7 +283,7 @@ function bpprofanity_required_plugin_admin_notice()
 add_action( 'activated_plugin', 'bpprofanity_activation_redirect_settings' );
 function bpprofanity_activation_redirect_settings( $plugin ){
 
-	if( $plugin == plugin_basename( __FILE__ ) ) {
+	if( $plugin == plugin_basename( __FILE__ ) && class_exists( 'Buddypress' )) {
 		wp_redirect( admin_url( 'admin.php?page=buddypress_profanity' ) ) ;
 		exit;
 	}
