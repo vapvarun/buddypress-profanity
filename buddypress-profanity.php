@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -60,23 +59,25 @@ if ( ! defined( 'BPPROF_PLUGIN_PATH' ) ) {
  * This action is documented in includes/class-buddypress-profanity-activator.php
  */
 function activate_buddypress_profanity() {
-    if( class_exists( 'Buddypress' ) ){
-        if ( bp_profanity_check_config() ){
-            run_buddypress_profanity();
-            add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wbbprof_plugin_links' );
-            wbbprof_update_blog();
-        }
-    }
-
+	if ( class_exists( 'Buddypress' ) ) {
+		if ( bp_profanity_check_config() ) {
+			run_buddypress_profanity();
+			add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wbbprof_plugin_links' );
+			wbbprof_update_blog();
+		}
+	}
 
 }
 
-function bp_profanity_check_config(){
+/**
+ * BP Profanity configuration on BP Loaded.
+ */
+function bp_profanity_check_config() {
 	global $bp;
 	$config = array(
 		'blog_status'    => false,
 		'network_active' => false,
-		'network_status' => true
+		'network_status' => true,
 	);
 	if ( get_current_blog_id() == bp_get_root_blog_id() ) {
 		$config['blog_status'] = true;
@@ -84,35 +85,37 @@ function bp_profanity_check_config(){
 
 	$network_plugins = get_site_option( 'active_sitewide_plugins', array() );
 
-	// No Network plugins
-	if ( empty( $network_plugins ) )
+	// No Network plugins.
+	if ( empty( $network_plugins ) ) {
 
-	// Looking for BuddyPress and bp-activity plugin
-	$check[] = $bp->basename;
+		// Looking for BuddyPress and bp-activity plugin.
+		$check[] = $bp->basename;
+	}
 	$check[] = BPPROF_PLUGIN_BASENAME;
 
 	// Are they active on the network ?
 	$network_active = array_diff( $check, array_keys( $network_plugins ) );
 
 	// If result is 1, your plugin is network activated
-	// and not BuddyPress or vice & versa. Config is not ok
-	if ( count( $network_active ) == 1 )
+	// and not BuddyPress or vice & versa. Config is not ok.
+	if ( count( $network_active ) == 1 ) {
 		$config['network_status'] = false;
+	}
 
 	// We need to know if the plugin is network activated to choose the right
 	// notice ( admin or network_admin ) to display the warning message.
 	$config['network_active'] = isset( $network_plugins[ BPPROF_PLUGIN_BASENAME ] );
 
-	// if BuddyPress config is different than bp-activity plugin
-	if ( !$config['blog_status'] || !$config['network_status'] ) {
+	// if BuddyPress config is different than bp-activity plugin.
+	if ( ! $config['blog_status'] || ! $config['network_status'] ) {
 
 		$warnings = array();
-		if ( !bp_core_do_network_admin() && !$config['blog_status'] ) {
+		if ( ! bp_core_do_network_admin() && ! $config['blog_status'] ) {
 			add_action( 'admin_notices', 'bpprof_same_blog' );
 			$warnings[] = __( 'BuddyPress Profanity requires to be activated on the blog where BuddyPress is activated.', 'buddypress-profanity' );
 		}
 
-		if ( bp_core_do_network_admin() && !$config['network_status'] ) {
+		if ( bp_core_do_network_admin() && ! $config['network_status'] ) {
 			add_action( 'admin_notices', 'bpprof_same_network_config' );
 			$warnings[] = __( 'BuddyPress Profanity and BuddyPress need to share the same network configuration.', 'buddypress-profanity' );
 		}
@@ -124,13 +127,19 @@ function bp_profanity_check_config(){
 	return true;
 }
 
-function bpprof_same_blog(){
+/**
+ * Admin notice when BuddyPress is not activated.
+ */
+function bpprof_same_blog() {
 	echo '<div class="error"><p>'
 	. esc_html( __( 'BuddyPress Private Community Pro requires to be activated on the blog where BuddyPress is activated.', 'buddypress-profanity' ) )
 	. '</p></div>';
 }
 
-function bpprof_same_network_config(){
+/**
+ * Admin notice for share the same network configuration.
+ */
+function bpprof_same_network_config() {
 	echo '<div class="error"><p>'
 	. esc_html( __( 'BuddyPress Private Community Pro and BuddyPress need to share the same network configuration.', 'buddypress-profanity' ) )
 	. '</p></div>';
@@ -153,7 +162,7 @@ register_deactivation_hook( __FILE__, 'deactivate_buddypress_profanity' );
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-buddypress-profanity.php';
 
-require plugin_dir_path(__FILE__) . 'edd-license/edd-plugin-license.php';
+require plugin_dir_path( __FILE__ ) . 'edd-license/edd-plugin-license.php';
 
 /**
  * Begins execution of the plugin.
@@ -176,10 +185,11 @@ function run_buddypress_profanity() {
  */
 function wbbprof_network_admin_notices() {
 	$wbbprof_plugin = 'BuddyPress Profanity';
-	$bp_plugin   = 'BuddyPress';
+	$bp_plugin      = 'BuddyPress';
 
 	echo '<div class="error"><p>'
-	. sprintf( __( '%1$s is ineffective as it requires %2$s to be installed and active.', 'buddypress-profanity' ), '<strong>' . $wbbprof_plugin . '</strong>', '<strong>' . $bp_plugin . '</strong>' )
+	/* translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress */
+	. sprintf( esc_html__( '%1$s is ineffective as it requires %2$s to be installed and active.', 'buddypress-profanity' ), '<strong>' . esc_html( $wbbprof_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' )
 	. '</p></div>';
 	if ( isset( $_GET['activate'] ) ) {
 		unset( $_GET['activate'] );
@@ -208,19 +218,19 @@ function wbbprof_update_blog( $blog_id = null ) {
 	if ( $blog_id ) {
 		switch_to_blog( $blog_id );
 	}
-	$wbbprof_settings = bp_get_option('wbbprof_settings');
-	if( empty( $wbbprof_settings ) ){
+	$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
+	if ( empty( $wbbprof_settings ) ) {
 		$wbbprof_settings = array(
 			'keywords'        => 'FrontGate,Profanity,aeolus,ahole,b1tch,bang,bollock,breast,enlargement,erotic,goddamn,heroin,hell,kooch,nad,nigger,pecker,tubgirl,unwed,woody,yeasty,yobbo,zoophile',
-			'filter_contents' =>  array(
+			'filter_contents' => array(
 				'0' => 'status_updates',
 				'1' => 'activity_comments',
 				'2' => 'messages',
 			),
-			'word_render'   => 'first_last',
-			'character'     => 'asterisk',
-			'case'          => 'incase',
-			'strict_filter' => 'on',
+			'word_render'     => 'first_last',
+			'character'       => 'asterisk',
+			'case'            => 'incase',
+			'strict_filter'   => 'on',
 		);
 		bp_update_option( 'wbbprof_settings', $wbbprof_settings );
 	}
@@ -235,7 +245,7 @@ add_action( 'bp_loaded', 'wbbprof_plugin_init' );
  * Function to check buddypress is active to enable disable plugin functionality.
  */
 function wbbprof_plugin_init() {
-	if ( bp_profanity_check_config() ){
+	if ( bp_profanity_check_config() ) {
 		run_buddypress_profanity();
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wbbprof_plugin_links' );
 	}
@@ -244,47 +254,45 @@ function wbbprof_plugin_init() {
 /**
  *  Check if buddypress activate.
  */
-function bpprofanity_requires_buddypress()
-{
-
-    if ( !class_exists( 'Buddypress' ) ) {
-        deactivate_plugins( plugin_basename( __FILE__ ) );
-        //deactivate_plugins('buddypress-polls/buddypress-polls.php');
-        add_action( 'admin_notices', 'bpprofanity_required_plugin_admin_notice' );
-        unset($_GET['activate']);
-    }
+function bpprofanity_requires_buddypress() {
+	if ( ! class_exists( 'Buddypress' ) ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+		add_action( 'admin_notices', 'bpprofanity_required_plugin_admin_notice' );
+		unset( $_GET['activate'] );
+	}
 }
-
 add_action( 'admin_init', 'bpprofanity_requires_buddypress' );
+
 /**
  * Throw an Alert to tell the Admin why it didn't activate.
  *
  * @author wbcomdesigns
  * @since  1.2.0
  */
-function bpprofanity_required_plugin_admin_notice()
-{
-
-    $bpquotes_plugin          = esc_html__('BuddyPress Profanity', 'buddypress-profanity');
-    $bp_plugin                = esc_html__('BuddyPress', 'buddypress-profanity');
-    echo '<div class="error"><p>';
-    echo sprintf(esc_html__('%1$s is ineffective now as it requires %2$s to be installed and active.', 'buddypress-profanity'), '<strong>' . esc_html($bpquotes_plugin) . '</strong>', '<strong>' . esc_html($bp_plugin) . '</strong>');
-    echo '</p></div>';
-    if (isset($_GET['activate']) ) {
-        unset($_GET['activate']);
-    }
+function bpprofanity_required_plugin_admin_notice() {
+	$bpquotes_plugin = esc_html__( 'BuddyPress Profanity', 'buddypress-profanity' );
+	$bp_plugin       = esc_html__( 'BuddyPress', 'buddypress-profanity' );
+	echo '<div class="error"><p>';
+	/* translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress */
+	echo sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'buddypress-profanity' ), '<strong>' . esc_html( $bpquotes_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' );
+	echo '</p></div>';
+	if ( isset( $_GET['activate'] ) ) {
+		unset( $_GET['activate'] );
+	}
 }
 
 
 /**
- * redirect to plugin settings page after activated
+ * Redirect to plugin settings page after activated.
+ *
+ * @param plugin $plugin plugin.
  */
+function bpprofanity_activation_redirect_settings( $plugin ) {
 
-add_action( 'activated_plugin', 'bpprofanity_activation_redirect_settings' );
-function bpprofanity_activation_redirect_settings( $plugin ){
-
-	if( $plugin == plugin_basename( __FILE__ ) && class_exists( 'Buddypress' )) {
-		wp_redirect( admin_url( 'admin.php?page=buddypress_profanity' ) ) ;
+	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'Buddypress' ) ) {
+		wp_redirect( admin_url( 'admin.php?page=buddypress_profanity' ) );
 		exit;
 	}
 }
+add_action( 'activated_plugin', 'bpprofanity_activation_redirect_settings' );
+

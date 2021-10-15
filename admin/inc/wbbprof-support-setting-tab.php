@@ -1,9 +1,15 @@
 <?php
 /**
  * Faqs support template file.
+ *
+ * @link       http://www.wbcomdesigns.com
+ * @since      1.0.0
+ *
+ * @package    Buddypress_Profanity
+ * @subpackage Buddypress_Profanity/inc
  */
 
-// Exit if accessed directly
+// Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -49,14 +55,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<?php esc_html_e( 'This can be achieved with the help of filters provided in the plugin. To replace keywords with cutsom character for eg. @ write below coed in your functions.php file of active theme or wherever you want.', 'buddypress-profanity' ); ?>
 						</p><pre>add_filter( 'wbbprof_word_rendering_symbols', 'custom_wbbprof_word_rendering_symbols', 10, 1 );
 function custom_wbbprof_word_rendering_symbols($rendering_symbols) {
-  $rendering_symbols['at_the_rate'] = '[ @] At the rate';
-  return $rendering_symbols;
+$rendering_symbols['at_the_rate'] = '[ @] At the rate';
+return $rendering_symbols;
 }
 add_filter('wbbprof_custom_character', 'custom_wbbprof_custom_character', 10, 1);
 function custom_wbbprof_custom_character($symbol) {
-  $symbol = '@';
-  return $symbol;
-}</pre><p><?php esc_html_e( 'After adding this code an option is created under [Filter Character], select the newly added option and save the settings.', 'buddypress-profanity' ); ?></p>
+$symbol = '@';
+return $symbol;
+}</pre>
+					<p><?php esc_html_e( 'After adding this code an option is created under [Filter Character], select the newly added option and save the settings.', 'buddypress-profanity' ); ?></p>
 					</div>
 				</div>
 			</div>

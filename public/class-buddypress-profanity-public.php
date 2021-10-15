@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The public-facing functionality of the plugin.
  *
@@ -20,7 +19,6 @@
  * @subpackage Buddypress_Profanity/public
  * @author     wbcomdesigns <admin@wbcomdesigns.com>
  */
-
 class Buddypress_Profanity_Public {
 
 	/**
@@ -113,7 +111,7 @@ class Buddypress_Profanity_Public {
 		}
 
 		if ( isset( $this->wbbprof_settings['strict_filter'] ) ) {
-			$whole_word       = $this->wbbprof_settings['strict_filter'] == 'off' ? false : true;
+			$whole_word       = 'off' == $this->wbbprof_settings['strict_filter'] ? false : true;
 			$this->whole_word = &$whole_word;
 		}
 	}
@@ -180,7 +178,7 @@ class Buddypress_Profanity_Public {
 						$keyword = trim( $keyword );
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if ( $this->case == 'incase' ) {
+							if ( 'incase' == $this->case ) {
 								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
 							} else {
 								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
@@ -207,7 +205,7 @@ class Buddypress_Profanity_Public {
 						$keyword = trim( $keyword );
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if ( $this->case == 'incase' ) {
+							if ( 'incase' == $this->case ) {
 								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
 							} else {
 								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
@@ -234,7 +232,7 @@ class Buddypress_Profanity_Public {
 						$keyword = trim( $keyword );
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if ( $this->case == 'incase' ) {
+							if ( 'incase' == $this->case ) {
 								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
 							} else {
 								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
@@ -261,7 +259,7 @@ class Buddypress_Profanity_Public {
 						$keyword = trim( $keyword );
 						if ( strlen( $keyword ) > 2 ) {
 							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if ( $this->case == 'incase' ) {
+							if ( 'incase' == $this->case ) {
 								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
 							} else {
 								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
@@ -282,33 +280,32 @@ class Buddypress_Profanity_Public {
 	 * @param string $keyword             Keyword to remove.
 	 * @param string $char_symbol         Symbol to replace with keywords.
 	 */
-	function wbbprof_censor_word( $wbbprof_render_type, $keyword, $char_symbol ) {
-		
-		$keyword_length = mb_strlen($keyword,'UTF-8');
-		
+	public function wbbprof_censor_word( $wbbprof_render_type, $keyword, $char_symbol ) {
+
+		$keyword_length = mb_strlen( $keyword, 'UTF-8' );
+
 		switch ( $wbbprof_render_type ) {
 			case 'first':
-				$first_keyword = mb_substr($keyword,0,1,'UTF-8');
-				$keyword = $first_keyword . str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 1 ), 'UTF-8' ) );
+				$first_keyword = mb_substr( $keyword, 0, 1, 'UTF-8' );
+				$keyword       = $first_keyword . str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 1 ), 'UTF-8' ) );
 				break;
 			case 'all':
 				$keyword = str_repeat( $char_symbol, mb_strlen( substr( $keyword, 0 ), 'UTF-8' ) );
 				break;
 			case 'fisrt_last':
 			case 'first_last':
-				$first_keyword = mb_substr($keyword,0,1,'UTF-8');
-				$last_keyword = mb_substr($keyword, -1, 1,'UTF-8');				
-				$keyword = $first_keyword . str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 2 ), 'UTF-8' ) ) . $last_keyword;				
+				$first_keyword = mb_substr( $keyword, 0, 1, 'UTF-8' );
+				$last_keyword  = mb_substr( $keyword, -1, 1, 'UTF-8' );
+				$keyword       = $first_keyword . str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 2 ), 'UTF-8' ) ) . $last_keyword;
 				break;
 			case 'last':
-			
-				$last_keyword = mb_substr($keyword, -1, 1,'UTF-8');				
-				$keyword = str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 0, -1 ), 'UTF-8' ) ) . $last_keyword;
+				$last_keyword = mb_substr( $keyword, -1, 1, 'UTF-8' );
+				$keyword      = str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 0, -1 ), 'UTF-8' ) ) . $last_keyword;
 				break;
 			default:
-				$first_keyword = mb_substr($keyword,0,1,'UTF-8');
-				$last_keyword = mb_substr($keyword, -1, 1,'UTF-8');				
-				$keyword = $first_keyword . str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 2 ), 'UTF-8' ) ) . $last_keyword;				
+				$first_keyword = mb_substr( $keyword, 0, 1, 'UTF-8' );
+				$last_keyword  = mb_substr( $keyword, -1, 1, 'UTF-8' );
+				$keyword       = $first_keyword . str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 2 ), 'UTF-8' ) ) . $last_keyword;
 				break;
 		}
 		return $keyword;
@@ -323,10 +320,10 @@ class Buddypress_Profanity_Public {
 	 * @param string  $wbbprof_content The content to find the keyword.
 	 * @param boolean $whole_word      Strict filtering or not.
 	 */
-	function wbbprof_profain_word( $fword, $replacement, $wbbprof_content, $whole_word = true ) {
-		$fword           = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords
-		$pattern         = $whole_word ? "/\b$fword\b/" : "/$fword/";
-		
+	public function wbbprof_profain_word( $fword, $replacement, $wbbprof_content, $whole_word = true ) {
+		$fword   = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords.
+		$pattern = $whole_word ? "/\b$fword\b/" : "/$fword/";
+
 		$wbbprof_content = preg_replace( $pattern, $replacement, $wbbprof_content );
 
 		return $wbbprof_content;
@@ -344,11 +341,11 @@ class Buddypress_Profanity_Public {
 	 * @param string  $char_symbol         Symbol to replace with keywords.
 	 * @param boolean $whole_word          Strict filtering or not.
 	 */
-	function wbbprof_profain_word_i( $fword, $replacement, $wbbprof_content, $wbbprof_render_type, $keyword, $char_symbol, $whole_word = true ) {
+	public function wbbprof_profain_word_i( $fword, $replacement, $wbbprof_content, $wbbprof_render_type, $keyword, $char_symbol, $whole_word = true ) {
 
-		$fword           = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords
-		$pattern         = $whole_word ? "/\b$fword\b/i" : "/$fword/i";
-		
+		$fword   = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords.
+		$pattern = $whole_word ? "/\b$fword\b/i" : "/$fword/i";
+
 		$wbbprof_content = preg_replace_callback(
 			$pattern,
 			function( $m ) use ( $wbbprof_render_type, $keyword, $char_symbol ) {

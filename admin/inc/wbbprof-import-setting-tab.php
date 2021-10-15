@@ -1,8 +1,12 @@
 <?php
 /**
- *
  * This file is used for rendering and saving plugin general settings.
  *
+ * @link       http://www.wbcomdesigns.com
+ * @since      1.0.0
+ *
+ * @package    Buddypress_Profanity
+ * @subpackage Buddypress_Profanity/inc
  */
 
 // Exit if accessed directly.
@@ -10,10 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( isset($_GET['msg']) && $_GET['msg'] == 'success') {
+if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) {
 	?>
 	<div id="setting-error-settings_updated" class="notice notice-success settings-error is-dismissible"> 
-		<p><strong><?php esc_html_e( 'CSV File is successfully imported', 'buddypress-profanity' )?></strong></p>
+		<p><strong><?php esc_html_e( 'CSV File is successfully imported', 'buddypress-profanity' ); ?></strong></p>
 	</div>
 	<?php
 }
@@ -34,10 +38,10 @@ if ( isset($_GET['msg']) && $_GET['msg'] == 'success') {
 				
 				<input type='hidden' name='wbbprof_import[import]' value='import'  />
 				<p class="description" id="tagline-description">
-					<?php echo sprintf(esc_html__( 'Import csv file for remove keywords from community. %s', 'buddypress-profanity' ), '<a href="' . esc_url(BPPROF_PLUGIN_URL. 'admin/css/sample-keywords.csv'). '" target="_blank"/>Sample CSV</a>' ); ?>
+					<?php echo sprintf( esc_html__( 'Import csv file for remove keywords from community. %s', 'buddypress-profanity' ), '<a href="' . esc_url( BPPROF_PLUGIN_URL . 'admin/css/sample-keywords.csv' ) . '" target="_blank"/>Sample CSV</a>' ); ?>
 				</p>
-		    </td>
-	    </tr>	    
+			</td>
+		</tr>	    
 	</table>
 	<?php submit_button(); ?>
 </form>

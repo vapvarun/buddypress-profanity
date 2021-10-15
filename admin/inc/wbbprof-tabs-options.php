@@ -1,8 +1,12 @@
 <?php
 /**
- *
  * This template file is used for fetching desired options page file at admin settings.
  *
+ * @link       http://www.wbcomdesigns.com
+ * @since      1.0.0
+ *
+ * @package    Buddypress_Profanity
+ * @subpackage Buddypress_Profanity/inc
  */
 
 // Exit if accessed directly.

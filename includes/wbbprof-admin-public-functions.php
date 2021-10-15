@@ -1,7 +1,12 @@
 <?php
 /**
- *
  * This file is used for defining functions for use in admin and public.
+ *
+ * @link       http://www.wbcomdesigns.com
+ * @since      1.0.0
+ *
+ * @package    Buddypress_Profanity
+ * @subpackage Buddypress_Profanity/includes
  */
 
 // Exit if accessed directly.
@@ -12,13 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  *
  * Çontent to filter array (admin end use).
- *
  */
-function content_to_filter_array(){
-	$content_filter = array(
+function content_to_filter_array() {
+	$content_filter        = array(
 		'status_updates'    => __( 'Status Updates', 'buddypress-profanity' ),
 		'activity_comments' => __( 'Activity Commments', 'buddypress-profanity' ),
-		'messages'			=> __( 'Messages', 'buddypress-profanity' )
+		'messages'          => __( 'Messages', 'buddypress-profanity' ),
 	);
 	return $content_filter = apply_filters( 'wbbprof_content_to_filter_array', $content_filter );
 }
@@ -26,10 +30,9 @@ function content_to_filter_array(){
 /**
  *
  * Filter character symbol array (admin end use).
- *
  */
-function word_rendering_symbols(){
-	$rendering_symbols = array(
+function word_rendering_symbols() {
+	$rendering_symbols        = array(
 		'asterisk'    => __( '[*] Asterisk', 'buddypress-profanity' ),
 		'dollar'      => __( '[$] Dollar', 'buddypress-profanity' ),
 		'question'    => __( '[?] Question', 'buddypress-profanity' ),
