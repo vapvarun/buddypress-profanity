@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com
 Tags: buddypress, profanity, filter, community, activity, comments, messages
 Requires at least: 3.0.1
-Tested up to: 5.8.1
-Stable tag: 1.7.2
+Tested up to: 5.8.2
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,11 @@ The [Case Matching] setting provides two option Case Sensitive and Case Insensit
 The [Strict Filtering] with strict mode on does not filter embedded keywords. We recommend users to use Strict Filtering ON mode.
 
 == Changelog ==
+= 1.7.3 =
+* Fix: (#32) Fixed phpcs error
+* Fix: (#34) Fixed activity comment filter not working
+* Fix: (#33) Strict filtering option not working properly
+
 = 1.7.2 =
 * Fix: #31 - default option for radio button
 * Fix: - stop redirect after plugin activation when buddypress plugin
