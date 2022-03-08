@@ -168,7 +168,7 @@ class Buddypress_Profanity_Admin {
 				$tab_html = '<div class="wbcom-tabs-section"><div class="nav-tab-wrapper"><div class="wb-responsive-menu"><span>' . esc_html( 'Menu' ) . '</span><input class="wb-toggle-btn" type="checkbox" id="wb-toggle-btn"><label class="wb-toggle-icon" for="wb-toggle-btn"><span class="wb-icon-bars"></span></label></div><ul>';
 		foreach ( $wbbprof_tabs as $wbbprof_tab => $wbbpro_name ) {
 			$class     = ( $wbbprof_tab == $current ) ? 'nav-tab-active' : '';
-			$tab_html .= '<li><a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a></li>';
+			$tab_html .= '<li class='. $wbbpro_name .'><a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a></li>';
 		}
 		$tab_html .= '</div></ul></div>';
 		echo $tab_html;

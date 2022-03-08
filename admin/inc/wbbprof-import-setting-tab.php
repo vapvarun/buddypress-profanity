@@ -23,11 +23,16 @@ if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) {
 }
 ?>
 <div class="wbcom-tab-content">
+<div class="wbcom-wrapper-admin">
+<div class="wbcom-admin-title-section">
+	<h3><?php esc_html_e( 'Keywords Import', 'buddypress-profanity' ); ?></h3>
+</div>	
 <form method="post" action="admin.php?action=update_network_options" enctype='multipart/form-data'>
 	<?php
 	settings_fields( 'buddypress_profanity_general' );
 	do_settings_sections( 'buddypress_profanity_general' );
 	?>
+	<div class="wbcom-admin-option-wrap">
 	<table class="form-table buddypress-profanity-admin-table">
 		<tr>
 			<th scope="row">
@@ -43,6 +48,8 @@ if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) {
 			</td>
 		</tr>	    
 	</table>
+</div>
 	<?php submit_button(); ?>
 </form>
+</div>
 </div>

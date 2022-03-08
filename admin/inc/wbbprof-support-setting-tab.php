@@ -17,8 +17,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="wbcom-tab-content">
 <div class="wbbprof-support-setting">
 	<div class="wbbprof-tab-header">
-		<h3><?php esc_html_e( 'FAQ(s) ', 'buddypress-profanity' ); ?></h3>
-	</div>
+		<div class="wbcom-wrapper-admin">
+		<div class="wbcom-admin-title-section">
+			<h3><?php esc_html_e( 'FAQ(s) ', 'buddypress-profanity' ); ?></h3>
+		</div>
 	<div class="wbbprof-faqs-block-parent-contain">
 		<div class="wbbprof-faqs-block-contain">
 			<div class="wbbprof-faq-row border">
@@ -112,4 +114,5 @@ return $symbol;
 			</div>
 		</div>
 	</div>
+</div>
 </div>

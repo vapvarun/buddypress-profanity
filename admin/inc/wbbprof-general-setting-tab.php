@@ -19,7 +19,12 @@ $content_to_filter = content_to_filter_array();
 $rendering_symbols = word_rendering_symbols();
 ?>
 <div class="wbcom-tab-content">
+<div class="wbcom-wrapper-admin">
+<div class="wbcom-admin-title-section">
+	<h3><?php esc_html_e( 'General Profanity', 'buddypress-profanity' ); ?></h3>
+</div>
 <form method="post" action="admin.php?action=update_network_options">
+	<div class="wbcom-admin-option-wrap">
 	<?php
 	settings_fields( 'buddypress_profanity_general' );
 	do_settings_sections( 'buddypress_profanity_general' );
@@ -152,6 +157,8 @@ $rendering_symbols = word_rendering_symbols();
 			</td>
 		</tr>
 	</table>
+</div>
 	<?php submit_button(); ?>
 </form>
+</div>
 </div>
