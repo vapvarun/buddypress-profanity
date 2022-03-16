@@ -288,7 +288,9 @@ function bpprofanity_required_plugin_admin_notice() {
  * @param plugin $plugin plugin.
  */
 function bpprofanity_activation_redirect_settings( $plugin ) {
-
+	if ( ! isset( $_GET['plugin'] ) ) {
+		return;
+	}
 	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'Buddypress' ) ) {
 		wp_redirect( admin_url( 'admin.php?page=buddypress_profanity' ) );
 		exit;
