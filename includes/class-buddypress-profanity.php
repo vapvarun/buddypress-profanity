@@ -193,6 +193,16 @@ class Buddypress_Profanity {
 		$this->loader->add_filter( 'bp_get_message_thread_subject', $plugin_public, 'wbbprof_bp_get_message_thread_subject', 1 );
 		$this->loader->add_filter( 'bp_get_the_thread_subject', $plugin_public, 'wbbprof_bp_get_message_thread_subject', 1 );
 		$this->loader->add_filter( 'bp_better_messages_after_format_message', $plugin_public, 'wbbprof_bp_get_the_thread_message_content', 1 );
+		
+		/* bbPress Forum, Topics, reply hook to title and content */
+		$this->loader->add_action( 'bbp_get_forum_title', $plugin_public, 'wbbprof_bbp_get_title', 10, 2 );
+		$this->loader->add_action( 'bbp_get_topic_title', $plugin_public, 'wbbprof_bbp_get_title', 10, 2 );
+		$this->loader->add_action( 'bbp_get_reply_title', $plugin_public, 'wbbprof_bbp_get_title', 10, 2 );
+		$this->loader->add_action( 'bbp_get_forum_content', $plugin_public, 'wbbprof_bbp_get_reply_content', 10, 2 );
+		$this->loader->add_action( 'bbp_get_topic_content', $plugin_public, 'wbbprof_bbp_get_reply_content', 10, 2 );
+		$this->loader->add_action( 'bbp_get_reply_content', $plugin_public, 'wbbprof_bbp_get_reply_content', 10, 2 );
+		
+
 
 	}
 

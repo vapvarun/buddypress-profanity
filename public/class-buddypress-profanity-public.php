@@ -355,5 +355,49 @@ class Buddypress_Profanity_Public {
 		);
 		return $wbbprof_content;
 	}
+	
+	public function wbbprof_bbp_get_title( $title, $bbp_id) {
+		
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'status_updates', $this->wbbprof_settings['filter_contents'] ) ) {
+				if ( is_array( $this->keywords ) ) {
+					foreach ( $this->keywords as $key => $keyword ) {
+						$keyword = trim( $keyword );
+						if ( strlen( $keyword ) > 2 ) {
+							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
+							if ( $this->case == 'incase' ) {
+								$title = $this->wbbprof_profain_word_i( $keyword, $replacement, $title, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+							} else {
+								$title = $this->wbbprof_profain_word( $keyword, $replacement, $title, $this->whole_word );
+							}
+						}
+					}
+				}
+			}
+		}
+		return $title;
+	}
+	
+	public function wbbprof_bbp_get_reply_content($content, $bbp_id ){
+		
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'status_updates', $this->wbbprof_settings['filter_contents'] ) ) {
+				if ( is_array( $this->keywords ) ) {
+					foreach ( $this->keywords as $key => $keyword ) {
+						$keyword = trim( $keyword );
+						if ( strlen( $keyword ) > 2 ) {
+							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
+							if ( $this->case == 'incase' ) {
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+							} else {
+								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+							}
+						}
+					}
+				}
+			}
+		}
+		return $content;
+	}
 
 }
