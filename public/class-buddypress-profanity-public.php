@@ -359,7 +359,7 @@ class Buddypress_Profanity_Public {
 	public function wbbprof_bbp_get_title( $title, $bbp_id) {
 		
 		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
-			if ( in_array( 'status_updates', $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'bbpress_title', $this->wbbprof_settings['filter_contents'] ) ) {
 				if ( is_array( $this->keywords ) ) {
 					foreach ( $this->keywords as $key => $keyword ) {
 						$keyword = trim( $keyword );
@@ -381,7 +381,7 @@ class Buddypress_Profanity_Public {
 	public function wbbprof_bbp_get_reply_content($content, $bbp_id ){
 		
 		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
-			if ( in_array( 'status_updates', $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'bbpress_content', $this->wbbprof_settings['filter_contents'] ) ) {
 				if ( is_array( $this->keywords ) ) {
 					foreach ( $this->keywords as $key => $keyword ) {
 						$keyword = trim( $keyword );
