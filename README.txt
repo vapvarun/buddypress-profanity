@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com
 Tags: buddypress, profanity, filter, community, activity, comments, messages
 Requires at least: 3.0.1
-Tested up to: 5.8.2
-Stable tag: 1.7.3
+Tested up to: 5.9.3
+Stable tag: 1.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
