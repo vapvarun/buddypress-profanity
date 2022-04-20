@@ -54,6 +54,13 @@ The [Case Matching] setting provides two option Case Sensitive and Case Insensit
 The [Strict Filtering] with strict mode on does not filter embedded keywords. We recommend users to use Strict Filtering ON mode.
 
 == Changelog ==
+= 1.8.0 =
+* Fix: Fixed #44 - activity title not working
+* Enhancement- #43 - Added bbPress Forums, Topics and Replies Titles and Content
+* Fix: Fixed redirect issue on bulk plugin activation
+* Fix: Removed install plugin button from wrapper
+* Fix: Improved backend UI
+
 = 1.7.3 =
 * Fix: (#32) Fixed phpcs error
 * Fix: (#34) Fixed activity comment filter not working
