@@ -1,14 +1,14 @@
-# Copyright (C) 2021
+# Copyright (C) 2022
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-10-14 07:34:10+00:00\n"
+"POT-Creation-Date: 2022-04-20 21:02:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Varun Dubey\n"
 "Language-Team: Wbcom Designs\n"
 "Language: en\n"
@@ -24,189 +24,197 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: admin/class-buddypress-profanity-admin.php:138
+#: admin/class-buddypress-profanity-admin.php:135
 msgid "WB Plugins"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:139
-#: admin/class-buddypress-profanity-admin.php:169
+#: admin/class-buddypress-profanity-admin.php:136
+#: admin/class-buddypress-profanity-admin.php:163
 msgid "General"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:141
+#: admin/class-buddypress-profanity-admin.php:138
 msgid "Buddypress Profanity Settings Page"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:141
-#: admin/inc/wbbprof-welcome-page.php:15
-#: admin/wbcom/wbcom-admin-settings.php:384 buddypress-profanity.php:268
+#: admin/class-buddypress-profanity-admin.php:138
+#: admin/inc/wbbprof-welcome-page.php:21
+#: admin/wbcom/wbcom-admin-settings.php:339 buddypress-profanity.php:273
 msgid "BuddyPress Profanity"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:162
+#: admin/class-buddypress-profanity-admin.php:156
 msgid "BuddyPress Profanity Settings"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:168
+#: admin/class-buddypress-profanity-admin.php:162
 msgid "Welcome"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:170
+#: admin/class-buddypress-profanity-admin.php:164
 msgid "Import"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:171
+#: admin/class-buddypress-profanity-admin.php:165
 #: admin/wbcom/templates/wbcom-support-page.php:5
-#: admin/wbcom/wbcom-admin-settings.php:542
-#: admin/wbcom/wbcom-admin-settings.php:627 buddypress-profanity.php:197
+#: admin/wbcom/wbcom-admin-settings.php:497
+#: admin/wbcom/wbcom-admin-settings.php:582 buddypress-profanity.php:207
 msgid "Support"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:25
-#: admin/inc/wbbprof-general-setting-tab.php:27
+#: admin/inc/wbbprof-general-setting-tab.php:24
+msgid "General Profanity"
+msgstr ""
+
+#: admin/inc/wbbprof-general-setting-tab.php:34
+#: admin/inc/wbbprof-general-setting-tab.php:36
 msgid "Keywords to remove"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:29
+#: admin/inc/wbbprof-general-setting-tab.php:38
 msgid "Enter keywords here which you want to remove from community."
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:32
+#: admin/inc/wbbprof-general-setting-tab.php:41
 msgid "Reset to default"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:37
-#: admin/inc/wbbprof-general-setting-tab.php:40
+#: admin/inc/wbbprof-general-setting-tab.php:46
+#: admin/inc/wbbprof-general-setting-tab.php:49
 msgid "Content to be fitered"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:57
-#: admin/inc/wbbprof-general-setting-tab.php:60
+#: admin/inc/wbbprof-general-setting-tab.php:67
+#: admin/inc/wbbprof-general-setting-tab.php:70
 msgid "Word rendering"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:63
+#: admin/inc/wbbprof-general-setting-tab.php:73
 msgid "First letter retainded"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:69
+#: admin/inc/wbbprof-general-setting-tab.php:79
 msgid "Last letter retained"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:76
-msgid "Fisrt and Last letter retained"
+#: admin/inc/wbbprof-general-setting-tab.php:86
+msgid "First and Last letter retained"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:82
+#: admin/inc/wbbprof-general-setting-tab.php:92
 msgid "All letter removed"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:90
+#: admin/inc/wbbprof-general-setting-tab.php:100
 msgid "Filter character"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:108
-#: admin/inc/wbbprof-general-setting-tab.php:111
+#: admin/inc/wbbprof-general-setting-tab.php:118
+#: admin/inc/wbbprof-general-setting-tab.php:121
 msgid "Case matching"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:114
+#: admin/inc/wbbprof-general-setting-tab.php:124
 msgid "Case Sensitive"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:119
+#: admin/inc/wbbprof-general-setting-tab.php:129
 msgid "Case Insensitive (recommended)"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:123
+#: admin/inc/wbbprof-general-setting-tab.php:133
 msgid "Note: Case Insensitive matching type is better as it captures more words!"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:128
-#: admin/inc/wbbprof-general-setting-tab.php:131
+#: admin/inc/wbbprof-general-setting-tab.php:138
+#: admin/inc/wbbprof-general-setting-tab.php:141
 msgid "Strict filtering"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:134
+#: admin/inc/wbbprof-general-setting-tab.php:144
 msgid "Strict Filtering OFF"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:140
+#: admin/inc/wbbprof-general-setting-tab.php:150
 msgid "Strict Filtering ON (recommended)"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:145
-msgid "Note: When strict filtering is ON, embedded keywords are no longer filtered."
+#: admin/inc/wbbprof-general-setting-tab.php:155
+msgid "Note: When strict filtering is ON, embedded keywords are filtered."
 msgstr ""
 
-#: admin/inc/wbbprof-import-setting-tab.php:16
+#: admin/inc/wbbprof-import-setting-tab.php:20
 msgid "CSV File is successfully imported"
 msgstr ""
 
-#: admin/inc/wbbprof-import-setting-tab.php:30
+#: admin/inc/wbbprof-import-setting-tab.php:28
+msgid "Keywords Import"
+msgstr ""
+
+#: admin/inc/wbbprof-import-setting-tab.php:39
 msgid "Import Keywords"
 msgstr ""
 
-#: admin/inc/wbbprof-import-setting-tab.php:37
+#: admin/inc/wbbprof-import-setting-tab.php:46
 msgid "Import csv file for remove keywords from community. %s"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:14
+#: admin/inc/wbbprof-support-setting-tab.php:22
 msgid "FAQ(s) "
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:21
+#: admin/inc/wbbprof-support-setting-tab.php:29
 msgid "Does This plugin requires BuddyPress?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:25
+#: admin/inc/wbbprof-support-setting-tab.php:33
 msgid "Yes, It needs you to have BuddyPress installed and activated."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:33
+#: admin/inc/wbbprof-support-setting-tab.php:41
 msgid "Does this plugin filter multiple keywords?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:37
+#: admin/inc/wbbprof-support-setting-tab.php:45
 msgid ""
 "Yes, multiple keywords can be set to filter with the setting [Keywords to "
 "remove] provied under general tab."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:45
+#: admin/inc/wbbprof-support-setting-tab.php:53
 msgid ""
 "How do I specify a character other than defined characers to replace out "
 "keywords?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:49
+#: admin/inc/wbbprof-support-setting-tab.php:57
 msgid ""
 "This can be achieved with the help of filters provided in the plugin. To "
 "replace keywords with cutsom character for eg. @ write below coed in your "
 "functions.php file of active theme or wherever you want."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:59
+#: admin/inc/wbbprof-support-setting-tab.php:68
 msgid ""
 "After adding this code an option is created under [Filter Character], "
 "select the newly added option and save the settings."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:66
+#: admin/inc/wbbprof-support-setting-tab.php:75
 msgid "Does this change the content in BuddyPress database?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:70
+#: admin/inc/wbbprof-support-setting-tab.php:79
 msgid ""
 "No, the plugin filters the content to display on screen, buddypress "
 "database is unaffected from plugin changes."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:78
+#: admin/inc/wbbprof-support-setting-tab.php:87
 msgid "How is Case Matching setting useful?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:82
+#: admin/inc/wbbprof-support-setting-tab.php:91
 msgid ""
 "The [Case Matching] setting provides two option Case Sensitive and Case "
 "Insensitive. Case Sensitive filters keywords with strich case matching and "
@@ -214,82 +222,82 @@ msgid ""
 "filtering."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:85
+#: admin/inc/wbbprof-support-setting-tab.php:94
 msgid "We recommend users to use Case Insensitive matching."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:93
+#: admin/inc/wbbprof-support-setting-tab.php:102
 msgid "How is Strict Filtering setting useful?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:97
+#: admin/inc/wbbprof-support-setting-tab.php:106
 msgid ""
 "The [Strict Filtering] with strict mode on does not filter embedded "
 "keywords."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:100
+#: admin/inc/wbbprof-support-setting-tab.php:109
 msgid "We recommend users to use Strict Filtering ON mode."
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:16
-#: admin/wbcom/wbcom-admin-settings.php:385
+#: admin/inc/wbbprof-welcome-page.php:22
+#: admin/wbcom/wbcom-admin-settings.php:340
 msgid ""
 "Use BuddyPress Profanity plugin to censor content in your community! Easily "
 "Censor all the unwanted words in activities, private messages contents by "
 "specifying a list of keywords to be filtered."
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:26
+#: admin/inc/wbbprof-welcome-page.php:27
 msgid "Help &amp; Support Resources"
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:27
+#: admin/inc/wbbprof-welcome-page.php:28
 msgid ""
 "Here are all the resources you may need to get help from us. Documentation "
 "is usually the best place to start. Should you require help anytime, our "
 "customer care team is available to assist you at the support center."
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:33
+#: admin/inc/wbbprof-welcome-page.php:34
 msgid "Documentation"
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:34
+#: admin/inc/wbbprof-welcome-page.php:35
 msgid ""
 "We have prepared an extensive guide on BuddyPress Profanity to learn all "
 "aspects of the plugin. You will find most of your answers here."
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:35
+#: admin/inc/wbbprof-welcome-page.php:36
 msgid "Read Documentation"
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:39
+#: admin/inc/wbbprof-welcome-page.php:40
 msgid "Support Center"
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:40
+#: admin/inc/wbbprof-welcome-page.php:41
 msgid ""
 "We strive to offer the best customer care via our support center. Once your "
 "theme is activated, you can ask us for help anytime."
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:41
+#: admin/inc/wbbprof-welcome-page.php:42
 msgid "Get Support"
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:45
+#: admin/inc/wbbprof-welcome-page.php:46
 msgid "Got Feedback?"
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:46
+#: admin/inc/wbbprof-welcome-page.php:47
 msgid ""
 "We want to hear about your experience with the plugin. We would also love "
 "to hear any suggestions you may for future updates."
 msgstr ""
 
-#: admin/inc/wbbprof-welcome-page.php:47
+#: admin/inc/wbbprof-welcome-page.php:48
 msgid "Send Feedback"
 msgstr ""
 
@@ -331,28 +339,15 @@ msgstr ""
 msgid "Paid Addons"
 msgstr ""
 
-#: admin/wbcom/templates/wbcom-plugins-page.php:28
+#: admin/wbcom/templates/wbcom-plugins-page.php:29
+#: admin/wbcom/templates/wbcom-plugins-page.php:43
 #: admin/wbcom/templates/wbcom-themes-page.php:118
 #: admin/wbcom/templates/wbcom-themes-page.php:139
 msgid "View"
 msgstr ""
 
-#: admin/wbcom/templates/wbcom-plugins-page.php:37
+#: admin/wbcom/templates/wbcom-plugins-page.php:38
 msgid "Free Addons"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-plugins-page.php:43
-msgid "Install"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-plugins-page.php:47
-#: admin/wbcom/wbcom-admin-settings.php:487
-msgid "Activate"
-msgstr ""
-
-#: admin/wbcom/templates/wbcom-plugins-page.php:51
-#: admin/wbcom/wbcom-admin-settings.php:488
-msgid "Deactivate"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-support-page.php:7
@@ -554,141 +549,141 @@ msgstr ""
 msgid "Create Knowledge base"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:178
+#: admin/wbcom/wbcom-admin-settings.php:133
 msgid "Custom Font Uploader"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:180
+#: admin/wbcom/wbcom-admin-settings.php:135
 msgid ""
 "It also allows you to upload your own custom font to your site and use them "
 "using custom css."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:186
+#: admin/wbcom/wbcom-admin-settings.php:141
 msgid "BuddyPress Activity Filter"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:188
+#: admin/wbcom/wbcom-admin-settings.php:143
 msgid "Admin can set default and customised activities to be listed on front-end."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:194
+#: admin/wbcom/wbcom-admin-settings.php:149
 msgid "BuddyPress Activity Social Share"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:196
+#: admin/wbcom/wbcom-admin-settings.php:151
 msgid ""
 "This plugin allows anyone easily share BuddyPress Activites on major social "
 "media (Facebook, Twitter, Google+, Linkedin )."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:202
+#: admin/wbcom/wbcom-admin-settings.php:157
 msgid "BuddyPress Create Group Type"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:204
+#: admin/wbcom/wbcom-admin-settings.php:159
 msgid "It will help to create group type for BuddyPress Groups."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:210
+#: admin/wbcom/wbcom-admin-settings.php:165
 msgid "BuddyPress Member Reviews"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:212
+#: admin/wbcom/wbcom-admin-settings.php:167
 msgid ""
 "This plugin allows only site members to add reviews to the buddypress "
 "members on the site and even rate the member’s profile out of 5 points with "
 "multiple review criteria."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:218
+#: admin/wbcom/wbcom-admin-settings.php:173
 msgid "BuddyPress Group Reviews"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:220
+#: admin/wbcom/wbcom-admin-settings.php:175
 msgid ""
 "This plugin allows the BuddyPress Members to give reviews to the BuddyPress "
 "groups on the site. The review form allows the users to give text review, "
 "even rate the group on the basis of multiple criterias."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:226
+#: admin/wbcom/wbcom-admin-settings.php:181
 msgid "BuddyPress Favorite Notification"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:228
+#: admin/wbcom/wbcom-admin-settings.php:183
 msgid ""
 "BuddyPress Favorite Notification adds a notification for BuddyPress "
 "activity."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:234
+#: admin/wbcom/wbcom-admin-settings.php:189
 msgid "Custom Email Options"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:236
+#: admin/wbcom/wbcom-admin-settings.php:191
 msgid "Override default email options of Worpdress."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:242
+#: admin/wbcom/wbcom-admin-settings.php:197
 msgid "BuddyPress Checkins"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:244
+#: admin/wbcom/wbcom-admin-settings.php:199
 msgid ""
 "This plugin allows BuddyPress members to share their location when they are "
 "posting activities, you can add places where you visited, nearby locations "
 "based on google places."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:250
+#: admin/wbcom/wbcom-admin-settings.php:205
 msgid "BuddyPress Job Manager"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:252
+#: admin/wbcom/wbcom-admin-settings.php:207
 msgid ""
 "Incorporates BuddyPress with the WP Job Manager plugin by creating specific "
 "tabs in employer’s and candidate’s profiles."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:258
+#: admin/wbcom/wbcom-admin-settings.php:213
 msgid "BuddyPress user ToDo List"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:260
+#: admin/wbcom/wbcom-admin-settings.php:215
 msgid ""
 "This plugin allows you to create your personal task list with timestamp. "
 "You can mark them complete when you are done with them. It will also send "
 "reminder when you have any overdue task."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:266
+#: admin/wbcom/wbcom-admin-settings.php:221
 msgid "Shortcodes for BuddyPress"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:268
+#: admin/wbcom/wbcom-admin-settings.php:223
 msgid ""
 "This plugin will add an extended feature to the big name “BuddyPress” that "
 "will generate Shortcode for Listing Activity Streams , Members and Groups "
 "on any post/page in website."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:274
+#: admin/wbcom/wbcom-admin-settings.php:229
 msgid "Woo Open Graph"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:276
+#: admin/wbcom/wbcom-admin-settings.php:231
 msgid ""
 "This plugin will add an extended feature to the big name “WooCommerce” that "
 "will adds well executed and accurate Open Graph Meta Tags to your site with "
 "title,description and WooCommerce featured image."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:282
+#: admin/wbcom/wbcom-admin-settings.php:237
 msgid "BuddyPress Lock"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:284
+#: admin/wbcom/wbcom-admin-settings.php:239
 msgid ""
 "This plugin allows the administrator to lock the certain parts of their "
 "site. It help to create private BuddyPress community by locking certain "
@@ -696,22 +691,22 @@ msgid ""
 "without using any membership plugin."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:290
+#: admin/wbcom/wbcom-admin-settings.php:245
 msgid "Woo Audio Preview"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:292
+#: admin/wbcom/wbcom-admin-settings.php:247
 msgid ""
 "This plugin Allows playing the audio files in sample mode to prevent "
 "unauthorized downloading of the audio files. It helps to display sample "
 "files at single product page."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:298
+#: admin/wbcom/wbcom-admin-settings.php:253
 msgid "WordPress System Log"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:300
+#: admin/wbcom/wbcom-admin-settings.php:255
 msgid ""
 "This plugin helps administrators of the site see their environment on which "
 "the site is currently running that includes WordPress environment, tha "
@@ -719,69 +714,69 @@ msgid ""
 "activated on the site."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:306
+#: admin/wbcom/wbcom-admin-settings.php:261
 msgid "BP Post From Anywhere"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:308
+#: admin/wbcom/wbcom-admin-settings.php:263
 msgid ""
 "This plugin will generate shortcode and widgets for post updates section "
 "for activities so you can post update from anywhere, it might be sidebar, "
 "some page or any template file."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:314
+#: admin/wbcom/wbcom-admin-settings.php:269
 msgid "Woo Document Preview"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:316
+#: admin/wbcom/wbcom-admin-settings.php:271
 msgid ""
 "This will allow you to add document preview at single product page. Which "
 "helps to offer more better idea when you are selling ebooks, pdf or some "
 "documents."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:322
+#: admin/wbcom/wbcom-admin-settings.php:277
 msgid "WordPress Media Category"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:324
-#: admin/wbcom/wbcom-admin-settings.php:340
+#: admin/wbcom/wbcom-admin-settings.php:279
+#: admin/wbcom/wbcom-admin-settings.php:295
 msgid ""
 "This plugin helps administrators of the site categorize their wordpress "
 "media."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:330
+#: admin/wbcom/wbcom-admin-settings.php:285
 msgid "Woo Price Quotes"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:332
+#: admin/wbcom/wbcom-admin-settings.php:287
 msgid ""
 "This plugin helps in quoting the products that admin wishes to hide its "
 "purchasing details."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:338
+#: admin/wbcom/wbcom-admin-settings.php:293
 msgid "EDD Service Extended"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:346
+#: admin/wbcom/wbcom-admin-settings.php:301
 msgid "WB Ads Rotator with Split Test"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:348
+#: admin/wbcom/wbcom-admin-settings.php:303
 msgid ""
 "This plugin is designed for the SPLIT TESTING, you can check performance of "
 "your ads layout and on the basis of them you can select one of them for "
 "your regular use."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:366
+#: admin/wbcom/wbcom-admin-settings.php:321
 msgid "BuddyPress Moderation Pro"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:367
+#: admin/wbcom/wbcom-admin-settings.php:322
 msgid ""
 "BuddyPress Community Moderation offers a solution for site owners to keep "
 "their communities straight. With community policing strategy, members of "
@@ -789,22 +784,22 @@ msgid ""
 "content created within the various components."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:372
+#: admin/wbcom/wbcom-admin-settings.php:327
 msgid "BuddyPress Polls"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:373
+#: admin/wbcom/wbcom-admin-settings.php:328
 msgid ""
 "Use BuddyPress Polls plugin to create polls inside the activity, let your "
 "user response to your polls. Members can create pools like activities, "
 "easily votes on them."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:378
+#: admin/wbcom/wbcom-admin-settings.php:333
 msgid "BuddyPress Resume Manager"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:379
+#: admin/wbcom/wbcom-admin-settings.php:334
 msgid ""
 "BuddyPress Resume Manager adds a separate BuddyPress Resume menu at a "
 "user’s BuddyPress Profile Page to display individual member resume. We have "
@@ -812,38 +807,46 @@ msgid ""
 "disable them."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:390
+#: admin/wbcom/wbcom-admin-settings.php:345
 msgid "BuddyPress Private Community Pro"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:391
+#: admin/wbcom/wbcom-admin-settings.php:346
 msgid ""
 "This plugin offers a lockdown for BuddyPress Component and will ask users "
 "to log in go further to check profile or any other protected details."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:396
+#: admin/wbcom/wbcom-admin-settings.php:351
 msgid "BuddyPress Profile Pro"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:397
+#: admin/wbcom/wbcom-admin-settings.php:352
 msgid ""
 "This plugin gives you the power to extend BuddyPress Profiles with repeater "
 "fields and groups. You can easily add multiple field groups and display "
 "them at member’s profile."
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:536
-#: admin/wbcom/wbcom-admin-settings.php:615
+#: admin/wbcom/wbcom-admin-settings.php:442
+msgid "Activate"
+msgstr ""
+
+#: admin/wbcom/wbcom-admin-settings.php:443
+msgid "Deactivate"
+msgstr ""
+
+#: admin/wbcom/wbcom-admin-settings.php:491
+#: admin/wbcom/wbcom-admin-settings.php:570
 msgid "Our Plugins"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:539
-#: admin/wbcom/wbcom-admin-settings.php:621
+#: admin/wbcom/wbcom-admin-settings.php:494
+#: admin/wbcom/wbcom-admin-settings.php:576
 msgid "Our Themes"
 msgstr ""
 
-#: admin/wbcom/wbcom-admin-settings.php:609 buddypress-profanity.php:196
+#: admin/wbcom/wbcom-admin-settings.php:564 buddypress-profanity.php:206
 msgid "Settings"
 msgstr ""
 
@@ -852,39 +855,41 @@ msgstr ""
 msgid "License"
 msgstr ""
 
-#: buddypress-profanity.php:112
+#: buddypress-profanity.php:115
 msgid ""
 "BuddyPress Profanity requires to be activated on the blog where BuddyPress "
 "is activated."
 msgstr ""
 
-#: buddypress-profanity.php:117
+#: buddypress-profanity.php:120
 msgid ""
 "BuddyPress Profanity and BuddyPress need to share the same network "
 "configuration."
 msgstr ""
 
-#: buddypress-profanity.php:129
+#: buddypress-profanity.php:135
 msgid ""
 "BuddyPress Private Community Pro requires to be activated on the blog where "
 "BuddyPress is activated."
 msgstr ""
 
-#: buddypress-profanity.php:135
+#: buddypress-profanity.php:144
 msgid ""
 "BuddyPress Private Community Pro and BuddyPress need to share the same "
 "network configuration."
 msgstr ""
 
-#: buddypress-profanity.php:182
+#: buddypress-profanity.php:192
+#. translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress
 msgid "%1$s is ineffective as it requires %2$s to be installed and active."
 msgstr ""
 
-#: buddypress-profanity.php:269
+#: buddypress-profanity.php:274
 msgid "BuddyPress"
 msgstr ""
 
-#: buddypress-profanity.php:271
+#: buddypress-profanity.php:277
+#. translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress
 msgid "%1$s is ineffective now as it requires %2$s to be installed and active."
 msgstr ""
 
@@ -943,46 +948,54 @@ msgstr ""
 msgid "Your license key has reached its activation limit."
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:19
+#: includes/wbbprof-admin-public-functions.php:23
 msgid "Status Updates"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:20
+#: includes/wbbprof-admin-public-functions.php:24
 msgid "Activity Commments"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:21
+#: includes/wbbprof-admin-public-functions.php:25
 msgid "Messages"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:33
-msgid "[*] Asterisk"
+#: includes/wbbprof-admin-public-functions.php:26
+msgid "bbPress Forums, Topics and Replies Title"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:34
-msgid "[$] Dollar"
-msgstr ""
-
-#: includes/wbbprof-admin-public-functions.php:35
-msgid "[?] Question"
-msgstr ""
-
-#: includes/wbbprof-admin-public-functions.php:36
-msgid "[!] Exclamation"
-msgstr ""
-
-#: includes/wbbprof-admin-public-functions.php:37
-msgid "[-] Hyphen"
+#: includes/wbbprof-admin-public-functions.php:27
+msgid "bbPress Forums, Topics and Replies Content"
 msgstr ""
 
 #: includes/wbbprof-admin-public-functions.php:38
-msgid "[#] Hash"
+msgid "[*] Asterisk"
 msgstr ""
 
 #: includes/wbbprof-admin-public-functions.php:39
-msgid "[~] Tilde"
+msgid "[$] Dollar"
 msgstr ""
 
 #: includes/wbbprof-admin-public-functions.php:40
+msgid "[?] Question"
+msgstr ""
+
+#: includes/wbbprof-admin-public-functions.php:41
+msgid "[!] Exclamation"
+msgstr ""
+
+#: includes/wbbprof-admin-public-functions.php:42
+msgid "[-] Hyphen"
+msgstr ""
+
+#: includes/wbbprof-admin-public-functions.php:43
+msgid "[#] Hash"
+msgstr ""
+
+#: includes/wbbprof-admin-public-functions.php:44
+msgid "[~] Tilde"
+msgstr ""
+
+#: includes/wbbprof-admin-public-functions.php:45
 msgid "[ ] Blank"
 msgstr ""
