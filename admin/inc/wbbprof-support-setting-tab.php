@@ -50,7 +50,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<div class="wbbprof-faq-row border">
 				<div class="wbbprof-admin-col-12">
 					<button class="wbbprof-accordion">
-						<?php esc_html_e( 'How do I specify a character other than defined characers to replace out keywords?', 'buddypress-profanity' ); ?>
+						<?php esc_html_e( 'How do I specify a character other than defined character to replace out keywords?', 'buddypress-profanity' ); ?>
 					</button>
 					<div class="wbbprof-panel">
 						<p>
