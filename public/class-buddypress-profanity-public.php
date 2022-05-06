@@ -399,5 +399,32 @@ class Buddypress_Profanity_Public {
 		}
 		return $content;
 	}
+	
+	
+	public function wbbprof_bp_core_replace_tokens_in_text( $text, $tokens ) {
+		
+		$unescaped = array();
+		$escaped   = array();
+
+		foreach ( $tokens as $token => $value ) {
+			if ( ! is_string( $value ) && is_callable( $value ) ) {
+				$value = call_user_func( $value );
+			}
+
+			// Tokens could be objects or arrays.
+			if ( ! is_scalar( $value ) ) {
+				continue;
+			}
+
+			$unescaped[ '{{{' . $token . '}}}' ] = $this->wbbprof_bp_get_activity_content_body($value);
+			$escaped[ '{{' . $token . '}}' ]     = esc_html( $this->wbbprof_bp_get_activity_content_body($value) );
+		}
+
+		$text = strtr( $text, $unescaped );  // Do first.
+		$text = strtr( $text, $escaped );
+		
+		
+		return $text;
+	}
 
 }

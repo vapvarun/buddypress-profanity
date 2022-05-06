@@ -202,6 +202,8 @@ class Buddypress_Profanity {
 		$this->loader->add_action( 'bbp_get_topic_content', $plugin_public, 'wbbprof_bbp_get_reply_content', 10, 2 );
 		$this->loader->add_action( 'bbp_get_reply_content', $plugin_public, 'wbbprof_bbp_get_reply_content', 10, 2 );
 		
+		$this->loader->add_filter( 'bp_core_replace_tokens_in_text', $plugin_public, 'wbbprof_bp_core_replace_tokens_in_text', 10, 2 );
+		
 
 
 	}
