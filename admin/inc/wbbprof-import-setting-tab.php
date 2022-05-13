@@ -48,8 +48,8 @@ if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) {
 			</td>
 		</tr>	    
 	</table>
-</div>
 	<?php submit_button(); ?>
+	</div>
 </form>
 </div>
 </div>

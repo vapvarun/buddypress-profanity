@@ -2,7 +2,9 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
-
+ #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a i {
+    font: normal normal normal 2em/1 FontAwesome;
+}
 .nav-tab-wrapper ul li.General a.nav-tab:before {
     content: "\f111";
 }
@@ -33,6 +35,13 @@
 }
 .wbcom-admin-option-wrap {
     background-color: #fff;
+    padding:20px;
+    overflow: hidden;
+}
+.wbcom-admin-option-wrap p.submit {
+    overflow: hidden;
+    padding: 0;
+    float: left;
 }
 .wbcom-welcome-support-info .button-primary {
     padding: 3px 20px;

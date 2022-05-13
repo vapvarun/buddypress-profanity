@@ -157,8 +157,8 @@ $rendering_symbols = word_rendering_symbols();
 			</td>
 		</tr>
 	</table>
-</div>
 	<?php submit_button(); ?>
+</div>
 </form>
 </div>
 </div>
