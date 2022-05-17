@@ -4,7 +4,7 @@ Donate link: https://wbcomdesigns.com
 Tags: buddypress, profanity, filter, community, activity, comments, messages
 Requires at least: 3.0.1
 Tested up to: 5.9.3
-Stable tag: 1.8.0
+Stable tag: 1.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,11 @@ The [Case Matching] setting provides two option Case Sensitive and Case Insensit
 The [Strict Filtering] with strict mode on does not filter embedded keywords. We recommend users to use Strict Filtering ON mode.
 
 == Changelog ==
+= 1.9.0 =
+* Fix: Fixed admin UI and Icons
+* Fix: (#49) Fixed string mistake
+* Fix: (#47) Email do not filter
+
 = 1.8.0 =
 * Fix: Fixed #44 - activity title not working
 * Enhancement- #43 - Added bbPress Forums, Topics and Replies Titles and Content
