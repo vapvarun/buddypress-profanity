@@ -13,8 +13,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) {
+$message = filter_input( INPUT_GET, 'msg' ) ? filter_input( INPUT_GET, 'msg' ) : '';
+if ( isset( $message ) && 'success' === $message ) {
 	?>
 	<div id="setting-error-settings_updated" class="notice notice-success settings-error is-dismissible"> 
 		<p><strong><?php esc_html_e( 'CSV File is successfully imported', 'buddypress-profanity' ); ?></strong></p>
@@ -40,9 +40,9 @@ if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) {
 			</th>
 			<td>
 				<input type='file' name='wbbprof_import[keywords]' value=''  />
-				
 				<input type='hidden' name='wbbprof_import[import]' value='import'  />
 				<p class="description" id="tagline-description">
+					<?php /* translators: %s: URL of sample keywords*/ ?>
 					<?php echo sprintf( esc_html__( 'Import csv file for remove keywords from community. %s', 'buddypress-profanity' ), '<a href="' . esc_url( BPPROF_PLUGIN_URL . 'admin/css/sample-keywords.csv' ) . '" target="_blank"/>Sample CSV</a>' ); ?>
 				</p>
 			</td>

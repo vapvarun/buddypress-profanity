@@ -168,10 +168,10 @@ class Buddypress_Profanity_Admin {
 				$tab_html = '<div class="wbcom-tabs-section"><div class="nav-tab-wrapper"><div class="wb-responsive-menu"><span>' . esc_html( 'Menu' ) . '</span><input class="wb-toggle-btn" type="checkbox" id="wb-toggle-btn"><label class="wb-toggle-icon" for="wb-toggle-btn"><span class="wb-icon-bars"></span></label></div><ul>';
 		foreach ( $wbbprof_tabs as $wbbprof_tab => $wbbpro_name ) {
 			$class     = ( $wbbprof_tab == $current ) ? 'nav-tab-active' : '';
-			$tab_html .= '<li class='. $wbbpro_name .'><a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a></li>';
+			$tab_html .= '<li class=' . $wbbpro_name . '><a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a></li>';
 		}
 		$tab_html .= '</div></ul></div>';
-		echo $tab_html;
+		echo wp_kses_post( $tab_html );
 		include 'inc/wbbprof-tabs-options.php';
 		echo '</div>'; /* end of .wbcom-admin-settings-page */
 		echo '</div>'; /* end of .wbcom-wrpa div. */
@@ -185,27 +185,27 @@ class Buddypress_Profanity_Admin {
 	 * @since    1.0.0
 	 */
 	public function wbbprof_admin_register_settings() {
-		if ( isset( $_POST['wbbprof_settings'] ) ) {
-			bp_update_option( 'wbbprof_settings', $_POST['wbbprof_settings'] );
-			wp_redirect( $_POST['_wp_http_referer'] );
+		if ( isset( $_POST['wbbprof_settings'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification
+			bp_update_option( 'wbbprof_settings', $_POST['wbbprof_settings'] ); // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+			wp_safe_redirect( $_POST['_wp_http_referer'] ); // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 			exit();
 		}
 
-		if ( isset( $_POST['wbbprof_import'] ) ) {
+		if ( isset( $_POST['wbbprof_import'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification 
 			$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
 			$keywords         = array();
-			if ( ( $open = fopen( $_FILES['wbbprof_import']['tmp_name']['keywords'], 'r' ) ) !== false ) {
+			if ( ( $open = fopen( $_FILES['wbbprof_import']['tmp_name']['keywords'], 'r' ) ) !== false ) { // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 				while ( ( $data = fgetcsv( $open, 10000, ',' ) ) !== false ) {
 					$keywords[] = $data[0];
 				}
 				if ( ! empty( $keywords ) ) {
 					$wbbprof_settings['keywords'] = implode( ',', array_merge( explode( ',', $wbbprof_settings['keywords'] ), $keywords ) );
 					bp_update_option( 'wbbprof_settings', $wbbprof_settings );
-					wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' );
+					wp_safe_redirect( $_POST['_wp_http_referer'] . '&msg=success' ); // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 					exit;
 				}
 			}
-			wp_redirect( $_POST['_wp_http_referer'] );
+			wp_safe_redirect( $_POST['_wp_http_referer'] ); // phpcs:ignore WordPress.Security.NonceVerification, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
 			exit;
 		}
 	}
@@ -214,11 +214,15 @@ class Buddypress_Profanity_Admin {
 	 * WPFORO Reset the KeyWord.
 	 */
 	public function wbbprof_reset_keywords() {
-		if ( isset( $_POST['action'] ) && $_POST['action'] == 'wbbprof_reset_keywords' ) {
+		$nonce = isset( $_POST['ajax_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['ajax_nonce'] ) ) : '';
+		if ( isset( $nonce ) && ! wp_verify_nonce( $nonce, 'bp_profanity_ajax_security' ) ) {
+			$error = new WP_Error( '001', 'Nonce not verified!', 'Some information' );
+			wp_send_json_error( $error );
+		}
+		if ( isset( $_POST['action'] ) && 'wbbprof_reset_keywords' === $_POST['action'] ) {
 			check_ajax_referer( 'bp_profanity_ajax_security', 'ajax_nonce' );
 			$wbbprof_settings             = bp_get_option( 'wbbprof_settings' );
 			$wbbprof_settings['keywords'] = 'FrontGate,Profanity,aeolus,ahole,b1tch,bang,bollock,breast,enlargement,erotic,goddamn,heroin,hell,kooch,nad,nigger,pecker,tubgirl,unwed,woody,yeasty,yobbo,zoophile';
-
 			update_option( 'wbbprof_settings', $wbbprof_settings );
 		}
 		wp_die();

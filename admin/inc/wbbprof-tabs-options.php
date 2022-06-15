@@ -13,9 +13,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
-
-if ( isset( $_GET['tab'] ) ) {
-	$wbbprof_tab = sanitize_text_field( $_GET['tab'] );
+$admin_tabs = filter_input( INPUT_GET, 'tab' ) ? filter_input( INPUT_GET, 'tab' ) : 'welcome';
+if ( isset( $admin_tabs ) ) {
+	$wbbprof_tab = $admin_tabs;
 } else {
 	$wbbprof_tab = 'welcome';
 }

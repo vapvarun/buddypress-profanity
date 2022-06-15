@@ -191,8 +191,9 @@ function wbbprof_network_admin_notices() {
 	/* translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress */
 	. sprintf( esc_html__( '%1$s is ineffective as it requires %2$s to be installed and active.', 'buddypress-profanity' ), '<strong>' . esc_html( $wbbprof_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' )
 	. '</p></div>';
-	if ( isset( $_GET['activate'] ) ) {
-		unset( $_GET['activate'] );
+	if ( null !== filter_input( INPUT_GET, 'activate' ) ) {
+		$activate = filter_input( INPUT_GET, 'activate' );
+		unset( $activate );
 	}
 }
 
@@ -258,7 +259,10 @@ function bpprofanity_requires_buddypress() {
 	if ( ! class_exists( 'Buddypress' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'bpprofanity_required_plugin_admin_notice' );
-		unset( $_GET['activate'] );
+		if ( null !== filter_input( INPUT_GET, 'activate' ) ) {
+			$activate = filter_input( INPUT_GET, 'activate' );
+			unset( $activate );
+		}
 	}
 }
 add_action( 'admin_init', 'bpprofanity_requires_buddypress' );
@@ -276,8 +280,9 @@ function bpprofanity_required_plugin_admin_notice() {
 	/* translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress */
 	echo sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'buddypress-profanity' ), '<strong>' . esc_html( $bpquotes_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' );
 	echo '</p></div>';
-	if ( isset( $_GET['activate'] ) ) {
-		unset( $_GET['activate'] );
+	if ( null !== filter_input( INPUT_GET, 'activate' ) ) {
+		$activate = filter_input( INPUT_GET, 'activate' );
+		unset( $activate );
 	}
 }
 
@@ -288,11 +293,12 @@ function bpprofanity_required_plugin_admin_notice() {
  * @param plugin $plugin plugin.
  */
 function bpprofanity_activation_redirect_settings( $plugin ) {
-	if ( ! isset( $_GET['plugin'] ) ) {
+	$plugins = filter_input( INPUT_GET, 'plugin' ) ? filter_input( INPUT_GET, 'plugin' ) : '';
+	if ( ! isset( $plugins ) ) {
 		return;
 	}
 	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'Buddypress' ) ) {
-		wp_redirect( admin_url( 'admin.php?page=buddypress_profanity' ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=buddypress_profanity' ) );
 		exit;
 	}
 }

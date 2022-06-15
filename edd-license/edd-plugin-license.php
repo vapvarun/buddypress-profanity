@@ -1,16 +1,25 @@
 <?php
-// this is the URL our updater / license checker pings. This should be the URL of the site with EDD installed
+/**
+ * This is the URL our updater / license checker pings. This should be the URL of the site with EDD installed.
+ *
+ * @link       http://www.wbcomdesigns.com
+ * @since      1.0.0
+ *
+ * @package    Buddypress_Profanity
+ * @subpackage Buddypress_Profanity/admin
+ */
+
 if ( ! defined( 'EDD_WBBPROF_STORE_URL' ) ) {
-	define( 'EDD_WBBPROF_STORE_URL', 'https://wbcomdesigns.com/' ); // you should use your own CONSTANT name, and be sure to replace it throughout this file
+	define( 'EDD_WBBPROF_STORE_URL', 'https://wbcomdesigns.com/' ); // you should use your own CONSTANT name, and be sure to replace it throughout this file.
 }
 
-// the name of your product. This should match the download name in EDD exactly
-// define('EDD_WBBPROF_ITEM_NAME', 'PeepSo bbPress Integration'); // you should use your own CONSTANT name, and be sure to replace it throughout this file
+// the name of your product. This should match the download name in EDD exactly.
+// define('EDD_WBBPROF_ITEM_NAME', 'PeepSo bbPress Integration'); // you should use your own CONSTANT name, and be sure to replace it throughout this file.
 if ( ! defined( 'EDD_WBBPROF_ITEM_NAME' ) ) {
-	define( 'EDD_WBBPROF_ITEM_NAME', 'BuddyPress Profanity' ); // you should use your own CONSTANT name, and be sure to replace it throughout this file
+	define( 'EDD_WBBPROF_ITEM_NAME', 'BuddyPress Profanity' ); // you should use your own CONSTANT name, and be sure to replace it throughout this file.
 }
 
-// the name of the settings page for the license input to be displayed
+// the name of the settings page for the license input to be displayed.
 if ( ! defined( 'EDD_WBBPROF_PLUGIN_LICENSE_PAGE' ) ) {
 	define( 'EDD_WBBPROF_PLUGIN_LICENSE_PAGE', 'wbcom-license-page' );
 }
@@ -20,11 +29,16 @@ if ( ! class_exists( 'EDD_WBBPROF_Plugin_Updater' ) ) {
 	include dirname( __FILE__ ) . '/EDD_WBBPROF_Plugin_Updater.php';
 }
 
+/**
+ * Plugin Updater.
+ *
+ * @return void
+ */
 function edd_WBBPROF_plugin_updater() {
 	// retrieve our license key from the DB.
 	$license_key = trim( get_option( 'edd_wbcom_WBBPROF_license_key' ) );
 
-	// setup the updater
+	// setup the updater.
 	$edd_updater = new EDD_WBBPROF_Plugin_Updater(
 		EDD_WBBPROF_STORE_URL,
 		BPPROF_PLUGIN_FILE,
@@ -39,41 +53,52 @@ function edd_WBBPROF_plugin_updater() {
 }
 add_action( 'admin_init', 'edd_WBBPROF_plugin_updater', 0 );
 
+/**
+ * Register admin license tab setting.
+ *
+ * @return void
+ */
 function edd_wbcom_WBBPROF_register_option() {
-	// creates our settings in the options table
+	// creates our settings in the options table.
 	register_setting( 'edd_wbcom_WBBPROF_license', 'edd_wbcom_WBBPROF_license_key', 'edd_WBBPROF_sanitize_license' );
 }
 add_action( 'admin_init', 'edd_wbcom_WBBPROF_register_option' );
 
+/**
+ * Sanitize License.
+ *
+ * @param  int $new New Key.
+ */
 function edd_WBBPROF_sanitize_license( $new ) {
 	$old = get_option( 'edd_wbcom_WBBPROF_license_key' );
 	if ( $old && $old != $new ) {
-		delete_option( 'edd_wbcom_WBBPROF_license_status' ); // new license has been entered, so must reactivate
+		delete_option( 'edd_wbcom_WBBPROF_license_status' ); // new license has been entered, so must reactivate.
 	}
 	return $new;
 }
 
-/***********************************************
+/**
  * Illustrates how to deactivate a license key.
  * This will decrease the site count
- ***********************************************/
-
+ *
+ * @return void
+ */
 function edd_wbcom_WBBPROF_deactivate_license() {
-	// listen for our activate button to be clicked
+	// listen for our activate button to be clicked.
 	if ( isset( $_POST['edd_WBBPROF_license_deactivate'] ) ) {
-		// run a quick security check
+		// run a quick security check.
 		if ( ! check_admin_referer( 'edd_wbcom_WBBPROF_nonce', 'edd_wbcom_WBBPROF_nonce' ) ) {
-			return; // get out if we didn't click the Activate button
+			return; // get out if we didn't click the Activate button.
 		}
 
-		// retrieve the license from the database
+		// retrieve the license from the database.
 		$license = trim( get_option( 'edd_wbcom_WBBPROF_license_key' ) );
 
-		// data to send in our API request
+		// data to send in our API request.
 		$api_params = array(
 			'edd_action' => 'deactivate_license',
 			'license'    => $license,
-			'item_name'  => urlencode( EDD_WBBPROF_ITEM_NAME ), // the name of our product in EDD
+			'item_name'  => urlencode( EDD_WBBPROF_ITEM_NAME ), // the name of our product in EDD.
 			'url'        => home_url(),
 		);
 
@@ -87,7 +112,7 @@ function edd_wbcom_WBBPROF_deactivate_license() {
 			)
 		);
 
-		// make sure the response came back okay
+		// make sure the response came back okay.
 		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 			if ( is_wp_error( $response ) ) {
 				$message = $response->get_error_message();
@@ -108,29 +133,24 @@ function edd_wbcom_WBBPROF_deactivate_license() {
 			exit();
 		}
 
-		// decode the license data
+		// decode the license data.
 		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
 		// $license_data->license will be either "deactivated" or "failed"
-		if ( $license_data->license == 'deactivated' ) {
+		if ( 'deactivated' === $license_data->license ) {
 			delete_option( 'edd_wbcom_WBBPROF_license_status' );
 		}
 
-		wp_redirect( admin_url( 'admin.php?page=' . EDD_WBBPROF_PLUGIN_LICENSE_PAGE ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=' . EDD_WBBPROF_PLUGIN_LICENSE_PAGE ) );
 		exit();
 	}
 }
 add_action( 'admin_init', 'edd_wbcom_WBBPROF_deactivate_license' );
 
 
-/************************************
- * this illustrates how to check if
- * a license key is still valid
- * the updater does this for you,
- * so this is only needed if you
- * want to do something custom
- *************************************/
-
+/**
+ * This illustrates how to check if a license key is still valid the updater does this for you, so this is only needed if you want to do something custom
+ */
 function edd_wbcom_WBBPROF_check_license() {
 	global $wp_version;
 
@@ -159,14 +179,14 @@ function edd_wbcom_WBBPROF_check_license() {
 
 	$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
-	if ( $license_data->license == 'valid' ) {
+	if ( 'valid' === $license_data->license ) {
 		echo 'valid';
 		exit;
-		// this license is still valid
+		// this license is still valid.
 	} else {
 		echo 'invalid';
 		exit;
-		// this license is no longer valid
+		// this license is no longer valid.
 	}
 }
 
@@ -174,13 +194,15 @@ function edd_wbcom_WBBPROF_check_license() {
  * This is a means of catching errors from the activation method above and displaying it to the customer
  */
 function edd_wbcom_WBBPROF_admin_notices() {
-	if ( isset( $_GET['WBBPROF_activation'] ) && ! empty( $_GET['message'] ) ) {
-		switch ( $_GET['WBBPROF_activation'] ) {
+	$license_activation = filter_input( INPUT_GET, 'WBBPROF_activation' ) ? filter_input( INPUT_GET, 'WBBPROF_activation' ) : '';
+	$error_message      = filter_input( INPUT_GET, 'message' ) ? filter_input( INPUT_GET, 'message' ) : '';
+	if ( isset( $license_activation ) && ! empty( $error_message ) ) {
+		switch ( $license_activation ) {
 			case 'false':
-				$message = urldecode( $_GET['message'] );
+				$message = urldecode( $error_message );
 				?>
 				<div class="error">
-					<p><?php echo $message; ?></p>
+					<p><?php echo esc_html( $message ); ?></p>
 				</div>
 				<?php
 				break;
@@ -194,7 +216,11 @@ function edd_wbcom_WBBPROF_admin_notices() {
 }
 add_action( 'admin_notices', 'edd_wbcom_WBBPROF_admin_notices' );
 
-add_action( 'wbcom_add_plugin_license_code', 'wbcom_render_wbbprof_license_section' );
+/**
+ * Display License tab Content.
+ *
+ * @return void
+ */
 function wbcom_render_wbbprof_license_section() {
 
 	$license = get_option( 'edd_wbcom_WBBPROF_license_key', true );
@@ -202,13 +228,15 @@ function wbcom_render_wbbprof_license_section() {
 
 	$plugin_data = get_plugin_data( BPPROF_PLUGIN_PATH . '/buddypress-profanity.php', $markup = true, $translate = true );
 
-	if ( $status !== false && $status == 'valid' ) {
+	if ( false !== $status && 'valid' === $status ) {
 		$status_class = 'active';
 		$status_text  = 'Active';
 	} else {
 		$status_class = 'inactive';
 		$status_text  = 'Inactive';
 	}
+	$plugin_name    = $plugin_data['Name'];
+	$plugin_version = $plugin_data['Version'];
 	?>
 	<table class="form-table wb-license-form-table mobile-license-headings">
 		<thead>
@@ -226,21 +254,21 @@ function wbcom_render_wbbprof_license_section() {
 		<?php settings_fields( 'edd_wbcom_WBBPROF_license' ); ?>
 		<table class="form-table wb-license-form-table">
 			<tr>
-				<td class="wb-plugin-name"><?php esc_attr_e( $plugin_data['Name'], 'buddypress-profanity' ); ?></td>
-				<td class="wb-plugin-version"><?php esc_attr_e( $plugin_data['Version'], 'buddypress-profanity' ); ?></td>
+				<td class="wb-plugin-name"><?php esc_attr_e( $plugin_name ); ?></td>
+				<td class="wb-plugin-version"><?php esc_attr_e( $plugin_version ); ?></td>
 				<td class="wb-plugin-license-key"><input id="edd_wbcom_WBBPROF_license_key" name="edd_wbcom_WBBPROF_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license, 'buddypress-profanity' ); ?>" /></td>
-				<td class="wb-license-status <?php echo $status_class; ?>"><?php esc_attr_e( $status_text, 'buddypress-profanity' ); ?></td>
+				<td class="wb-license-status <?php echo esc_attr( $status_class ); ?>"><?php esc_attr_e( $status_text, 'buddypress-profanity' ); ?></td>
 				<td class="wb-license-action">
 					<?php
-					if ( $status !== false && $status == 'valid' ) {
+					if ( false !== $status && 'valid' === $status ) {
 						wp_nonce_field( 'edd_wbcom_WBBPROF_nonce', 'edd_wbcom_WBBPROF_nonce' );
 						?>
-						<input type="submit" class="button-secondary" name="edd_WBBPROF_license_deactivate" value="<?php _e( 'Deactivate License', 'buddypress-profanity' ); ?>"/>
+						<input type="submit" class="button-secondary" name="edd_WBBPROF_license_deactivate" value="<?php esc_html_e( 'Deactivate License', 'buddypress-profanity' ); ?>"/>
 						<?php
 					} else {
 						wp_nonce_field( 'edd_wbcom_WBBPROF_nonce', 'edd_wbcom_WBBPROF_nonce' );
 						?>
-						<input type="submit" class="button-secondary" name="edd_wbbprof_license_activate" value="<?php _e( 'Activate License', 'buddypress-profanity' ); ?>"/>
+						<input type="submit" class="button-secondary" name="edd_wbbprof_license_activate" value="<?php esc_html_e( 'Activate License', 'buddypress-profanity' ); ?>"/>
 					<?php } ?>
 				</td>
 			</tr>
@@ -248,31 +276,32 @@ function wbcom_render_wbbprof_license_section() {
 	</form>
 	<?php
 }
+add_action( 'wbcom_add_plugin_license_code', 'wbcom_render_wbbprof_license_section' );
 
-
-/************************************
- * this illustrates how to activate
+/**
+ * This illustrates how to activate
  * a license key
- *************************************/
-
+ *
+ * @return void
+ */
 function edd_wbcom_WBBPROF_activate_license() {
-	// listen for our activate button to be clicked
+	// listen for our activate button to be clicked.
 
 	if ( isset( $_POST['edd_wbbprof_license_activate'] ) ) {
 
-		// run a quick security check
+		// run a quick security check.
 		if ( ! check_admin_referer( 'edd_wbcom_WBBPROF_nonce', 'edd_wbcom_WBBPROF_nonce' ) ) {
-			return; // get out if we didn't click the Activate button
+			return; // get out if we didn't click the Activate button.
 		}
 
-		// retrieve the license from the database
+		// retrieve the license from the database.
 		$license = isset( $_POST['edd_wbcom_WBBPROF_license_key'] ) ? sanitize_text_field( wp_unslash( $_POST['edd_wbcom_WBBPROF_license_key'] ) ) : '';
 
-		// data to send in our API request
+		// data to send in our API request.
 		$api_params = array(
 			'edd_action' => 'activate_license',
 			'license'    => $license,
-			'item_name'  => urlencode( EDD_WBBPROF_ITEM_NAME ), // the name of our product in EDD
+			'item_name'  => urlencode( EDD_WBBPROF_ITEM_NAME ), // the name of our product in EDD.
 			'url'        => home_url(),
 		);
 
@@ -286,7 +315,7 @@ function edd_wbcom_WBBPROF_activate_license() {
 			)
 		);
 
-		// make sure the response came back okay
+		// make sure the response came back okay.
 		if ( is_wp_error( $response ) || 200 !== wp_remote_retrieve_response_code( $response ) ) {
 			if ( is_wp_error( $response ) ) {
 				$message = $response->get_error_message();
@@ -300,6 +329,7 @@ function edd_wbcom_WBBPROF_activate_license() {
 				switch ( $license_data->error ) {
 					case 'expired':
 						$message = sprintf(
+							/* translators: %1$s: Expire Time*/
 							__( 'Your license key expired on %s.', 'buddypress-profanity' ),
 							date_i18n( get_option( 'date_format' ), strtotime( $license_data->expires, current_time( 'timestamp' ) ) )
 						);
@@ -319,6 +349,7 @@ function edd_wbcom_WBBPROF_activate_license() {
 						break;
 
 					case 'item_name_mismatch':
+						/* translators: %1$s: Item Name*/
 						$message = sprintf( __( 'This appears to be an invalid license key for %s.', 'buddypress-profanity' ), EDD_WBBPROF_ITEM_NAME );
 						break;
 
@@ -333,7 +364,7 @@ function edd_wbcom_WBBPROF_activate_license() {
 			}
 		}
 
-		// Check if anything passed on a message constituting a failure
+		// Check if anything passed on a message constituting a failure.
 		if ( ! empty( $message ) ) {
 			$base_url = admin_url( 'admin.php?page=' . EDD_WBBPROF_PLUGIN_LICENSE_PAGE );
 			$redirect = add_query_arg(
@@ -346,7 +377,7 @@ function edd_wbcom_WBBPROF_activate_license() {
 			$license  = trim( $license );
 			update_option( 'edd_wbcom_WBBPROF_license_key', $license );
 			update_option( 'edd_wbcom_WBBPROF_license_status', $license_data->license );
-			wp_redirect( $redirect );
+			wp_safe_redirect( $redirect );
 			exit();
 		}
 
@@ -354,8 +385,9 @@ function edd_wbcom_WBBPROF_activate_license() {
 		$license = trim( $license );
 		update_option( 'edd_wbcom_WBBPROF_license_key', $license );
 		update_option( 'edd_wbcom_WBBPROF_license_status', $license_data->license );
-		wp_redirect( admin_url( 'admin.php?page=' . EDD_WBBPROF_PLUGIN_LICENSE_PAGE ) );
+		wp_safe_redirect( admin_url( 'admin.php?page=' . EDD_WBBPROF_PLUGIN_LICENSE_PAGE ) );
 		exit();
 	}
 }
 add_action( 'admin_init', 'edd_wbcom_WBBPROF_activate_license' );
+

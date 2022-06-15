@@ -355,9 +355,9 @@ class Buddypress_Profanity_Public {
 		);
 		return $wbbprof_content;
 	}
-	
-	public function wbbprof_bbp_get_title( $title, $bbp_id) {
-		
+
+	public function wbbprof_bbp_get_title( $title, $bbp_id ) {
+
 		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
 			if ( in_array( 'bbpress_title', $this->wbbprof_settings['filter_contents'] ) ) {
 				if ( is_array( $this->keywords ) ) {
@@ -377,9 +377,9 @@ class Buddypress_Profanity_Public {
 		}
 		return $title;
 	}
-	
-	public function wbbprof_bbp_get_reply_content($content, $bbp_id ){
-		
+
+	public function wbbprof_bbp_get_reply_content( $content, $bbp_id ) {
+
 		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
 			if ( in_array( 'bbpress_content', $this->wbbprof_settings['filter_contents'] ) ) {
 				if ( is_array( $this->keywords ) ) {
@@ -399,10 +399,10 @@ class Buddypress_Profanity_Public {
 		}
 		return $content;
 	}
-	
-	
+
+
 	public function wbbprof_bp_core_replace_tokens_in_text( $text, $tokens ) {
-		
+
 		$unescaped = array();
 		$escaped   = array();
 
@@ -416,14 +416,13 @@ class Buddypress_Profanity_Public {
 				continue;
 			}
 
-			$unescaped[ '{{{' . $token . '}}}' ] = $this->wbbprof_bp_get_activity_content_body($value);
-			$escaped[ '{{' . $token . '}}' ]     = esc_html( $this->wbbprof_bp_get_activity_content_body($value) );
+			$unescaped[ '{{{' . $token . '}}}' ] = $this->wbbprof_bp_get_activity_content_body( $value );
+			$escaped[ '{{' . $token . '}}' ]     = esc_html( $this->wbbprof_bp_get_activity_content_body( $value ) );
 		}
 
 		$text = strtr( $text, $unescaped );  // Do first.
 		$text = strtr( $text, $escaped );
-		
-		
+
 		return $text;
 	}
 
