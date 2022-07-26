@@ -87,6 +87,17 @@ class Buddypress_Profanity_Admin {
 
 	}
 
+
+	public function wbcom_hide_all_admin_notices_from_setting_page() {
+		$wbcom_pages_array  = array( 'wbcomplugins', 'wbcom-plugins-page', 'wbcom-support-page', 'buddypress_profanity' );
+		$wbcom_setting_page = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
+
+		if ( in_array( $wbcom_setting_page, $wbcom_pages_array, true ) ) {
+			remove_all_actions( 'admin_notices' );
+			remove_all_actions( 'all_admin_notices' );
+		}
+	}
+
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
@@ -148,34 +159,43 @@ class Buddypress_Profanity_Admin {
 		$current = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'welcome'; //phpcs:ignore
 		?>
 		<div class="wrap">
-					<hr class="wp-header-end">
-					<div class="wbcom-wrap">
-			<div class="bpprof-header">
-				<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
-				<h1 class="wbcom-plugin-heading">
-					<?php esc_html_e( 'BuddyPress Profanity Settings', 'buddypress-profanity' ); ?>
-				</h1>
+			<div class="wbcom-bb-plugins-offer-wrapper">
+				<div id="wb_admin_logo">
+					<a href="https://wbcomdesigns.com/downloads/buddypress-community-bundle/" target="_blank">
+						<img src="<?php echo esc_url( BPPROF_PLUGIN_URL ) . 'admin/wbcom/assets/imgs/wbcom-offer-notice.png'; ?>">
+					</a>
+				</div>
 			</div>
-		<div class="wbcom-admin-settings-page">
-		<?php
-		$wbbprof_tabs = array(
-			'welcome' => __( 'Welcome', 'buddypress-profanity' ),
-			'general' => __( 'General', 'buddypress-profanity' ),
-			'import'  => __( 'Import', 'buddypress-profanity' ),
-			'support' => __( 'Support', 'buddypress-profanity' ),
-		);
+			<div class="wbcom-wrap">
+				<div class="bpprof-header">
+					<div class="wbcom_admin_header-wrapper">
+						<div id="wb_admin_plugin_name">
+							<?php esc_html_e( 'BuddyPress Profanity Settings', 'buddypress-profanity' ); ?>
+							<span><?php printf( __( 'Version %s', 'buddypress-profanity' ), BPPROF_PLUGIN_VERSION ); ?></span>
+						</div>
+							<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
+					</div>
+				</div>
+				<div class="wbcom-admin-settings-page">
+				<?php
+				$wbbprof_tabs = array(
+					'welcome' => __( 'Welcome', 'buddypress-profanity' ),
+					'general' => __( 'General', 'buddypress-profanity' ),
+					'import'  => __( 'Import', 'buddypress-profanity' ),
+					'support' => __( 'Support', 'buddypress-profanity' ),
+				);
 
-				$tab_html = '<div class="wbcom-tabs-section"><div class="nav-tab-wrapper"><div class="wb-responsive-menu"><span>' . esc_html( 'Menu' ) . '</span><input class="wb-toggle-btn" type="checkbox" id="wb-toggle-btn"><label class="wb-toggle-icon" for="wb-toggle-btn"><span class="wb-icon-bars"></span></label></div><ul>';
-		foreach ( $wbbprof_tabs as $wbbprof_tab => $wbbpro_name ) {
-			$class     = ( $wbbprof_tab == $current ) ? 'nav-tab-active' : '';
-			$tab_html .= '<li class='. $wbbpro_name .'><a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a></li>';
-		}
-		$tab_html .= '</div></ul></div>';
-		echo $tab_html;
-		include 'inc/wbbprof-tabs-options.php';
-		echo '</div>'; /* end of .wbcom-admin-settings-page */
-		echo '</div>'; /* end of .wbcom-wrpa div. */
-		echo '</div>'; /* end of .wrap div. */
+						$tab_html = '<div class="wbcom-tabs-section"><div class="nav-tab-wrapper"><div class="wb-responsive-menu"><span>' . esc_html( 'Menu' ) . '</span><input class="wb-toggle-btn" type="checkbox" id="wb-toggle-btn"><label class="wb-toggle-icon" for="wb-toggle-btn"><span class="wb-icon-bars"></span></label></div><ul>';
+				foreach ( $wbbprof_tabs as $wbbprof_tab => $wbbpro_name ) {
+					$class     = ( $wbbprof_tab == $current ) ? 'nav-tab-active' : '';
+					$tab_html .= '<li class='. $wbbpro_name .'><a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a></li>';
+				}
+				$tab_html .= '</div></ul></div>';
+				echo $tab_html;
+				include 'inc/wbbprof-tabs-options.php';
+				echo '</div>'; /* end of .wbcom-admin-settings-page */
+				echo '</div>'; /* end of .wbcom-wrpa div. */
+				echo '</div>'; /* end of .wrap div. */
 
 	}
 

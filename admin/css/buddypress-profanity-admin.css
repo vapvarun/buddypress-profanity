@@ -12,50 +12,21 @@
     content: "\f166";
 }
 .nav-tab-wrapper ul li.Support a.nav-tab:before {
-    content: "\f125";
+    content: "\f101";
 }
 .wrap .wbcom-plugin-heading{
     display: block !important;
 }
-.wbcom-welcome-head h2.wbcom-welcome-title,
-.wbcom-admin-title-section h3 {
-    padding: 18px 25px;
-    font-size: 15px;
-    background: #2094F3;
-    color: #fff;
-    margin: 0 -15px 20px;
+.wbcom-settings-section-wrap {
+    overflow: inherit;
 }
-.wbcom-wrapper-admin,
-.wbcom-welcome-main-wrapper {
-    position: relative;
-    font-size: 15px;
-    background: #f6f6f6;
-    padding: 0 15px 15px;
-    margin: 25px 0;
+.wbcom-selectize-control-wrap.wbcom-settings-section-options .selectize-input {
+    height: auto;
 }
-.wbcom-admin-option-wrap {
-    background-color: #fff;
-    padding:20px;
-    overflow: hidden;
+.wbcom-settings-member-retraction span.wbbprof-span-text{
+    margin-left: 8px!important;
+    font-weight: 600!important;
 }
-.wbcom-admin-option-wrap p.submit {
-    overflow: hidden;
-    padding: 0;
-    float: left;
-}
-.wbcom-welcome-support-info .button-primary {
-    padding: 3px 20px;
-    border-radius: 5px;
-}
-.wbcom-welcome-support-info .three-col p {
-    min-height: 70px;
-}
-.wbcom-welcome-support-info {
-    border: 1px solid #ddd;
-    box-shadow: none;
-    margin-bottom: 0;
-}
-
 /*----------  Active tab design  ----------*/
 .nav-tab.active {
     background: #f1f1f1;
@@ -162,3 +133,4 @@ button.wbbprof-accordion.active::after {
 }
 
 }
+

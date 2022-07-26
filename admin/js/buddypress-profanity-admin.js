@@ -57,7 +57,7 @@ jQuery( document ).ready(
 
 
 		/*support tab accordion*/
-		var wbbprof_elmt = document.getElementsByClassName( "wbbprof-accordion" );
+		var wbbprof_elmt = document.getElementsByClassName( "wbcom-faq-accordion" );
 		var k;
 		var wbbprof_elmt_len = wbbprof_elmt.length;
 		for (k = 0; k < wbbprof_elmt_len; k++) {
