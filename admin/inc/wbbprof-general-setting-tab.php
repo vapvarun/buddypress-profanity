@@ -66,7 +66,7 @@ $rendering_symbols = word_rendering_symbols();
 												<input name="wbbprof_settings[filter_contents][]" value="<?php echo esc_attr( $key );?>" type="checkbox" . <?php echo esc_attr( $checked );?>>
 												<div class="wb-slider wb-round"></div>
 											</label>
-											<label class="wbbprof-span-text wbbprof-chkbox-txt" for="bp_create_post_<?php echo esc_attr( $id ); ?>"><?php echo esc_html( $value ); ?></label>
+											<label class="wbbprof-span-text wbbprof-chkbox-txt" for="bp_create_post_<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $value ); ?></label>
 										</li>
 										<?php
 									}
