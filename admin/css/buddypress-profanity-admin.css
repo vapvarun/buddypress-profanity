@@ -27,6 +27,22 @@
     margin-left: 8px!important;
     font-weight: 600!important;
 }
+ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex li {
+    margin: 5px 0;
+}
+ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex {
+    flex-wrap: wrap;
+}
+.form-table.buddypress-profanity-admin-table a#wbbprof_to_reset {
+    padding: 14px 20px;
+    line-height: 1;
+    border-radius: 8px;
+    color: #fff;
+    border: none !important;
+    font-weight: 500;
+    background: #2a32ef;
+}
+
 /*----------  Active tab design  ----------*/
 .nav-tab.active {
     background: #f1f1f1;
