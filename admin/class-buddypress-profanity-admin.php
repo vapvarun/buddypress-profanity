@@ -89,7 +89,7 @@ class Buddypress_Profanity_Admin {
 
 
 	public function wbcom_hide_all_admin_notices_from_setting_page() {
-		$wbcom_pages_array  = array( 'wbcomplugins', 'wbcom-plugins-page', 'wbcom-support-page', 'buddypress_profanity' );
+		$wbcom_pages_array  = array( 'wbcomplugins', 'wbcom-plugins-page', 'wbcom-support-page', 'buddypress_profanity', 'wbcom-license-page' );
 		$wbcom_setting_page = filter_input( INPUT_GET, 'page' ) ? filter_input( INPUT_GET, 'page' ) : '';
 
 		if ( in_array( $wbcom_setting_page, $wbcom_pages_array, true ) ) {

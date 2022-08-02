@@ -3,7 +3,7 @@
  * included in this file.
  */
  #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a i {
-    font: normal normal normal 2em/1 FontAwesome;
+    font-family: FontAwesome;
 }
 .nav-tab-wrapper ul li.General a.nav-tab:before {
     content: "\f111";
@@ -41,6 +41,9 @@ ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex {
     border: none !important;
     font-weight: 500;
     background: #2a32ef;
+}
+.wbcom-wrap .notice.notice-error.is-dismissible.learndash-license-is-dismissible {
+    display: none !important;
 }
 
 /*----------  Active tab design  ----------*/
