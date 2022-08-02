@@ -3,7 +3,7 @@
  * included in this file.
  */
  #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a i {
-    font: normal normal normal 2em/1 FontAwesome;
+    font-family: FontAwesome;
 }
 .nav-tab-wrapper ul li.General a.nav-tab:before {
     content: "\f111";
@@ -12,48 +12,38 @@
     content: "\f166";
 }
 .nav-tab-wrapper ul li.Support a.nav-tab:before {
-    content: "\f125";
+    content: "\f101";
 }
 .wrap .wbcom-plugin-heading{
     display: block !important;
 }
-.wbcom-welcome-head h2.wbcom-welcome-title,
-.wbcom-admin-title-section h3 {
-    padding: 18px 25px;
-    font-size: 15px;
-    background: #2094F3;
+.wbcom-settings-section-wrap {
+    overflow: inherit;
+}
+.wbcom-selectize-control-wrap.wbcom-settings-section-options .selectize-input {
+    height: auto;
+}
+.wbcom-settings-member-retraction span.wbbprof-span-text{
+    margin-left: 8px!important;
+    font-weight: 600!important;
+}
+ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex li {
+    margin: 5px 0;
+}
+ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex {
+    flex-wrap: wrap;
+}
+.form-table.buddypress-profanity-admin-table a#wbbprof_to_reset {
+    padding: 14px 20px;
+    line-height: 1;
+    border-radius: 8px;
     color: #fff;
-    margin: 0 -15px 20px;
+    border: none !important;
+    font-weight: 500;
+    background: #2a32ef;
 }
-.wbcom-wrapper-admin,
-.wbcom-welcome-main-wrapper {
-    position: relative;
-    font-size: 15px;
-    background: #f6f6f6;
-    padding: 0 15px 15px;
-    margin: 25px 0;
-}
-.wbcom-admin-option-wrap {
-    background-color: #fff;
-    padding:20px;
-    overflow: hidden;
-}
-.wbcom-admin-option-wrap p.submit {
-    overflow: hidden;
-    padding: 0;
-    float: left;
-}
-.wbcom-welcome-support-info .button-primary {
-    padding: 3px 20px;
-    border-radius: 5px;
-}
-.wbcom-welcome-support-info .three-col p {
-    min-height: 70px;
-}
-.wbcom-welcome-support-info {
-    border: 1px solid #ddd;
-    box-shadow: none;
-    margin-bottom: 0;
+.wbcom-wrap .notice.notice-error.is-dismissible.learndash-license-is-dismissible {
+    display: none !important;
 }
 
 /*----------  Active tab design  ----------*/
@@ -162,3 +152,4 @@ button.wbbprof-accordion.active::after {
 }
 
 }
+
