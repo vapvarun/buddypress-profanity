@@ -45,6 +45,20 @@ ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex {
 .wbcom-wrap .notice.notice-error.is-dismissible.learndash-license-is-dismissible {
     display: none !important;
 }
+div#setting-error-settings_updated {
+    position: absolute;
+    right: 50px;
+    z-index: 99;
+    border-radius: 10px;
+    line-height: normal;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    color: #10AB00;
+}
+button.notice-dismiss:before{
+    color: red !important;
+}
 
 /*----------  Active tab design  ----------*/
 .nav-tab.active {
