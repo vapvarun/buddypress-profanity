@@ -254,8 +254,8 @@ function wbcom_render_wbbprof_license_section() {
 		<?php settings_fields( 'edd_wbcom_WBBPROF_license' ); ?>
 		<table class="form-table wb-license-form-table">
 			<tr>
-				<td class="wb-plugin-name"><?php esc_attr_e( $plugin_name ); ?></td>
-				<td class="wb-plugin-version"><?php esc_attr_e( $plugin_version ); ?></td>
+				<td class="wb-plugin-name"><?php esc_attr_e( $plugin_name, 'buddypress-profanity' ); ?></td>
+				<td class="wb-plugin-version"><?php esc_attr_e( $plugin_version, 'buddypress-profanity' ); ?></td>
 				<td class="wb-plugin-license-key"><input id="edd_wbcom_WBBPROF_license_key" name="edd_wbcom_WBBPROF_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license, 'buddypress-profanity' ); ?>" /></td>
 				<td class="wb-license-status <?php echo esc_attr( $status_class ); ?>"><?php esc_attr_e( $status_text, 'buddypress-profanity' ); ?></td>
 				<td class="wb-license-action">
