@@ -2,37 +2,47 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
- #wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a i {
+#wb_admin_header #wb_admin_nav ul li.wb_admin_nav_item a i {
     font-family: FontAwesome;
 }
+
 .nav-tab-wrapper ul li.General a.nav-tab:before {
     content: "\f111";
 }
+
 .nav-tab-wrapper ul li.Import a.nav-tab:before {
     content: "\f166";
 }
+
 .nav-tab-wrapper ul li.Support a.nav-tab:before {
     content: "\f101";
 }
-.wrap .wbcom-plugin-heading{
+
+.wrap .wbcom-plugin-heading {
     display: block !important;
 }
+
 .wbcom-settings-section-wrap {
     overflow: inherit;
 }
+
 .wbcom-selectize-control-wrap.wbcom-settings-section-options .selectize-input {
     height: auto;
 }
-.wbcom-settings-member-retraction span.wbbprof-span-text{
-    margin-left: 8px!important;
-    font-weight: 600!important;
+
+.wbcom-settings-member-retraction span.wbbprof-span-text {
+    margin-left: 8px !important;
+    font-weight: 600 !important;
 }
+
 ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex li {
     margin: 5px 0;
 }
+
 ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex {
     flex-wrap: wrap;
 }
+
 .form-table.buddypress-profanity-admin-table a#wbbprof_to_reset {
     padding: 14px 20px;
     line-height: 1;
@@ -42,9 +52,11 @@ ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex {
     font-weight: 500;
     background: #2a32ef;
 }
+
 .wbcom-wrap .notice.notice-error.is-dismissible.learndash-license-is-dismissible {
     display: none !important;
 }
+
 div#setting-error-settings_updated {
     position: absolute;
     right: 50px;
@@ -56,7 +68,8 @@ div#setting-error-settings_updated {
     box-shadow: none;
     color: #10AB00;
 }
-button.notice-dismiss:before{
+
+button.notice-dismiss:before {
     color: red !important;
 }
 
@@ -86,19 +99,22 @@ button.notice-dismiss:before{
 }
 
 /*----------  Support tab css  ----------*/
-.wbbprof-support-setting{
+.wbbprof-support-setting {
     float: left;
     width: 100%;
 }
-.wbbprof-faq-row{
+
+.wbbprof-faq-row {
     clear: both;
     overflow: hidden;
 }
+
 .wbbprof-admin-col-12 {
     float: left;
-    padding:5px 0;
+    padding: 5px 0;
     width: 100%;
 }
+
 button.wbbprof-accordion {
     background-color: hsl(0, 0%, 87%);
     border: medium none;
@@ -112,13 +128,17 @@ button.wbbprof-accordion {
     transition: all 0.4s ease 0s;
     width: 100%;
 }
-button.wbbprof-accordion.active, button.wbbprof-accordion:hover {
+
+button.wbbprof-accordion.active,
+button.wbbprof-accordion:hover {
     background-color: hsl(207, 90%, 54%);
-    color:white;
+    color: white;
 }
+
 button.wbbprof-accordion:hover:after {
-    color:white;
+    color: white;
 }
+
 div.wbbprof-panel {
     background-color: white;
     max-height: 0;
@@ -126,20 +146,23 @@ div.wbbprof-panel {
     padding: 0 18px;
     transition: max-height 0.2s ease-out;
 }
+
 button.wbbprof-accordion::after {
     color: hsl(0, 0%, 47%);
     content: "+";
     float: right;
-    font-size:18px;
+    font-size: 18px;
     font-weight: bold;
     margin-left: 5px;
 }
+
 button.wbbprof-accordion::after:hover {
     color: white;
 }
+
 button.wbbprof-accordion.active::after {
     content: "−";
-    color:white;
+    color: white;
 }
 
 .buddypress-profanity-admin-table code {
@@ -147,23 +170,29 @@ button.wbbprof-accordion.active::after {
     margin: 10px 0;
 }
 
-.bpprof_excluding_member{
-    width:70%;
+.bpprof_excluding_member {
+    width: 70%;
 }
+
 .wbbprof-faqs-block-parent-contain {
     background: #fff;
-    padding:10px 15px;
-}
-
-@media only screen and (max-width: 640px){
-
-.wbcom-admin-option-wrap .form-table td {
     padding: 10px 15px;
 }
-.buddypress-profanity-admin-table .wbbprof-span-text.wbbprof-chkbox-txt {
-    margin-left: 15px;
-    margin-right: 0;
-}
+
+@media only screen and (max-width: 640px) {
+
+    .wbcom-admin-option-wrap .form-table td {
+        padding: 10px 15px;
+    }
+
+    .buddypress-profanity-admin-table .wbbprof-span-text.wbbprof-chkbox-txt {
+        margin-left: 15px;
+        margin-right: 0;
+    }
 
 }
 
+.wbcom-wrap .notice.notice-error.is-dismissible.learndash-license-is-dismissible,
+#wpwrap .notice.notice-error {
+    display: none !important;
+}

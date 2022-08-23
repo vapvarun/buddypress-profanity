@@ -72,7 +72,7 @@ class Buddypress_Profanity_Admin {
 		 * class.
 		 */
 
-		if ( isset( $_GET['page'] ) && 'buddypress_profanity' == $_GET['page'] ) { //phpcs:ignore
+		if ( isset( $_GET['page'] ) && 'buddypress_profanity' == $_GET['page']  || 'wbcom-plugins-page' == $_GET['page'] || 'wbcom-support-page' == $_GET['page'] || 'wbcom-license-page' == $_GET['page'] || 'wbcomplugins' == $_GET['page']) { //phpcs:ignore
 			global $wp_styles;
 			$srcs = array_map( 'basename', (array) wp_list_pluck( $wp_styles->registered, 'src' ) );
 
