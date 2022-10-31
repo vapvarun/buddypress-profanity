@@ -217,9 +217,9 @@ class Buddypress_Profanity_Admin {
 		if ( isset( $_POST['wbbprof_import'] ) ) {
 			$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
 			$keywords         = array();
-			$wbbprof_settings['keywords'] = $_POST['wbbprof_import']['keywords'];
-			bp_update_option( 'wbbprof_settings', $wbbprof_settings );
+			$wbbprof_settings['keywords'] = isset( $_POST['wbbprof_import']['keywords'] ) ? sanitize_textarea_field( $_POST['wbbprof_import']['keywords'] ) : '';
 
+			bp_update_option( 'wbbprof_settings', $wbbprof_settings );
 			wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' );
 			exit;
 			
