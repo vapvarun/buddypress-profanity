@@ -14,6 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$wbbprof_settings  = bp_get_option( 'wbbprof_settings' );
+
 if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) {
 	?>
 	<div id="setting-error-settings_updated" class="notice notice-success settings-error is-dismissible"> 
@@ -42,7 +44,7 @@ if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) {
 							</p>
 						</div>
 						<div class="wbcom-selectize-control-wrap wbcom-settings-section-options">
-							<textarea name="wbbprof_import[keywords]" id="wbbprof_import_keywords" cols="120" rows="10"></textarea>
+							<textarea name="wbbprof_import[keywords]" id="wbbprof_import_keywords" cols="120" rows="10"><?php echo isset( $wbbprof_settings['keywords'] ) ? esc_textarea( $wbbprof_settings['keywords'] ) : ''; ?></textarea>
 							<!-- <input type='file' name='wbbprof_import[keywords]' value=''  /> -->
 							<input type='hidden' name='wbbprof_import[import]' value='import'  />
 						</div>
