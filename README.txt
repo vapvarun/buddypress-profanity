@@ -54,6 +54,9 @@ The [Case Matching] setting provides two option Case Sensitive and Case Insensit
 The [Strict Filtering] with strict mode on does not filter embedded keywords. We recommend users to use Strict Filtering ON mode.
 
 == Changelog ==
+= 1.9.3 =
+* Fix: Fixed import keywords not working
+
 = 1.9.2 =
 * Fix: Fixed buddyboss admin notice issue
 
