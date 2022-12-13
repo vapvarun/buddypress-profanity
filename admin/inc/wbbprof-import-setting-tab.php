@@ -19,7 +19,7 @@ $wbbprof_settings  = bp_get_option( 'wbbprof_settings' );
 if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) {
 	?>
 	<div id="setting-error-settings_updated" class="notice notice-success settings-error is-dismissible"> 
-		<p><strong><?php esc_html_e( 'CSV File is successfully imported', 'buddypress-profanity' ); ?></strong></p>
+		<p><strong><?php esc_html_e( 'Changes saved successfully', 'buddypress-profanity' ); ?></strong></p>
 	</div>
 	<?php
 }
