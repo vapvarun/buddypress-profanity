@@ -214,6 +214,7 @@ function edd_wbcom_WBBPROF_admin_notices() {
 			case 'expired':
 				?>
 				<div class="notice notice-error is-dismissible">
+				<p>
 				<?php 
 				echo $message = sprintf(
 							/* translators: %1$s: Expire Time*/
@@ -221,6 +222,7 @@ function edd_wbcom_WBBPROF_admin_notices() {
 							date_i18n( get_option( 'date_format' ), strtotime( $license_data->expires, current_time( 'timestamp' ) ) )
 						);
 				?>
+				</p>
 				</div>
 				<?php
 					
