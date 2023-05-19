@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com
 Tags: buddypress, profanity, filter, community, activity, comments, messages
 Requires at least: 3.0.1
-Tested up to: 6.0.2
-Stable tag: 1.9.4
+Tested up to: 6.2.1
+Stable tag: 1.9.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,12 @@ The [Case Matching] setting provides two option Case Sensitive and Case Insensit
 The [Strict Filtering] with strict mode on does not filter embedded keywords. We recommend users to use Strict Filtering ON mode.
 
 == Changelog ==
+= 1.9.5 =
+* Fix: Fixed #58 - Filter words on buddypress notification
+* Fix: Fixed Plugin redirect issue when multi plugin activate the same time
+* Fix: Update plugin link and author name
+* Fix: Update License activation file and set response in transient
+
 = 1.9.4 =
 * Fix: (#55)Fixed bulk save option UI managed
 * Fix: (#56)Fixed php warninigs
