@@ -72,6 +72,13 @@ class EDD_WBBPROF_Plugin_Updater {
 	private $cache_key = '';
 
 	/**
+	 * API Data.
+	 *
+	 * @var Array
+	 */
+	private $beta;
+
+	/**
 	 * Class constructor.
 	 *
 	 * @uses plugin_basename()

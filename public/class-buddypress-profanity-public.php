@@ -40,6 +40,48 @@ class Buddypress_Profanity_Public {
 	private $version;
 
 	/**
+	 * Plugin general setting.
+	 *
+	 * @var array $wbbprof_settings
+	 */
+	private $wbbprof_settings;
+
+	/**
+	 * Remove keyword from the community.
+	 *
+	 * @var array $keywords
+	 */
+	private $keywords;
+
+	/**
+	 * Remove character from the community.
+	 *
+	 * @var array $character
+	 */
+	private $character;
+
+	/**
+	 * Remove character from the words.
+	 *
+	 * @var array $word_rendering
+	 */
+	private $word_rendering;
+
+	/**
+	 * Case Insensitive matching type is better as it captures more words.
+	 *
+	 * @var array $case
+	 */
+	private $case;
+
+	/**
+	 * When strict filtering is ON, embedded keywords are filtered.
+	 *
+	 * @var array $whole_word
+	 */
+	private $whole_word;
+
+	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
