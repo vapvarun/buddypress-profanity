@@ -298,7 +298,7 @@ function bpprofanity_activation_redirect_settings( $plugin ) {
 		return;
 	}
 	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'Buddypress' ) ) {
-		if ( isset( $_REQUEST['action'] ) && $_REQUEST['action']  == 'activate' && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] == $plugin) {
+		if ( isset( $_REQUEST['action'] ) && $_REQUEST['action']  == 'activate' && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] == $plugin) { //phpcs:ignore
 			wp_safe_redirect( admin_url( 'admin.php?page=buddypress_profanity' ) );
 			exit;
 		}

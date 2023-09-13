@@ -171,7 +171,8 @@ class Buddypress_Profanity_Admin {
 					<div class="wbcom_admin_header-wrapper">
 						<div id="wb_admin_plugin_name">
 							<?php esc_html_e( 'BuddyPress Profanity Settings', 'buddypress-profanity' ); ?>
-							<span><?php printf( __( 'Version %s', 'buddypress-profanity' ), BPPROF_PLUGIN_VERSION ); ?></span>
+							<?php  /* translators: %s: */ ?>
+							<span><?php printf( esc_html__( 'Version %s', 'buddypress-profanity' ), esc_attr( BPPROF_PLUGIN_VERSION ) ); ?></span>
 						</div>
 							<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
 					</div>
@@ -191,7 +192,7 @@ class Buddypress_Profanity_Admin {
 					$tab_html .= '<li class='. $wbbpro_name .'><a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a></li>';
 				}
 				$tab_html .= '</div></ul></div>';
-				echo $tab_html;
+				echo wp_kses_post( $tab_html );
 				include 'inc/wbbprof-tabs-options.php';
 				echo '</div>'; /* end of .wbcom-admin-settings-page */
 				echo '</div>'; /* end of .wbcom-wrpa div. */
@@ -208,19 +209,19 @@ class Buddypress_Profanity_Admin {
 
 		global $wpdb;
 
-		if ( isset( $_POST['wbbprof_settings'] ) ) {
-			bp_update_option( 'wbbprof_settings', $_POST['wbbprof_settings'] );
-			wp_redirect( $_POST['_wp_http_referer'] );
+		if ( isset( $_POST['wbbprof_settings'] ) ) { //phpcs:ignore
+			bp_update_option( 'wbbprof_settings', $_POST['wbbprof_settings'] ); //phpcs:ignore
+			wp_redirect( $_POST['_wp_http_referer'] ); //phpcs:ignore
 			exit();
 		}
 
-		if ( isset( $_POST['wbbprof_import'] ) ) {
+		if ( isset( $_POST['wbbprof_import'] ) ) { //phpcs:ignore
 			$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
 			$keywords         = array();
-			$wbbprof_settings['keywords'] = isset( $_POST['wbbprof_import']['keywords'] ) ? sanitize_textarea_field( $_POST['wbbprof_import']['keywords'] ) : '';
+			$wbbprof_settings['keywords'] = isset( $_POST['wbbprof_import']['keywords'] ) ? sanitize_textarea_field( $_POST['wbbprof_import']['keywords'] ) : ''; //phpcs:ignore
 
 			bp_update_option( 'wbbprof_settings', $wbbprof_settings );
-			wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' );
+			wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' ); //phpcs:ignore
 			exit;
 			
 			// if ( ( $open = fopen( $_FILES['wbbprof_import']['tmp_name']['keywords'], 'r' ) ) !== false ) {

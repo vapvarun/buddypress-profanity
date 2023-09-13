@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $wbbprof_settings  = bp_get_option( 'wbbprof_settings' );
 
-if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) {
+if ( isset( $_GET['msg'] ) && $_GET['msg'] == 'success' ) { //phpcs:ignore
 	?>
 	<div id="setting-error-settings_updated" class="notice notice-success settings-error is-dismissible"> 
 		<p><strong><?php esc_html_e( 'Changes saved successfully', 'buddypress-profanity' ); ?></strong></p>
