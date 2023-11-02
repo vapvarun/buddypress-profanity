@@ -267,7 +267,7 @@ class Buddypress_Profanity_Admin {
 		if ( isset( $_POST['action'] ) && $_POST['action'] == 'wbbprof_reset_keywords' ) {
 			check_ajax_referer( 'bp_profanity_ajax_security', 'ajax_nonce' );
 			$wbbprof_settings             = bp_get_option( 'wbbprof_settings' );
-			$wbbprof_settings['keywords'] = 'FrontGate,Profanity,aeolus,ahole,b1tch,bang,bollock,breast,enlargement,erotic,goddamn,heroin,hell,kooch,nad,nigger,pecker,tubgirl,unwed,woody,yeasty,yobbo,zoophile';
+			$wbbprof_settings['keywords'] = 'FrontGate,Profanity,aeolus,ahole,bitch,bang,bollock,breast,enlargement,erotic,goddamn,heroin,hell,kooch,nad,nigger,pecker,tubgirl,unwed,woody,yeasty,yobbo,zoophile';
 
 			update_option( 'wbbprof_settings', $wbbprof_settings );
 		}
