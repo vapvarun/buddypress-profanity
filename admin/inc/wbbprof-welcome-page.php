@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 <div class="wbcom-tab-content">
 	<div class="wbcom-welcome-main-wrapper">
 		<div class="wbcom-welcome-head">
-		<p class="wbcom-welcome-description"><?php esc_html_e( 'Use BuddyPress Profanity plugin to censor content in your community! Easily Censor all the unwanted words in activities, private messages contents by specifying a list of keywords to be filtered.', 'buddypress-profanity' ); ?></p>
+		<p class="wbcom-welcome-description"><?php esc_html_e( 'Filter out unwanted words in your BuddyPress community with ease using the Profanity plugin. Censor content in activities and private messages by specifying keywords to be filtered.', 'buddypress-profanity' ); ?></p>
 		<div class="wbcom-welcome-content">
 			<div class="wbcom-welcome-support-info">
 				<h3><?php esc_html_e( 'Help &amp; Support Resources', 'buddypress-profanity' ); ?></h3>
