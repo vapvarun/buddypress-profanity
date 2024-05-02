@@ -205,7 +205,7 @@ function edd_wbcom_WBBPROF_admin_notices() {
 
 	if ( isset( $license_activation ) && ! empty( $error_message ) || ( ! empty( $license_data ) && $license_data->license == 'expired' ) ) {
 		if ( $license_activation === '' ) {
-			$license_activation = $license_data->license;
+			$license_activation = $license_data->license ?? '';
 		}
 		switch ( $license_activation ) {
 			case 'expired':
