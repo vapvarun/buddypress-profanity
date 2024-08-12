@@ -1,8 +1,9 @@
 <?php
+
 /**
- * Faqs support template file.
+ * Template for the FAQs support section in BuddyPress Profanity plugin.
  *
- * @link       http://www.wbcomdesigns.com
+ * @link       https://www.wbcomdesigns.com
  * @since      1.0.0
  *
  * @package    Buddypress_Profanity
@@ -10,106 +11,100 @@
  */
 
 // Exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
+if (! defined('ABSPATH')) {
 	exit;
 }
 ?>
-<div class="wbcom-tab-content">      
-	<div class="wbcom-faq-adming-setting">
+<div class="wbcom-tab-content">
+	<div class="wbcom-faq-admin-setting">
 		<div class="wbcom-admin-title-section">
-			<h3><?php esc_html_e( 'Have some questions?', 'buddypress-profanity'  ); ?></h3>
+			<h3><?php esc_html_e('Have some questions?', 'buddypress-profanity'); ?></h3>
 		</div>
 		<div class="wbcom-faq-admin-settings-block">
 			<div id="wbcom-faq-settings-section" class="wbcom-faq-table">
+
 				<div class="wbcom-faq-section-row">
 					<div class="wbcom-faq-admin-row">
 						<button class="wbcom-faq-accordion">
-							<?php esc_html_e( 'Does This plugin requires BuddyPress?', 'buddypress-profanity' ); ?>
+							<?php esc_html_e('Does this plugin require BuddyPress?', 'buddypress-profanity'); ?>
 						</button>
 						<div class="wbcom-faq-panel">
-							<p> 
-								<?php esc_html_e( 'Yes, It needs you to have BuddyPress installed and activated.', 'buddypress-profanity' ); ?>
-							</p>
+							<p><?php esc_html_e('Yes, it requires you to have BuddyPress installed and activated.', 'buddypress-profanity'); ?></p>
 						</div>
 					</div>
 				</div>
+
 				<div class="wbcom-faq-section-row">
 					<div class="wbcom-faq-admin-row">
 						<button class="wbcom-faq-accordion">
-						<?php esc_html_e( 'Does this plugin filter multiple keywords?', 'buddypress-profanity' ); ?>
+							<?php esc_html_e('Does this plugin filter multiple keywords?', 'buddypress-profanity'); ?>
 						</button>
 						<div class="wbcom-faq-panel">
-							<p> 
-							<?php esc_html_e( 'Yes, multiple keywords can be set to filter with the setting [Keywords to remove] provied under general tab.', 'buddypress-profanity' ); ?>  
-							</p>
+							<p><?php esc_html_e('Yes, multiple keywords can be set to filter using the "Keywords to remove" setting under the General tab.', 'buddypress-profanity'); ?></p>
 						</div>
 					</div>
 				</div>
+
 				<div class="wbcom-faq-section-row">
 					<div class="wbcom-faq-admin-row">
 						<button class="wbcom-faq-accordion">
-						<?php esc_html_e( 'How do I specify a character other than defined character to replace out keywords?', 'buddypress-profanity' ); ?>
+							<?php esc_html_e('How do I specify a character other than the defined character to replace keywords?', 'buddypress-profanity'); ?>
 						</button>
 						<div class="wbcom-faq-panel">
-							<p>
-								<?php esc_html_e( 'This can be achieved with the help of filters provided in the plugin. To replace keywords with cutsom character for eg. @ write below coed in your functions.php file of active theme or wherever you want.', 'buddypress-profanity' ); ?>
-							</p>
-							<pre>add_filter( 'wbbprof_word_rendering_symbols', 'custom_wbbprof_word_rendering_symbols', 10, 1 );
-function custom_wbbprof_word_rendering_symbols($rendering_symbols) {
-$rendering_symbols['at_the_rate'] = '[ @] At the rate';
-return $rendering_symbols;
+							<p><?php esc_html_e('This can be achieved by using the filters provided in the plugin. To replace keywords with a custom character, e.g., @, add the following code in your theme\'s functions.php file or wherever appropriate:', 'buddypress-profanity'); ?></p>
+							<pre><code>
+add_filter( 'wbbprof_word_rendering_symbols', 'custom_wbbprof_word_rendering_symbols', 10, 1 );
+function custom_wbbprof_word_rendering_symbols( $rendering_symbols ) {
+	$rendering_symbols['at_the_rate'] = '[ @] At the rate';
+	return $rendering_symbols;
 }
-add_filter('wbbprof_custom_character', 'custom_wbbprof_custom_character', 10, 1);
-function custom_wbbprof_custom_character($symbol) {
-$symbol = '@';
-return $symbol;
-}</pre>
-							<p><?php esc_html_e( 'After adding this code an option is created under [Filter Character], select the newly added option and save the settings.', 'buddypress-profanity' ); ?></p>
+
+add_filter( 'wbbprof_custom_character', 'custom_wbbprof_custom_character', 10, 1 );
+function custom_wbbprof_custom_character( $symbol ) {
+	$symbol = '@';
+	return $symbol;
+}
+							</code></pre>
+							<p><?php esc_html_e('After adding this code, a new option will appear under "Filter Character". Select the newly added option and save the settings.', 'buddypress-profanity'); ?></p>
 						</div>
 					</div>
 				</div>
+
 				<div class="wbcom-faq-section-row">
 					<div class="wbcom-faq-admin-row">
 						<button class="wbcom-faq-accordion">
-							<?php esc_html_e( 'Does this change the content in BuddyPress database?', 'buddypress-profanity' ); ?>
+							<?php esc_html_e('Does this change the content in the BuddyPress database?', 'buddypress-profanity'); ?>
 						</button>
 						<div class="wbcom-faq-panel">
-							<p> 
-							<?php esc_html_e( 'No, the plugin filters the content to display on screen, buddypress database is unaffected from plugin changes.', 'buddypress-profanity' ); ?>   
-							</p>
+							<p><?php esc_html_e('No, the plugin only filters content displayed on the screen. The BuddyPress database remains unaffected by the plugin changes.', 'buddypress-profanity'); ?></p>
 						</div>
 					</div>
 				</div>
+
 				<div class="wbcom-faq-section-row">
 					<div class="wbcom-faq-admin-row">
 						<button class="wbcom-faq-accordion">
-							<?php esc_html_e( 'How is Case Matching setting useful?', 'buddypress-profanity' ); ?>
+							<?php esc_html_e('How is the Case Matching setting useful?', 'buddypress-profanity'); ?>
 						</button>
 						<div class="wbcom-faq-panel">
-							<p>
-								<?php esc_html_e( 'The [Case Matching] setting provides two option Case Sensitive and Case Insensitive. Case Sensitive filters keywords with strich case matching and is not recommended while Case Insensitive setting capture more words while filtering.', 'buddypress-profanity' ); ?>
-							</p>
-							<p>
-								<?php esc_html_e( 'We recommend users to use Case Insensitive matching.', 'buddypress-profanity' ); ?>
-							</p>
+							<p><?php esc_html_e('The "Case Matching" setting offers two options: Case Sensitive and Case Insensitive. Case Sensitive filters keywords with strict case matching, which is not recommended. Case Insensitive captures more words while filtering.', 'buddypress-profanity'); ?></p>
+							<p><?php esc_html_e('We recommend using Case Insensitive matching.', 'buddypress-profanity'); ?></p>
 						</div>
 					</div>
 				</div>
+
 				<div class="wbcom-faq-section-row">
 					<div class="wbcom-faq-admin-row">
 						<button class="wbcom-faq-accordion">
-							<?php esc_html_e( 'How is Strict Filtering setting useful?', 'buddypress-profanity' ); ?>
+							<?php esc_html_e('How is the Strict Filtering setting useful?', 'buddypress-profanity'); ?>
 						</button>
 						<div class="wbcom-faq-panel">
-							<p>
-								<?php esc_html_e( 'The [Strict Filtering] with strict mode on does not filter embedded keywords.', 'buddypress-profanity' ); ?>
-							</p>
-							<p>
-								<?php esc_html_e( 'We recommend users to use Strict Filtering ON mode.', 'buddypress-profanity' ); ?>
-							</p>
+							<p><?php esc_html_e('The "Strict Filtering" setting, when enabled, filters embedded keywords.', 'buddypress-profanity'); ?></p>
+							<p><?php esc_html_e('We recommend keeping Strict Filtering enabled.', 'buddypress-profanity'); ?></p>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	</div>
