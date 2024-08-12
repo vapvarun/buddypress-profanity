@@ -1,27 +1,25 @@
 <?php
-
 /**
  * The public-facing functionality of the plugin.
  *
- * @link       https://www.wbcomdesigns.com
+ * @link       http://www.wbcomdesigns.com
  * @since      1.0.0
  *
- * @package    BuddyPress_Profanity
- * @subpackage BuddyPress_Profanity/public
+ * @package    Buddypress_Profanity
+ * @subpackage Buddypress_Profanity/public
  */
 
 /**
  * The public-facing functionality of the plugin.
  *
- * Defines the plugin name, version, and two examples of hooks for how to
+ * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    BuddyPress_Profanity
- * @subpackage BuddyPress_Profanity/public
- * @author     Wbcom Designs <admin@wbcomdesigns.com>
+ * @package    Buddypress_Profanity
+ * @subpackage Buddypress_Profanity/public
+ * @author     wbcomdesigns <admin@wbcomdesigns.com>
  */
-class Buddypress_Profanity_Public
-{
+class Buddypress_Profanity_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -42,44 +40,44 @@ class Buddypress_Profanity_Public
 	private $version;
 
 	/**
-	 * Plugin general settings.
+	 * Plugin general setting.
 	 *
 	 * @var array $wbbprof_settings
 	 */
 	private $wbbprof_settings;
 
 	/**
-	 * List of keywords to filter.
+	 * Remove keyword from the community.
 	 *
 	 * @var array $keywords
 	 */
 	private $keywords;
 
 	/**
-	 * Character used to replace the censored words.
+	 * Remove character from the community.
 	 *
-	 * @var string $character
+	 * @var array $character
 	 */
 	private $character;
 
 	/**
-	 * Word rendering method.
+	 * Remove character from the words.
 	 *
-	 * @var string $word_rendering
+	 * @var array $word_rendering
 	 */
 	private $word_rendering;
 
 	/**
-	 * Case sensitivity option.
+	 * Case Insensitive matching type is better as it captures more words.
 	 *
-	 * @var string $case
+	 * @var array $case
 	 */
 	private $case;
 
 	/**
-	 * Strict word filtering option.
+	 * When strict filtering is ON, embedded keywords are filtered.
 	 *
-	 * @var bool $whole_word
+	 * @var array $whole_word
 	 */
 	private $whole_word;
 
@@ -87,50 +85,26 @@ class Buddypress_Profanity_Public
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param    string $plugin_name The name of the plugin.
-	 * @param    string $version The version of this plugin.
+	 * @param      string $plugin_name       The name of the plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
-	public function __construct($plugin_name, $version)
-	{
+	public function __construct( $plugin_name, $version ) {
 
-		$this->plugin_name      = sanitize_key($plugin_name);
-		$this->version          = sanitize_text_field($version);
-		$this->wbbprof_settings = bp_get_option('wbbprof_settings');
+		$this->plugin_name      = $plugin_name;
+		$this->version          = $version;
+		$wbbprof_settings       = bp_get_option( 'wbbprof_settings' );
+		$this->wbbprof_settings = &$wbbprof_settings;
 
-		$this->initialize_settings();
-	}
-
-	/**
-	 * Initialize plugin settings.
-	 */
-	private function initialize_settings()
-	{
-
-		if (isset($this->wbbprof_settings['keywords'])) {
-			$this->keywords = array_unique(array_map('trim', explode(',', $this->wbbprof_settings['keywords'])));
+		if ( isset( $this->wbbprof_settings['keywords'] ) ) {
+			$keywords       = array_map( 'trim', explode( ',', $this->wbbprof_settings['keywords'] ) );
+			$keywords       = array_unique( $keywords );
+			$this->keywords = &$keywords;
 		}
 
-		$this->character = $this->determine_character();
-
-		$this->word_rendering = isset($this->wbbprof_settings['word_render']) ? $this->wbbprof_settings['word_render'] : 'first';
-
-		$this->case = isset($this->wbbprof_settings['case']) ? $this->wbbprof_settings['case'] : 'incase';
-
-		$this->whole_word = isset($this->wbbprof_settings['strict_filter']) && 'off' !== $this->wbbprof_settings['strict_filter'];
-	}
-
-	/**
-	 * Determine the character to replace censored words with.
-	 *
-	 * @return string
-	 */
-	private function determine_character()
-	{
-		if (isset($this->wbbprof_settings['character'])) {
+		if ( isset( $this->wbbprof_settings['character'] ) ) {
 			$character = $this->wbbprof_settings['character'];
 			$symbol    = '';
-
-			switch ($character) {
+			switch ( $character ) {
 				case 'asterisk':
 					$symbol = '*';
 					break;
@@ -156,13 +130,32 @@ class Buddypress_Profanity_Public
 					$symbol = ' ';
 					break;
 				default:
-					$symbol = apply_filters('wbbprof_custom_character', '*');
+					if ( apply_filters( 'wbbprof_custom_character', $symbol ) ) {
+						$symbol = apply_filters( 'wbbprof_custom_character', $symbol );
+					} else {
+						$symbol = '*';
+					}
 					break;
 			}
-			return $symbol;
+			$this->character = &$symbol;
 		}
 
-		return '*'; // Default character.
+		if ( isset( $this->wbbprof_settings['word_render'] ) ) {
+			$word_rendering       = $this->wbbprof_settings['word_render'];
+			$this->word_rendering = &$word_rendering;
+		} else {
+			$this->word_rendering = 'first';
+		}
+
+		if ( isset( $this->wbbprof_settings['case'] ) ) {
+			$case       = $this->wbbprof_settings['case'];
+			$this->case = &$case;
+		}
+
+		if ( isset( $this->wbbprof_settings['strict_filter'] ) ) {
+			$whole_word       = 'off' == $this->wbbprof_settings['strict_filter'] ? false : true;
+			$this->whole_word = &$whole_word;
+		}
 	}
 
 	/**
@@ -170,11 +163,23 @@ class Buddypress_Profanity_Public
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles()
-	{
-		if (is_buddypress()) {
-			wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/buddypress-profanity-public.css', array(), $this->version, 'all');
+	public function enqueue_styles() {
+
+		/**
+		 * This function is provided for demonstration purposes only.
+		 *
+		 * An instance of this class should be passed to the run() function
+		 * defined in Buddypress_Profanity_Loader as all of the hooks are defined
+		 * in that particular class.
+		 *
+		 * The Buddypress_Profanity_Loader will then create the relationship
+		 * between the defined hooks and the functions defined in this
+		 * class.
+		 */
+		if ( is_buddypress() ) {
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-profanity-public.css', array(), $this->version, 'all' );
 		}
+
 	}
 
 	/**
@@ -182,75 +187,45 @@ class Buddypress_Profanity_Public
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts()
-	{
-		if (is_buddypress()) {
-			wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/buddypress-profanity-public.js', array('jquery'), $this->version, false);
+	public function enqueue_scripts() {
+
+		/**
+		 * This function is provided for demonstration purposes only.
+		 *
+		 * An instance of this class should be passed to the run() function
+		 * defined in Buddypress_Profanity_Loader as all of the hooks are defined
+		 * in that particular class.
+		 *
+		 * The Buddypress_Profanity_Loader will then create the relationship
+		 * between the defined hooks and the functions defined in this
+		 * class.
+		 */
+		if ( is_buddypress() ) {
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-profanity-public.js', array( 'jquery' ), $this->version, false );
 		}
+
 	}
 
 	/**
-	 * Filter activity status updates.
+	 *
+	 * Function for filtering activity staus updates.
 	 *
 	 * @param string $content Activity status update string.
-	 * @return string Filtered content.
 	 */
-	public function wbbprof_bp_get_activity_content_body($content)
-	{
-		return $this->filter_content($content, 'status_updates');
-	}
-
-	/**
-	 * Filter activity comments.
-	 *
-	 * @param string $content Activity comment string.
-	 * @return string Filtered content.
-	 */
-	public function wbbprof_bp_activity_comment_content($content)
-	{
-		return $this->filter_content($content, 'activity_comments');
-	}
-
-	/**
-	 * Filter message content.
-	 *
-	 * @param string $content Message content.
-	 * @return string Filtered content.
-	 */
-	public function wbbprof_bp_get_the_thread_message_content($content)
-	{
-		return $this->filter_content($content, 'messages');
-	}
-
-	/**
-	 * Filter message subject.
-	 *
-	 * @param string $content Message subject.
-	 * @return string Filtered content.
-	 */
-	public function wbbprof_bp_get_message_thread_subject($content)
-	{
-		return $this->filter_content($content, 'messages');
-	}
-
-	/**
-	 * Filter content based on type.
-	 *
-	 * @param string $content Content to be filtered.
-	 * @param string $content_type Type of content to filter (status_updates, activity_comments, messages).
-	 * @return string Filtered content.
-	 */
-	private function filter_content($content, $content_type)
-	{
-		if (! empty($this->wbbprof_settings) && isset($this->wbbprof_settings['filter_contents'])) {
-			if (in_array($content_type, $this->wbbprof_settings['filter_contents'], true) && is_array($this->keywords)) {
-				foreach ($this->keywords as $keyword) {
-					$keyword = trim($keyword);
-					if (strlen($keyword) > 2) {
-						$replacement = $this->wbbprof_censor_word($this->word_rendering, $keyword, $this->character);
-						$content     = ('incase' === $this->case) ?
-							$this->wbbprof_profain_word_i($keyword, $replacement, $content) :
-							$this->wbbprof_profain_word($keyword, $replacement, $content);
+	public function wbbprof_bp_get_activity_content_body( $content ) {
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'status_updates', $this->wbbprof_settings['filter_contents'] ) ) {
+				if ( is_array( $this->keywords ) ) {
+					foreach ( $this->keywords as $key => $keyword ) {
+						$keyword = trim( $keyword );
+						if ( strlen( $keyword ) > 2 ) {
+							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
+							if ( 'incase' == $this->case ) {
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+							} else {
+								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+							}
+						}
 					}
 				}
 			}
@@ -259,131 +234,238 @@ class Buddypress_Profanity_Public
 	}
 
 	/**
-	 * Function for word censoring.
+	 *
+	 * Function for filtering activity comment.
+	 *
+	 * @param string $content Activity comment string.
+	 */
+	public function wbbprof_bp_activity_comment_content( $content ) {
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'activity_comments', $this->wbbprof_settings['filter_contents'] ) ) {
+				if ( is_array( $this->keywords ) ) {
+					foreach ( $this->keywords as $key => $keyword ) {
+						$keyword = trim( $keyword );
+						if ( strlen( $keyword ) > 2 ) {
+							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
+							if ( 'incase' == $this->case ) {
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+							} else {
+								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+							}
+						}
+					}
+				}
+			}
+		}
+		return $content;
+	}
+
+	/**
+	 *
+	 * Function for filtering message content.
+	 *
+	 * @param string $content Message string.
+	 */
+	public function wbbprof_bp_get_the_thread_message_content( $content ) {
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'messages', $this->wbbprof_settings['filter_contents'] ) ) {
+				if ( is_array( $this->keywords ) ) {
+					foreach ( $this->keywords as $key => $keyword ) {
+						$keyword = trim( $keyword );
+						if ( strlen( $keyword ) > 2 ) {
+							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
+							if ( 'incase' == $this->case ) {
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+							} else {
+								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+							}
+						}
+					}
+				}
+			}
+		}
+		return $content;
+	}
+
+	/**
+	 *
+	 * Function for filtering message subject.
+	 *
+	 * @param string $content Message string.
+	 */
+	public function wbbprof_bp_get_message_thread_subject( $content ) {
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'messages', $this->wbbprof_settings['filter_contents'] ) ) {
+				if ( is_array( $this->keywords ) ) {
+					foreach ( $this->keywords as $key => $keyword ) {
+						$keyword = trim( $keyword );
+						if ( strlen( $keyword ) > 2 ) {
+							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
+							if ( 'incase' == $this->case ) {
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+							} else {
+								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+							}
+						}
+					}
+				}
+			}
+		}
+		return $content;
+	}
+
+	/**
+	 *
+	 * Function for word sensoring.
 	 *
 	 * @param string $wbbprof_render_type Word Rendering type.
-	 * @param string $keyword Keyword to censor.
-	 * @param string $char_symbol Symbol to replace with keywords.
-	 * @return string Censored word.
+	 * @param string $keyword             Keyword to remove.
+	 * @param string $char_symbol         Symbol to replace with keywords.
 	 */
-	public function wbbprof_censor_word($wbbprof_render_type, $keyword, $char_symbol)
-	{
-		switch ($wbbprof_render_type) {
+	public function wbbprof_censor_word( $wbbprof_render_type, $keyword, $char_symbol ) {
+
+		$keyword_length = mb_strlen( $keyword, 'UTF-8' );
+
+		switch ( $wbbprof_render_type ) {
 			case 'first':
-				$keyword = mb_substr($keyword, 0, 1, 'UTF-8') . str_repeat($char_symbol, mb_strlen(mb_substr($keyword, 1), 'UTF-8'));
+				$first_keyword = mb_substr( $keyword, 0, 1, 'UTF-8' );
+				$keyword       = $first_keyword . str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 1 ), 'UTF-8' ) );
 				break;
 			case 'all':
-				$keyword = str_repeat($char_symbol, mb_strlen($keyword, 'UTF-8'));
+				$keyword = str_repeat( $char_symbol, mb_strlen( substr( $keyword, 0 ), 'UTF-8' ) );
 				break;
+			case 'fisrt_last':
 			case 'first_last':
-				$first_keyword = mb_substr($keyword, 0, 1, 'UTF-8');
-				$last_keyword  = mb_substr($keyword, -1, 1, 'UTF-8');
-				$keyword       = $first_keyword . str_repeat($char_symbol, mb_strlen(mb_substr($keyword, 2), 'UTF-8')) . $last_keyword;
+				$first_keyword = mb_substr( $keyword, 0, 1, 'UTF-8' );
+				$last_keyword  = mb_substr( $keyword, -1, 1, 'UTF-8' );
+				$keyword       = $first_keyword . str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 2 ), 'UTF-8' ) ) . $last_keyword;
 				break;
 			case 'last':
-				$last_keyword = mb_substr($keyword, -1, 1, 'UTF-8');
-				$keyword      = str_repeat($char_symbol, mb_strlen(mb_substr($keyword, 0, -1), 'UTF-8')) . $last_keyword;
+				$last_keyword = mb_substr( $keyword, -1, 1, 'UTF-8' );
+				$keyword      = str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 0, -1 ), 'UTF-8' ) ) . $last_keyword;
 				break;
 			default:
-				$first_keyword = mb_substr($keyword, 0, 1, 'UTF-8');
-				$last_keyword  = mb_substr($keyword, -1, 1, 'UTF-8');
-				$keyword       = $first_keyword . str_repeat($char_symbol, mb_strlen(mb_substr($keyword, 2), 'UTF-8')) . $last_keyword;
+				$first_keyword = mb_substr( $keyword, 0, 1, 'UTF-8' );
+				$last_keyword  = mb_substr( $keyword, -1, 1, 'UTF-8' );
+				$keyword       = $first_keyword . str_repeat( $char_symbol, mb_strlen( mb_substr( $keyword, 2 ), 'UTF-8' ) ) . $last_keyword;
 				break;
 		}
 		return $keyword;
 	}
 
 	/**
-	 * Function to replace words with a character when case-sensitive.
 	 *
-	 * @param string $fword The keyword to be replaced.
-	 * @param string $replacement The keyword to be replaced with.
-	 * @param string $wbbprof_content The content to find the keyword.
-	 * @param bool   $whole_word Strict filtering or not.
-	 * @return string Filtered content.
+	 * Function to replace words with character when case sensitive.
+	 *
+	 * @param string  $fword           The keyword to be replaced.
+	 * @param string  $replacement     The keyword to be replaced with.
+	 * @param string  $wbbprof_content The content to find the keyword.
+	 * @param boolean $whole_word      Strict filtering or not.
 	 */
-	public function wbbprof_profain_word($fword, $replacement, $wbbprof_content, $whole_word = true)
-	{
-		$fword   = str_replace('/', '\\/', preg_quote($fword, '/'));
+	public function wbbprof_profain_word( $fword, $replacement, $wbbprof_content, $whole_word = true ) {
+		$fword   = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords.
 		$pattern = $whole_word ? "/\b$fword\b/" : "/$fword/";
 
-		return preg_replace($pattern, $replacement, $wbbprof_content);
+		$wbbprof_content = preg_replace( $pattern, $replacement, $wbbprof_content );
+
+		return $wbbprof_content;
 	}
 
 	/**
-	 * Function to replace words with a character when case-insensitive.
 	 *
-	 * @param string $fword The keyword to be replaced.
-	 * @param string $replacement The keyword to be replaced with.
-	 * @param string $wbbprof_content The content to find the keyword.
-	 * @return string Filtered content.
+	 * Function to replace words with character when case insensitive.
+	 *
+	 * @param string  $fword               The keyword to be replaced.
+	 * @param string  $replacement         The keyword to be replaced with.
+	 * @param string  $wbbprof_content     The content to find the keyword.
+	 * @param string  $wbbprof_render_type Word Rendering type.
+	 * @param string  $keyword             Keyword to remove.
+	 * @param string  $char_symbol         Symbol to replace with keywords.
+	 * @param boolean $whole_word          Strict filtering or not.
 	 */
-	public function wbbprof_profain_word_i($fword, $replacement, $wbbprof_content)
-	{
-		$fword   = str_replace('/', '\\/', preg_quote($fword, '/'));
-		$pattern = $this->whole_word ? "/\b$fword\b/i" : "/$fword/i";
+	public function wbbprof_profain_word_i( $fword, $replacement, $wbbprof_content, $wbbprof_render_type, $keyword, $char_symbol, $whole_word = true ) {
 
-		return preg_replace_callback(
+		$fword   = str_replace( '/', '\\/', preg_quote( $fword ) ); // allow '/' in keywords.
+		$pattern = $whole_word ? "/\b$fword\b/i" : "/$fword/i";
+
+		$wbbprof_content = preg_replace_callback(
 			$pattern,
-			function ($matches) use ($replacement) {
-				return $replacement;
+			function( $m ) use ( $wbbprof_render_type, $keyword, $char_symbol ) {
+				return $this->wbbprof_censor_word( $wbbprof_render_type, $m[0], $char_symbol );
 			},
 			$wbbprof_content
 		);
+		return $wbbprof_content;
 	}
 
-	/**
-	 * Filter bbPress topic titles.
-	 *
-	 * @param string $title The topic title.
-	 * @param int    $bbp_id The topic ID.
-	 * @return string Filtered title.
-	 */
-	public function wbbprof_bbp_get_title($title, $bbp_id)
-	{
-		return $this->filter_content($title, 'bbpress_title');
+	public function wbbprof_bbp_get_title( $title, $bbp_id ) {
+
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'bbpress_title', $this->wbbprof_settings['filter_contents'] ) ) {
+				if ( is_array( $this->keywords ) ) {
+					foreach ( $this->keywords as $key => $keyword ) {
+						$keyword = trim( $keyword );
+						if ( strlen( $keyword ) > 2 ) {
+							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
+							if ( $this->case == 'incase' ) {
+								$title = $this->wbbprof_profain_word_i( $keyword, $replacement, $title, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+							} else {
+								$title = $this->wbbprof_profain_word( $keyword, $replacement, $title, $this->whole_word );
+							}
+						}
+					}
+				}
+			}
+		}
+		return $title;
 	}
 
-	/**
-	 * Filter bbPress reply content.
-	 *
-	 * @param string $content The reply content.
-	 * @param int    $bbp_id The reply ID.
-	 * @return string Filtered content.
-	 */
-	public function wbbprof_bbp_get_reply_content($content, $bbp_id)
-	{
-		return $this->filter_content($content, 'bbpress_content');
+	public function wbbprof_bbp_get_reply_content( $content, $bbp_id ) {
+
+		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
+			if ( in_array( 'bbpress_content', $this->wbbprof_settings['filter_contents'] ) ) {
+				if ( is_array( $this->keywords ) ) {
+					foreach ( $this->keywords as $key => $keyword ) {
+						$keyword = trim( $keyword );
+						if ( strlen( $keyword ) > 2 ) {
+							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
+							if ( $this->case == 'incase' ) {
+								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+							} else {
+								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+							}
+						}
+					}
+				}
+			}
+		}
+		return $content;
 	}
 
-	/**
-	 * Replace tokens in text content.
-	 *
-	 * @param string $text The text content.
-	 * @param array  $tokens The tokens to replace.
-	 * @return string Filtered text.
-	 */
-	public function wbbprof_bp_core_replace_tokens_in_text($text, $tokens)
-	{
+
+	public function wbbprof_bp_core_replace_tokens_in_text( $text, $tokens ) {
+
 		$unescaped = array();
 		$escaped   = array();
 
-		foreach ($tokens as $token => $value) {
-			if (! is_string($value) && is_callable($value)) {
-				$value = call_user_func($value);
+		foreach ( $tokens as $token => $value ) {
+			if ( ! is_string( $value ) && is_callable( $value ) ) {
+				$value = call_user_func( $value );
 			}
 
-			if (! is_scalar($value)) {
+			// Tokens could be objects or arrays.
+			if ( ! is_scalar( $value ) ) {
 				continue;
 			}
 
-			$unescaped['{{{' . $token . '}}}'] = $this->wbbprof_bp_get_activity_content_body($value);
-			$escaped['{{' . $token . '}}']     = esc_html($this->wbbprof_bp_get_activity_content_body($value));
+			$unescaped[ '{{{' . $token . '}}}' ] = $this->wbbprof_bp_get_activity_content_body( $value );
+			$escaped[ '{{' . $token . '}}' ]     = esc_html( $this->wbbprof_bp_get_activity_content_body( $value ) );
 		}
 
-		$text = strtr($text, $unescaped); // Replace unescaped first.
-		$text = strtr($text, $escaped);
+		$text = strtr( $text, $unescaped );  // Do first.
+		$text = strtr( $text, $escaped );
 
 		return $text;
 	}
+
 }
