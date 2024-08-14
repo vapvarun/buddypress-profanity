@@ -11,12 +11,12 @@
  */
 
 // Exit if accessed directly.
-if (! defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 // Get plugin settings.
-$wbbprof_settings  = bp_get_option('wbbprof_settings');
+$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
 
 // Content to be filtered and word rendering symbols.
 $content_to_filter = content_to_filter_array();
@@ -26,49 +26,49 @@ $rendering_symbols = word_rendering_symbols();
 <div class="wbcom-tab-content">
 	<div class="wbcom-wrapper-admin">
 		<div class="wbcom-admin-title-section">
-			<h3><?php esc_html_e('General Profanity Settings', 'buddypress-profanity'); ?></h3>
+			<h3><?php esc_html_e( 'General Profanity Settings', 'buddypress-profanity' ); ?></h3>
 		</div>
 		<div class="wbcom-admin-option-wrap wbcom-admin-option-wrap-view">
 			<form method="post" action="admin.php?action=update_network_options">
 				<?php
-				settings_fields('buddypress_profanity_general');
-				do_settings_sections('buddypress_profanity_general');
+				settings_fields( 'buddypress_profanity_general' );
+				do_settings_sections( 'buddypress_profanity_general' );
 				?>
 				<div class="form-table buddypress-profanity-admin-table">
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
-							<label for="keywords"><?php esc_html_e('Keywords to Remove', 'buddypress-profanity'); ?></label>
+							<label for="keywords"><?php esc_html_e( 'Keywords to Remove', 'buddypress-profanity' ); ?></label>
 							<p class="description" id="keywords-description">
-								<?php esc_html_e('Enter the keywords you want to remove from your community.', 'buddypress-profanity'); ?>
+								<?php esc_html_e( 'Enter the keywords you want to remove from your community.', 'buddypress-profanity' ); ?>
 							</p>
 							<p>
-								<a href="javascript:void(0)" class="button" id="wbbprof_to_reset"><?php esc_html_e('Reset to Default', 'buddypress-profanity'); ?></a>
+								<a href="javascript:void(0)" class="button" id="wbbprof_to_reset"><?php esc_html_e( 'Reset to Default', 'buddypress-profanity' ); ?></a>
 							</p>
 						</div>
 						<div class="wbcom-selectize-control-wrap wbcom-settings-section-options">
-							<input name="wbbprof_settings[keywords]" type="text" class="regular-text wbbprof-keywords-text" value="<?php echo isset($wbbprof_settings['keywords']) ? esc_attr($wbbprof_settings['keywords']) : ''; ?>" placeholder="<?php esc_html_e('Keywords to remove', 'buddypress-profanity'); ?>" />
+							<input name="wbbprof_settings[keywords]" type="text" class="regular-text wbbprof-keywords-text" value="<?php echo isset( $wbbprof_settings['keywords'] ) ? esc_attr( $wbbprof_settings['keywords'] ) : ''; ?>" placeholder="<?php esc_html_e( 'Keywords to remove', 'buddypress-profanity' ); ?>" />
 						</div>
 					</div>
 				</div>
 				<div class="form-table">
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
-							<label><?php esc_html_e('Content to be Filtered', 'buddypress-profanity'); ?></label>
+							<label><?php esc_html_e( 'Content to be Filtered', 'buddypress-profanity' ); ?></label>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<ul class="wbcom-settings-member-retraction wbcom-settings-section-options-flex">
 								<?php
-								foreach ($content_to_filter as $key => $value) {
-									$checked = isset($wbbprof_settings['filter_contents']) && in_array($key, $wbbprof_settings['filter_contents'], true) ? 'checked' : '';
-								?>
+								foreach ( $content_to_filter as $key => $value ) {
+									$checked = isset( $wbbprof_settings['filter_contents'] ) && in_array( $key, $wbbprof_settings['filter_contents'], true ) ? 'checked' : '';
+									?>
 									<li>
 										<label class="wb-switch">
-											<input name="wbbprof_settings[filter_contents][]" value="<?php echo esc_attr($key); ?>" type="checkbox" <?php echo esc_attr($checked); ?>>
+											<input name="wbbprof_settings[filter_contents][]" value="<?php echo esc_attr( $key ); ?>" type="checkbox" <?php echo esc_attr( $checked ); ?>>
 											<div class="wb-slider wb-round"></div>
 										</label>
-										<label class="wbbprof-span-text wbbprof-chkbox-txt" for="bp_create_post_<?php echo esc_attr($key); ?>"><?php echo esc_html($value); ?></label>
+										<label class="wbbprof-span-text wbbprof-chkbox-txt" for="bp_create_post_<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $value ); ?></label>
 									</li>
-								<?php
+									<?php
 								}
 								?>
 							</ul>
@@ -78,32 +78,32 @@ $rendering_symbols = word_rendering_symbols();
 				<div class="form-table">
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
-							<label><?php esc_html_e('Word Rendering', 'buddypress-profanity'); ?></label>
+							<label><?php esc_html_e( 'Word Rendering', 'buddypress-profanity' ); ?></label>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<fieldset>
-								<legend class="screen-reader-text"><span><?php esc_html_e('Word Rendering', 'buddypress-profanity'); ?></span></legend>
+								<legend class="screen-reader-text"><span><?php esc_html_e( 'Word Rendering', 'buddypress-profanity' ); ?></span></legend>
 								<label>
-									<input name="wbbprof_settings[word_render]" value="first" type="radio" <?php isset($wbbprof_settings['word_render']) ? checked($wbbprof_settings['word_render'], 'first') : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e('First letter retained', 'buddypress-profanity'); ?></span>
+									<input name="wbbprof_settings[word_render]" value="first" type="radio" <?php isset( $wbbprof_settings['word_render'] ) ? checked( $wbbprof_settings['word_render'], 'first' ) : ''; ?>>
+									<span class="wbbprof-span-text"><?php esc_html_e( 'First letter retained', 'buddypress-profanity' ); ?></span>
 									<code>[blog => b***]</code>
 								</label>
 								<br>
 								<label>
-									<input name="wbbprof_settings[word_render]" value="last" type="radio" <?php isset($wbbprof_settings['word_render']) ? checked($wbbprof_settings['word_render'], 'last') : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e('Last letter retained', 'buddypress-profanity'); ?></span>
+									<input name="wbbprof_settings[word_render]" value="last" type="radio" <?php isset( $wbbprof_settings['word_render'] ) ? checked( $wbbprof_settings['word_render'], 'last' ) : ''; ?>>
+									<span class="wbbprof-span-text"><?php esc_html_e( 'Last letter retained', 'buddypress-profanity' ); ?></span>
 									<code>[blog => ***g]</code>
 								</label>
 								<br>
 								<label>
-									<input name="wbbprof_settings[word_render]" value="first_last" type="radio" <?php isset($wbbprof_settings['word_render']) ? checked($wbbprof_settings['word_render'], 'first_last') : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e('First and Last letter retained', 'buddypress-profanity'); ?></span>
+									<input name="wbbprof_settings[word_render]" value="first_last" type="radio" <?php isset( $wbbprof_settings['word_render'] ) ? checked( $wbbprof_settings['word_render'], 'first_last' ) : ''; ?>>
+									<span class="wbbprof-span-text"><?php esc_html_e( 'First and Last letter retained', 'buddypress-profanity' ); ?></span>
 									<code>[blog => b**g]</code>
 								</label>
 								<br>
 								<label>
-									<input name="wbbprof_settings[word_render]" value="all" type="radio" <?php isset($wbbprof_settings['word_render']) ? checked($wbbprof_settings['word_render'], 'all') : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e('All letters removed', 'buddypress-profanity'); ?></span>
+									<input name="wbbprof_settings[word_render]" value="all" type="radio" <?php isset( $wbbprof_settings['word_render'] ) ? checked( $wbbprof_settings['word_render'], 'all' ) : ''; ?>>
+									<span class="wbbprof-span-text"><?php esc_html_e( 'All letters removed', 'buddypress-profanity' ); ?></span>
 									<code>[blog => ****]</code>
 								</label>
 								<br>
@@ -114,14 +114,14 @@ $rendering_symbols = word_rendering_symbols();
 				<div class="form-table">
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
-							<label for="character"><?php esc_html_e('Filter Character', 'buddypress-profanity'); ?></label>
+							<label for="character"><?php esc_html_e( 'Filter Character', 'buddypress-profanity' ); ?></label>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<select name="wbbprof_settings[character]">
 								<?php
-								foreach ($rendering_symbols as $key => $value) {
-									$selected = isset($wbbprof_settings['character']) && $wbbprof_settings['character'] === $key ? 'selected' : '';
-									echo "<option value='" . esc_attr($key) . "' " . esc_attr($selected) . '>' . esc_html($value) . '</option>';
+								foreach ( $rendering_symbols as $key => $value ) {
+									$selected = isset( $wbbprof_settings['character'] ) && $wbbprof_settings['character'] === $key ? 'selected' : '';
+									echo "<option value='" . esc_attr( $key ) . "' " . esc_attr( $selected ) . '>' . esc_html( $value ) . '</option>';
 								}
 								?>
 							</select>
@@ -131,20 +131,20 @@ $rendering_symbols = word_rendering_symbols();
 				<div class="form-table">
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
-							<label><?php esc_html_e('Case Matching', 'buddypress-profanity'); ?></label>
-							<p class="description"><?php esc_html_e('Case Insensitive matching is recommended as it captures more words.', 'buddypress-profanity'); ?></p>
+							<label><?php esc_html_e( 'Case Matching', 'buddypress-profanity' ); ?></label>
+							<p class="description"><?php esc_html_e( 'Case Insensitive matching is recommended as it captures more words.', 'buddypress-profanity' ); ?></p>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<fieldset>
-								<legend class="screen-reader-text"><span><?php esc_html_e('Case Matching', 'buddypress-profanity'); ?></span></legend>
+								<legend class="screen-reader-text"><span><?php esc_html_e( 'Case Matching', 'buddypress-profanity' ); ?></span></legend>
 								<label>
-									<input name="wbbprof_settings[case]" value="case" type="radio" <?php isset($wbbprof_settings['case']) ? checked($wbbprof_settings['case'], 'case') : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e('Case Sensitive', 'buddypress-profanity'); ?></span>
+									<input name="wbbprof_settings[case]" value="case" type="radio" <?php isset( $wbbprof_settings['case'] ) ? checked( $wbbprof_settings['case'], 'case' ) : ''; ?>>
+									<span class="wbbprof-span-text"><?php esc_html_e( 'Case Sensitive', 'buddypress-profanity' ); ?></span>
 								</label>
 								<br>
 								<label>
-									<input name="wbbprof_settings[case]" value="incase" type="radio" <?php isset($wbbprof_settings['case']) ? checked($wbbprof_settings['case'], 'incase') : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e('Case Insensitive (recommended)', 'buddypress-profanity'); ?></span>
+									<input name="wbbprof_settings[case]" value="incase" type="radio" <?php isset( $wbbprof_settings['case'] ) ? checked( $wbbprof_settings['case'], 'incase' ) : ''; ?>>
+									<span class="wbbprof-span-text"><?php esc_html_e( 'Case Insensitive (recommended)', 'buddypress-profanity' ); ?></span>
 								</label>
 								<br>
 							</fieldset>
@@ -154,22 +154,22 @@ $rendering_symbols = word_rendering_symbols();
 				<div class="form-table">
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
-							<label><?php esc_html_e('Strict Filtering', 'buddypress-profanity'); ?></label>
-							<p class="description"><?php esc_html_e('When strict filtering is ON, embedded keywords are filtered.', 'buddypress-profanity'); ?></p>
+							<label><?php esc_html_e( 'Strict Filtering', 'buddypress-profanity' ); ?></label>
+							<p class="description"><?php esc_html_e( 'When strict filtering is ON, embedded keywords are filtered.', 'buddypress-profanity' ); ?></p>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<fieldset>
-								<legend class="screen-reader-text"><span><?php esc_html_e('Strict Filtering', 'buddypress-profanity'); ?></span></legend>
+								<legend class="screen-reader-text"><span><?php esc_html_e( 'Strict Filtering', 'buddypress-profanity' ); ?></span></legend>
 								<label>
-									<input name="wbbprof_settings[strict_filter]" value="off" type="radio" <?php isset($wbbprof_settings['strict_filter']) ? checked($wbbprof_settings['strict_filter'], 'off') : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e('Strict Filtering OFF', 'buddypress-profanity'); ?></span>
-									<code>[e.g., "ass" becomes "passable"]</code>
+									<input name="wbbprof_settings[strict_filter]" value="off" type="radio" <?php isset( $wbbprof_settings['strict_filter'] ) ? checked( $wbbprof_settings['strict_filter'], 'off' ) : ''; ?>>
+									<span class="wbbprof-span-text"><?php esc_html_e( 'Strict Filtering ON (recommended)', 'buddypress-profanity' ); ?></span>
+									<code>[e.g., "ass" becomes "p***able"]</code>
 								</label>
 								<br>
 								<label>
-									<input name="wbbprof_settings[strict_filter]" value="on" type="radio" <?php isset($wbbprof_settings['strict_filter']) ? checked($wbbprof_settings['strict_filter'], 'on') : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e('Strict Filtering ON (recommended)', 'buddypress-profanity'); ?></span>
-									<code>[e.g., "ass" becomes "p***able"]</code>
+									<input name="wbbprof_settings[strict_filter]" value="on" type="radio" <?php isset( $wbbprof_settings['strict_filter'] ) ? checked( $wbbprof_settings['strict_filter'], 'on' ) : ''; ?>>
+									<span class="wbbprof-span-text"><?php esc_html_e( 'Strict Filtering OFF ', 'buddypress-profanity' ); ?></span>
+									<code>[e.g., "ass" becomes "passable"] </code>
 								</label>
 								<br>
 							</fieldset>
