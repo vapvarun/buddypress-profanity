@@ -1,14 +1,14 @@
-# Copyright (C) 2023
+# Copyright (C) 2024
 # This file is distributed under the same license as the  package.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-12-06 06:50:26+00:00\n"
+"POT-Creation-Date: 2024-08-15 06:59:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2024-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Varun Dubey\n"
 "Language-Team: Wbcom Designs\n"
 "Language: en\n"
@@ -68,181 +68,181 @@ msgstr ""
 msgid "Support"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:24
-msgid "General Profanity"
-msgstr ""
-
-#: admin/inc/wbbprof-general-setting-tab.php:35
-#: admin/inc/wbbprof-general-setting-tab.php:44
-msgid "Keywords to remove"
-msgstr ""
-
-#: admin/inc/wbbprof-general-setting-tab.php:37
-msgid "Enter keywords here which you want to remove from community."
+#: admin/inc/wbbprof-general-setting-tab.php:29
+msgid "General Profanity Settings"
 msgstr ""
 
 #: admin/inc/wbbprof-general-setting-tab.php:40
-msgid "Reset to default"
+msgid "Keywords to Remove"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:51
-#: admin/inc/wbbprof-general-setting-tab.php:54
-msgid "Content to be fitered"
+#: admin/inc/wbbprof-general-setting-tab.php:42
+msgid "Enter the keywords you want to remove from your community."
+msgstr ""
+
+#: admin/inc/wbbprof-general-setting-tab.php:45
+msgid "Reset to Default"
+msgstr ""
+
+#: admin/inc/wbbprof-general-setting-tab.php:49
+msgid "Keywords to remove"
+msgstr ""
+
+#: admin/inc/wbbprof-general-setting-tab.php:56
+msgid "Content to be Filtered"
 msgstr ""
 
 #: admin/inc/wbbprof-general-setting-tab.php:81
 #: admin/inc/wbbprof-general-setting-tab.php:85
-msgid "Word rendering"
+msgid "Word Rendering"
 msgstr ""
 
 #: admin/inc/wbbprof-general-setting-tab.php:88
-msgid "First letter retainded"
+msgid "First letter retained"
 msgstr ""
 
 #: admin/inc/wbbprof-general-setting-tab.php:94
 msgid "Last letter retained"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:101
+#: admin/inc/wbbprof-general-setting-tab.php:100
 msgid "First and Last letter retained"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:107
-msgid "All letter removed"
+#: admin/inc/wbbprof-general-setting-tab.php:106
+msgid "All letters removed"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:118
-msgid "Filter character"
+#: admin/inc/wbbprof-general-setting-tab.php:117
+msgid "Filter Character"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:140
-#: admin/inc/wbbprof-general-setting-tab.php:145
-msgid "Case matching"
+#: admin/inc/wbbprof-general-setting-tab.php:134
+#: admin/inc/wbbprof-general-setting-tab.php:139
+msgid "Case Matching"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:141
-msgid "Note: Case Insensitive matching type is better as it captures more words!"
+#: admin/inc/wbbprof-general-setting-tab.php:135
+msgid "Case Insensitive matching is recommended as it captures more words."
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:148
+#: admin/inc/wbbprof-general-setting-tab.php:142
 msgid "Case Sensitive"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:153
+#: admin/inc/wbbprof-general-setting-tab.php:147
 msgid "Case Insensitive (recommended)"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:163
-#: admin/inc/wbbprof-general-setting-tab.php:168
-msgid "Strict filtering"
+#: admin/inc/wbbprof-general-setting-tab.php:157
+#: admin/inc/wbbprof-general-setting-tab.php:162
+msgid "Strict Filtering"
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:164
-msgid "Note: When strict filtering is ON, embedded keywords are filtered."
+#: admin/inc/wbbprof-general-setting-tab.php:158
+msgid "When strict filtering is ON, embedded keywords are filtered."
 msgstr ""
 
-#: admin/inc/wbbprof-general-setting-tab.php:171
-msgid "Strict Filtering OFF"
-msgstr ""
-
-#: admin/inc/wbbprof-general-setting-tab.php:177
+#: admin/inc/wbbprof-general-setting-tab.php:165
 msgid "Strict Filtering ON (recommended)"
 msgstr ""
 
-#: admin/inc/wbbprof-import-setting-tab.php:22
+#: admin/inc/wbbprof-general-setting-tab.php:171
+msgid "Strict Filtering OFF "
+msgstr ""
+
+#: admin/inc/wbbprof-import-setting-tab.php:25
 msgid "Changes saved successfully"
 msgstr ""
 
-#: admin/inc/wbbprof-import-setting-tab.php:30
-#: admin/inc/wbbprof-import-setting-tab.php:41
+#: admin/inc/wbbprof-import-setting-tab.php:33
+#: admin/inc/wbbprof-import-setting-tab.php:44
 msgid "Add Keywords"
 msgstr ""
 
-#: admin/inc/wbbprof-import-setting-tab.php:43
+#: admin/inc/wbbprof-import-setting-tab.php:46
 msgid ""
-"Please add a list of words separated by a comma. The plugin will check for "
-"these words and mark content containing them as content with profanity."
+"Please add a list of words separated by commas. The plugin will check for "
+"these words and mark content containing them as profane."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:20
+#: admin/inc/wbbprof-support-setting-tab.php:21
 msgid "Have some questions?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:27
-msgid "Does This plugin requires BuddyPress?"
+#: admin/inc/wbbprof-support-setting-tab.php:29
+msgid "Does this plugin require BuddyPress?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:31
-msgid "Yes, It needs you to have BuddyPress installed and activated."
+#: admin/inc/wbbprof-support-setting-tab.php:32
+msgid "Yes, it requires you to have BuddyPress installed and activated."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:39
+#: admin/inc/wbbprof-support-setting-tab.php:40
 msgid "Does this plugin filter multiple keywords?"
 msgstr ""
 
 #: admin/inc/wbbprof-support-setting-tab.php:43
 msgid ""
-"Yes, multiple keywords can be set to filter with the setting [Keywords to "
-"remove] provied under general tab."
+"Yes, multiple keywords can be set to filter using the \"Keywords to "
+"remove\" setting under the General tab."
 msgstr ""
 
 #: admin/inc/wbbprof-support-setting-tab.php:51
 msgid ""
-"How do I specify a character other than defined character to replace out "
+"How do I specify a character other than the defined character to replace "
 "keywords?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:55
+#: admin/inc/wbbprof-support-setting-tab.php:54
 msgid ""
-"This can be achieved with the help of filters provided in the plugin. To "
-"replace keywords with cutsom character for eg. @ write below coed in your "
-"functions.php file of active theme or wherever you want."
+"This can be achieved by using the filters provided in the plugin. To "
+"replace keywords with a custom character, e.g., @, add the following code "
+"in your theme's functions.php file or wherever appropriate:"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:67
+#: admin/inc/wbbprof-support-setting-tab.php:68
 msgid ""
-"After adding this code an option is created under [Filter Character], "
-"select the newly added option and save the settings."
+"After adding this code, a new option will appear under \"Filter "
+"Character\". Select the newly added option and save the settings."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:74
-msgid "Does this change the content in BuddyPress database?"
+#: admin/inc/wbbprof-support-setting-tab.php:76
+msgid "Does this change the content in the BuddyPress database?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:78
+#: admin/inc/wbbprof-support-setting-tab.php:79
 msgid ""
-"No, the plugin filters the content to display on screen, buddypress "
-"database is unaffected from plugin changes."
+"No, the plugin only filters content displayed on the screen. The BuddyPress "
+"database remains unaffected by the plugin changes."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:86
-msgid "How is Case Matching setting useful?"
+#: admin/inc/wbbprof-support-setting-tab.php:87
+msgid "How is the Case Matching setting useful?"
 msgstr ""
 
 #: admin/inc/wbbprof-support-setting-tab.php:90
 msgid ""
-"The [Case Matching] setting provides two option Case Sensitive and Case "
-"Insensitive. Case Sensitive filters keywords with strich case matching and "
-"is not recommended while Case Insensitive setting capture more words while "
+"The \"Case Matching\" setting offers two options: Case Sensitive and Case "
+"Insensitive. Case Sensitive filters keywords with strict case matching, "
+"which is not recommended. Case Insensitive captures more words while "
 "filtering."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:93
-msgid "We recommend users to use Case Insensitive matching."
+#: admin/inc/wbbprof-support-setting-tab.php:91
+msgid "We recommend using Case Insensitive matching."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:101
-msgid "How is Strict Filtering setting useful?"
+#: admin/inc/wbbprof-support-setting-tab.php:99
+msgid "How is the Strict Filtering setting useful?"
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:105
-msgid ""
-"The [Strict Filtering] with strict mode on does not filter embedded "
-"keywords."
+#: admin/inc/wbbprof-support-setting-tab.php:102
+msgid "The \"Strict Filtering\" setting, when enabled, filters embedded keywords."
 msgstr ""
 
-#: admin/inc/wbbprof-support-setting-tab.php:108
-msgid "We recommend users to use Strict Filtering ON mode."
+#: admin/inc/wbbprof-support-setting-tab.php:103
+msgid "We recommend keeping Strict Filtering enabled."
 msgstr ""
 
 #: admin/inc/wbbprof-welcome-page.php:20
@@ -318,31 +318,31 @@ msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:23
 #: admin/wbcom/templates/wbcom-license-page.php:35
-#: edd-license/edd-plugin-license.php:297
+#: edd-license/edd-plugin-license.php:294
 msgid "Product"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:24
 #: admin/wbcom/templates/wbcom-license-page.php:36
-#: edd-license/edd-plugin-license.php:298
+#: edd-license/edd-plugin-license.php:295
 msgid "Version"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:25
 #: admin/wbcom/templates/wbcom-license-page.php:37
-#: edd-license/edd-plugin-license.php:299
+#: edd-license/edd-plugin-license.php:296
 msgid "Key"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:26
 #: admin/wbcom/templates/wbcom-license-page.php:38
-#: edd-license/edd-plugin-license.php:300
+#: edd-license/edd-plugin-license.php:297
 msgid "Status"
 msgstr ""
 
 #: admin/wbcom/templates/wbcom-license-page.php:27
 #: admin/wbcom/templates/wbcom-license-page.php:39
-#: edd-license/edd-plugin-license.php:301
+#: edd-license/edd-plugin-license.php:298
 msgid "Action"
 msgstr ""
 
@@ -922,60 +922,60 @@ msgid "Error"
 msgstr ""
 
 #: edd-license/edd-plugin-license.php:120
-#: edd-license/edd-plugin-license.php:379
-#: edd-license/edd-plugin-license.php:417
-#: edd-license/edd-plugin-license.php:497
+#: edd-license/edd-plugin-license.php:376
+#: edd-license/edd-plugin-license.php:414
+#: edd-license/edd-plugin-license.php:493
 msgid "An error occurred, please try again."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:221
+#: edd-license/edd-plugin-license.php:218
 #. translators: %1$s: Expire Time
 msgid "Your BuddyPress Profanity plugin license key expired on %s."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:251
+#: edd-license/edd-plugin-license.php:248
 msgid "Please activate your BuddyPress Profanity plugin license key."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:322
+#: edd-license/edd-plugin-license.php:319
 msgid "Deactivate License"
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:327
+#: edd-license/edd-plugin-license.php:324
 msgid "Activate License"
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:389
+#: edd-license/edd-plugin-license.php:386
 #. translators: %1$s: Expire Time
 msgid "Your license key expired on %s."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:395
+#: edd-license/edd-plugin-license.php:392
 msgid "Your license key has been disabled."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:399
+#: edd-license/edd-plugin-license.php:396
 msgid "Invalid license."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:404
+#: edd-license/edd-plugin-license.php:401
 msgid "Your license is not active for this URL."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:409
+#: edd-license/edd-plugin-license.php:406
 #. translators: %1$s: Item Name
 msgid "This appears to be an invalid license key for %s."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:413
+#: edd-license/edd-plugin-license.php:410
 msgid "Your license key has reached its activation limit."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:515
+#: edd-license/edd-plugin-license.php:511
 msgid " Expires %s."
 msgstr ""
 
-#: edd-license/edd-plugin-license.php:518
+#: edd-license/edd-plugin-license.php:514
 msgid "You have %1$s/%2$s-sites activated."
 msgstr ""
 
