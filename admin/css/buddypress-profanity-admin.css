@@ -191,6 +191,21 @@ button.wbbprof-accordion.active::after {
     padding: 10px 15px;
 }
 
+@media screen and (max-width: 767px) {
+    ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex li {
+        margin: 20px 0;
+    }
+
+    ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex li:last-child {
+        margin-bottom: 0;
+    }
+
+    .wbcom-settings-section-options.word-rendering-wrapper fieldset label code{
+        display: block;
+        margin: 10px 0 0;
+    }
+}
+
 @media only screen and (max-width: 640px) {
 
     .wbcom-admin-option-wrap .form-table td {

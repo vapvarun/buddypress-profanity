@@ -80,7 +80,7 @@ $rendering_symbols = word_rendering_symbols();
 						<div class="wbcom-settings-section-options-heading">
 							<label><?php esc_html_e( 'Word Rendering', 'buddypress-profanity' ); ?></label>
 						</div>
-						<div class="wbcom-settings-section-options">
+						<div class="wbcom-settings-section-options word-rendering-wrapper">
 							<fieldset>
 								<legend class="screen-reader-text"><span><?php esc_html_e( 'Word Rendering', 'buddypress-profanity' ); ?></span></legend>
 								<label>
@@ -157,7 +157,7 @@ $rendering_symbols = word_rendering_symbols();
 							<label><?php esc_html_e( 'Strict Filtering', 'buddypress-profanity' ); ?></label>
 							<p class="description"><?php esc_html_e( 'When strict filtering is ON, embedded keywords are filtered.', 'buddypress-profanity' ); ?></p>
 						</div>
-						<div class="wbcom-settings-section-options">
+						<div class="wbcom-settings-section-options word-rendering-wrapper">
 							<fieldset>
 								<legend class="screen-reader-text"><span><?php esc_html_e( 'Strict Filtering', 'buddypress-profanity' ); ?></span></legend>
 								<label>
