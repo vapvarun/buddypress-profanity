@@ -14,8 +14,8 @@
 			<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
 		</div>      
 		<div id="wbcom_admin_content_support" class="wbcom-all-addons-plugins-wrap">
-			<h4 class="wbcom-support-section"><?php esc_html_e( 'How can we help you?', 'buddypress-profanity' ); ?></h4>
-			<p><?php esc_html_e( 'Our team is here to help you out at anytime. If you have any idea about how we could improve. You can share access to your site on our helpdesk if it can help getting faster.', 'buddypress-profanity' ); ?></p>
+			<h4 class="wbcom-support-section"><?php esc_html_e( 'How can we assist you?', 'buddypress-profanity' ); ?></h4>
+			<p><?php esc_html_e( 'Our dedicated support team is here to help. If you have suggestions or need further assistance, you can easily share access to your site through our helpdesk for a quicker resolution.', 'buddypress-profanity' ); ?></p>
 
 			<ul id="wbcom_support_list" class="wbcom_boxes_list">
 				<li class="wbcom_help_support_box">
@@ -24,11 +24,11 @@
 					</div>
 					<div class="wbcom_help_support_details">
 						<div class="wbcom_help_support_inner_details">
-							<h4><?php esc_html_e( 'Tickets Support', 'buddypress-profanity' ); ?></h4>
-							<p><?php esc_html_e( 'Open a ticket on our helpdesk, we don\'t guarantee a fast response but within a week. Except if you\'ve purchased one of our product we\'ll reply within 24 hours.', 'buddypress-profanity' ); ?></p>
+							<h4><?php esc_html_e( 'Ticket Support', 'buddypress-profanity' ); ?></h4>
+							<p><?php esc_html_e( 'Submit a support ticket through our helpdesk. We typically respond within 7 business days. However, customers who have purchased our products will receive priority support, with responses provided within 24 hour.', 'buddypress-profanity' ); ?></p>
 							<div class="wbcom_help_support_button">
 								<a href="https://support.wbcomdesigns.com/portal/newticket" class="wb_btn wb_btn_default" target="_blank">
-									<?php esc_html_e( 'Open a ticket', 'buddypress-profanity' ); ?>
+									<?php esc_html_e( 'Submit a Ticket', 'buddypress-profanity' ); ?>
 								</a>
 							</div>
 						</div>
@@ -36,13 +36,13 @@
 				</li>
 
 				<li class="wbcom_help_support_box">
-						<div class="wbcom_help_support_icon_wrapper">
-							<i class="fa fa-comments"></i>
-						</div>
+					<div class="wbcom_help_support_icon_wrapper">
+						<i class="fa fa-comments"></i>
+					</div>
 					<div class="wbcom_help_support_details">
 						<div class="wbcom_help_support_inner_details">
 							<h4><?php esc_html_e( 'Contact Us', 'buddypress-profanity' ); ?></h4>
-							<p><?php esc_html_e( 'Create a new thread on our plugin page, participation is open to anyone from all around the world. We\'ll be there to help as well but can\'t guarantee any delay.', 'buddypress-profanity' ); ?></p>
+							<p><?php esc_html_e( 'Reach out to us by starting a new discussion on our plugin page. We welcome community engagement and will assist as soon as possible.', 'buddypress-profanity' ); ?></p>
 							<div class="wbcom_help_support_button">
 								<a href="https://wbcomdesigns.com/contact/" class="wb_btn wb_btn_default" target="_blank">
 									<?php esc_html_e( 'Contact Us', 'buddypress-profanity' ); ?>
