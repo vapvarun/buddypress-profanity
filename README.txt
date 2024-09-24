@@ -54,6 +54,11 @@ The [Case Matching] setting provides two options: Case Sensitive and Case Insens
 The [Strict Filtering] with strict mode does not filter embedded keywords. We recommend users use Strict Filtering ON mode.
 
 == Changelog ==
+= 1.9.9 =
+* Update: Removed hardG for improved consistency.
+* Update: Language files updated.
+* Enhancement: Managed backend options responsive fixes for better usability.
+
 = 1.9.8 =
 * Update: Updated language files.
 * Enhancement: Streamlined the filter_content method to reduce redundancy.
