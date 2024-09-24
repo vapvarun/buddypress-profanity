@@ -25,7 +25,7 @@
 					<div class="wbcom_help_support_details">
 						<div class="wbcom_help_support_inner_details">
 							<h4><?php esc_html_e( 'Ticket Support', 'buddypress-profanity' ); ?></h4>
-							<p><?php esc_html_e( 'Submit a support ticket through our helpdesk. We typically respond within 7 business days. However, customers who have purchased our products will receive priority support, with responses provided within 24 hour.', 'buddypress-profanity' ); ?></p>
+							<p><?php esc_html_e( 'Submit a support ticket through our helpdesk. We prioritize inquiries from customers who have purchased our products and will strive to respond within 24 hours, excluding weekends.', 'buddypress-profanity' ); ?></p>
 							<div class="wbcom_help_support_button">
 								<a href="https://support.wbcomdesigns.com/portal/newticket" class="wb_btn wb_btn_default" target="_blank">
 									<?php esc_html_e( 'Submit a Ticket', 'buddypress-profanity' ); ?>
