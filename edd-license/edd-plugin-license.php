@@ -213,11 +213,12 @@ function edd_wbcom_WBBPROF_admin_notices() {
 				<div class="notice notice-error is-dismissible">
 				<p>
 				<?php
-				echo $message = sprintf(
-							/* translators: %1$s: Expire Time*/
+				$message = sprintf(
+					/* translators: %1$s: Expire Time*/
 					__( 'Your BuddyPress Profanity plugin license key expired on %s.', 'buddypress-profanity' ),
 					date_i18n( get_option( 'date_format' ), strtotime( $license_data->expires, current_time( 'timestamp' ) ) )
 				);
+				echo esc_html( $message );
 				?>
 				</p>
 				</div>
