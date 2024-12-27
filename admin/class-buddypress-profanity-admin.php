@@ -223,40 +223,6 @@ class Buddypress_Profanity_Admin {
 			bp_update_option( 'wbbprof_settings', $wbbprof_settings );
 			wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' ); //phpcs:ignore
 			exit;
-			
-			// if ( ( $open = fopen( $_FILES['wbbprof_import']['tmp_name']['keywords'], 'r' ) ) !== false ) {
-			// 	while ( ( $data = fgetcsv( $open, 10000, ',' ) ) !== false ) {
-			// 		$keywords[] = $data[0];
-			// 	}
-
-			// 	if ( ! empty( $keywords ) ) {
-
-			// 		// $keywords = array_merge( explode( ',', $wbbprof_settings['keywords'] ), $keywords );
-					
-			// 		// if( count( $keywords ) > 100 ) {
-			// 		// 	$counter = 0;
-			// 		// 	for ($i=0; $i < count( $keywords ); $i++) { 
-			// 		// 		if( 100 === $counter ){
-			// 		// 			$wbbprof_settings['keywords'] = implode( ',', $keywords );
-			// 		// 		}
-			// 		// 		$counter++;
-			// 		// 	}
-						
-			// 		// }
-
-					
-					
-			// 		$wbbprof_settings['keywords'] = implode( ',', array_merge( explode( ',', $wbbprof_settings['keywords'] ), $keywords ) );
-			// 		update_option( 'wbbprof_settings', maybe_serialize( $wbbprof_settings ) );
-
-					
-					
-			// 		// wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' );
-			// 		// exit;
-			// 	}
-			// }
-			// wp_redirect( $_POST['_wp_http_referer'] );
-			// exit;
 		}
 	}
 
