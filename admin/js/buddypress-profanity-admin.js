@@ -55,6 +55,17 @@ jQuery(document).ready(
 
 		});
 
+		jQuery('#wbbprof_import_keywords').selectize({
+
+			plugins: ['remove_button'],
+			/*options: options.map(items_mapping),*/
+			delimiter: ',',
+			create: function (input) {
+				return isReadonly ? false : items_mapping(input);
+			}
+
+		});
+
 
 		/*support tab accordion*/
 		var wbbprof_elmt = document.getElementsByClassName("wbcom-faq-accordion");
