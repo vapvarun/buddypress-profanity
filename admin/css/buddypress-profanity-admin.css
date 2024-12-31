@@ -191,6 +191,19 @@ button.wbbprof-accordion.active::after {
     padding: 10px 15px;
 }
 
+@media screen and (max-width: 1189px) {
+    div#setting-error-settings_updated {
+        position: static;
+        display: flex;
+        flex-flow: wrap;
+    }
+
+    div#setting-error-settings_updated .notice-dismiss {
+        position: static;
+        padding: 0;
+    }
+}
+
 @media screen and (max-width: 767px) {
     ul.wbcom-settings-member-retraction.wbcom-settings-section-options-flex li {
         margin: 20px 0;
