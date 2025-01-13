@@ -3,8 +3,8 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com
 Tags: buddypress, profanity, filter, community, activity, comments, messages
 Requires at least: 3.0.1
-Tested up to: 6.6.1
-Stable tag: 1.9.9
+Tested up to: 6.7.2
+Stable tag: 2.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,13 @@ The [Case Matching] setting provides two options: Case Sensitive and Case Insens
 The [Strict Filtering] with strict mode does not filter embedded keywords. We recommend users use Strict Filtering ON mode.
 
 == Changelog ==
+
+= 2.0.0 =  
+- Merged branch `1.9.9` into `2.0.0`.  
+- Enhanced UI for managing notices and keyword imports.  
+- Optimized plugin settings registration.  
+- Corrected user feedback form link.  
+
 = 1.9.9 =
 * Update: Removed hardG for improved consistency.
 * Update: Language files updated.
