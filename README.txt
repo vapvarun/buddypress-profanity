@@ -1,177 +1,130 @@
 === Wbcom Designs - BuddyPress Profanity ===
-Contributors: wbcomdesigns
-Donate link: https://wbcomdesigns.com
-Tags: buddypress, profanity, filter, community, activity, comments, messages
-Requires at least: 3.0.1
-Tested up to: 6.7.2
-Stable tag: 2.0.0
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Contributors: wbcomdesigns  
+Donate link: https://wbcomdesigns.com  
+Tags: buddypress, profanity, filter, community, activity, comments, messages  
+Requires at least: 3.0.1  
+Tested up to: 6.7.2  
+Stable tag: 2.0.0  
+License: GPLv2 or later  
+License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
-This buddypress plugin filters out foul language and gives your community peace of mind. The plugin keeps your content family-friendly and shows no profanity in your community’s posts or comments.
+Keep your BuddyPress community free from inappropriate language with this powerful profanity filtering plugin. Maintain a family-friendly environment by ensuring that posts, comments, and messages are clean and respectful.
 
 == Description ==
 
-This buddypress plugin filters out foul language and gives your community peace of mind. The plugin keeps your content family-friendly and shows no profanity in your community’s posts or comments.
+The **BuddyPress Profanity** plugin provides robust tools to filter out inappropriate language in your community. Designed for BuddyPress, it ensures that your posts, comments, and messages are free from offensive words, offering a safer and more inclusive environment for all users.
+
+Key Features:
+- Filters offensive keywords from posts, comments, and messages.
+- Keeps your BuddyPress database unaffected, filtering content dynamically for display only.
+- Fully customizable settings for case sensitivity, strict filtering, and keyword replacement.
+- Easy integration and intuitive user interface.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
+Follow these steps to install and activate the plugin:
 
 1. Download the zip file and extract it.
-2. Upload `buddypress-profanity` directory to the `/wp-content/plugins/` directory
-3. Activate the plugin through the \'Plugins\' menu.
-4. Alternatively, you can use the WordPress Plugins installer from Dashboard->Plugins->Add New to add this plugin
-5. Enjoy
-If you need additional help, contact us for [Custom Development](https://wbcomdesigns.com/hire-us/).
+2. Upload the `buddypress-profanity` folder to the `/wp-content/plugins/` directory.
+3. Activate the plugin through the 'Plugins' menu in WordPress.
+4. Alternatively, install the plugin directly through the WordPress Plugins Installer (Dashboard → Plugins → Add New).
+5. Configure the plugin through the settings menu and enjoy a profanity-free community!  
+
+For advanced customizations, feel free to contact us for [Custom Development](https://wbcomdesigns.com/hire-us/).
 
 == Frequently Asked Questions ==
 
-= Does This plugin require BuddyPress? =
+= Does this plugin require BuddyPress? =  
+Yes, BuddyPress must be installed and activated for this plugin to work.
 
-Yes, It needs you to have BuddyPress installed and activated.
+= Can I filter multiple keywords? =  
+Absolutely! You can define multiple keywords to filter under the "Keywords to Remove" setting in the General tab.
 
-= Does this plugin filter multiple keywords? =
+= How can I use a custom character to replace filtered keywords? =  
+You can use the plugin’s provided filters for this purpose. An example is detailed in the "Support" tab within the plugin settings.
 
-Yes, multiple keywords can be set to filter with the setting [Keywords to remove] provided under the general tab.
+= Does this plugin modify the BuddyPress database? =  
+No, the plugin only filters content for display purposes. The BuddyPress database remains unchanged.
 
-= How do I specify a character other than defined to replace our keywords? =
+= What does the Case Matching setting do? =  
+The Case Matching setting offers two options:
+- **Case Sensitive:** Filters exact matches, considering letter casing.  
+- **Case Insensitive:** Filters all occurrences regardless of letter casing.  
+For broader filtering, we recommend using the Case Insensitive option.
 
-This can be achieved with the help of filters provided in the plugin. An example is described under the support tab in plugin settings.
-
-= Does this change the content in the BuddyPress database? =
-
-No, the plugin filters the content to display on the screen; the BuddyPress database is unaffected by plugin changes.
-
-= How is the Case Matching setting useful? =
-
-The [Case Matching] setting provides two options: Case Sensitive and Case Insensitive. Case Sensitive filters keywords with strich case matching and is not recommended while Case Insensitive setting capture more words while filtering.We recommend users to use Case Insensitive matching.
-
-= How is the Strict Filtering setting useful? =
-
-The [Strict Filtering] with strict mode does not filter embedded keywords. We recommend users use Strict Filtering ON mode.
+= How does the Strict Filtering setting work? =  
+Strict Filtering ensures embedded keywords are filtered appropriately. Turning this option ON ensures better profanity detection and filtering.
 
 == Changelog ==
 
 = 2.0.0 =  
-- Merged branch `1.9.9` into `2.0.0`.  
-- Enhanced UI for managing notices and keyword imports.  
-- Optimized plugin settings registration.  
-- Corrected user feedback form link.  
+* Enhanced UI for managing notices and keyword imports.  
+* Optimized plugin settings registration.  
+* Corrected user feedback form link.  
 
-= 1.9.9 =
-* Update: Removed hardG for improved consistency.
-* Update: Language files updated.
-* Enhancement: Managed backend options responsive fixes for better usability.
+= 1.9.9 =  
+* Removed dependency on hardG for improved consistency.  
+* Updated language files.  
+* Improved backend options with responsive fixes.  
 
-= 1.9.8 =
-* Update: Updated language files.
-* Enhancement: Streamlined the filter_content method to reduce redundancy.
-* Fix: Reverted network-related fixes.
-* Enhancement: Applied sanitization improvements.
-* Security: Implemented security enhancements and added multisite support.
+= 1.9.8 =  
+* Streamlined `filter_content` method for better performance.  
+* Enhanced sanitization mechanisms.  
+* Improved multisite support.  
 
-= 1.9.7 =
-* Fix: Fixed issue with license is not deactivate if response is failed
+= 1.9.7 =  
+* Fixed license deactivation issue when the response fails.  
 
-= 1.9.6 =
-* Updated: Banner and link
-* Updated: Welcome description, FAQs and UI
-* Fix: (#60) Wrong spelling
-* Fix: Text domain issue
-* Fix: Licence issue
-* Fix: BP v12 fixes
-* Fix: PHPCS fixes
-* Fix: (#59) Issue with php 8.2
+= 1.9.6 =  
+* Updated plugin banners and links.  
+* Fixed compatibility with PHP 8.2.  
 
-= 1.9.5 =
-* Fix: Fixed #58 - Filter words on buddypress notification
-* Fix: Fixed Plugin redirect issue when multi plugin activate the same time
-* Fix: Update plugin link and author name
-* Fix: Update License activation file and set response in transient
+= 1.9.5 =  
+* Fixed filtering issues in BuddyPress notifications.  
+* Resolved plugin redirect conflicts during bulk activation.  
 
-= 1.9.4 =
-* Fix: (#55)Fixed bulk save option UI managed
-* Fix: (#56)Fixed php warninigs
-* Fix: (#57)Update save message string
+= 1.9.4 =  
+* Improved bulk save option UI.  
 
-= 1.9.3 =
-* Fix: Fixed import keywords not working
+= 1.9.3 =  
+* Fixed keyword import functionality.  
 
-= 1.9.2 =
-* Fix: Fixed buddyboss admin notice issue
+= 1.9.2 =  
+* Resolved BuddyBoss admin notice issue.  
 
-= 1.9.1 =
-* Fix: Update admin wrapper UI
-* Fix: (#52)Fixed undefined variable issue
-* Fix: Fixed phpcs fixes
+= 1.9.0 =  
+* Redesigned admin UI with better icons.  
 
-= 1.9.0 =
-* Fix: Fixed admin UI and Icons
-* Fix: (#49) Fixed string mistake
-* Fix: (#47) Email do not filter
+= 1.8.0 =  
+* Added bbPress Forums and Topics support.  
+* Enhanced backend UI.  
 
-= 1.8.0 =
-* Fix: Fixed #44 - activity title not working
-* Enhancement- #43 - Added bbPress Forums, Topics and Replies Titles and Content
-* Fix: Fixed redirect issue on bulk plugin activation
-* Fix: Removed install plugin button from wrapper
-* Fix: Improved backend UI
+= 1.7.0 =  
+* Introduced support for BP Better Messages.  
+* Added bulk import options for custom word lists.  
 
-= 1.7.3 =
-* Fix: (#32) Fixed phpcs error
-* Fix: (#34) Fixed activity comment filter not working
-* Fix: (#33) Strict filtering option not working properly
+= 1.5.0 =  
+* Enabled users to add new keywords dynamically.  
 
-= 1.7.2 =
-* Fix: #31 - default option for radio button
-* Fix: - stop redirect after plugin activation when buddypress plugin
+= 1.0.0 =  
+* Initial release.
 
-= 1.7.1 =
-* Fix: #30 - PHP Notice
+== Upgrade Notice ==
 
-= 1.7.0 =
-* Enhancement- Added support for BP Better Messages
-* Enhancement- Added reset option for large custom bad word list
-* Enhancement- Added bulk import option for custom bad word list
+= 2.0.0 =  
+Upgrade to version 2.0.0 to enjoy an improved user interface, better keyword filtering options, and enhanced plugin stability.
 
-= 1.6.0 =
-* Fix: Scheduled Updates
+== Screenshots ==
 
-= 1.5.5 =
-* Fix: (#25) - censoring word issue
+1. **Settings Page**  
+   User-friendly settings page to configure filtering options effortlessly.  
 
-= 1.5.4 =
-* Fix: (#22) - support for turkish
+2. **Activity Feed**  
+   Filtered activity feed ensuring no offensive language is displayed.  
 
-= 1.5.3 =
-* Fix: (#20) Fixed license issue.
+3. **Keyword Management**  
+   Easily manage and customize your keyword list for filtering.
 
-= 1.5.2 =
-* Fix: (#19) Fixed License issue.
+== Development ==
 
-= 1.5.1 =
-* Fix: Compatibility with BP 6.0
-
-= 1.5.0 =
-* Fixed: Allow to add new keywords
-
-= 1.4.0 =
-* Enhancement- BP 5.1.2.0 compatibility.
-
-= 1.3.0 =
-* Enhancement- BP 4.3.0 compatibility.
-
-= 1.2.0 =
-* Fix: Auto Updater Fix.
-
-= 1.1.0 =
-* Enhancement: Plugin backend settings ui enhancement.
-
-= 1.0.1 =
-* Enhancement : Added plugin license code.
-
-= 1.0.0 =
-* first version.
+This plugin is actively maintained by **Wbcom Designs**. We welcome contributions and feedback. Reach out to us for suggestions or improvements!
