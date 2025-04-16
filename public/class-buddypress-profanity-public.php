@@ -207,108 +207,120 @@ class Buddypress_Profanity_Public {
 	}
 
 	/**
-	 *
-	 * Function for filtering activity staus updates.
+	 * Function for filtering activity status updates.
 	 *
 	 * @param string $content Activity status update string.
 	 */
-	public function wbbprof_bp_get_activity_content_body( $content ) {
-		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
-			if ( in_array( 'status_updates', $this->wbbprof_settings['filter_contents'] ) ) {
-				if ( is_array( $this->keywords ) ) {
-					foreach ( $this->keywords as $key => $keyword ) {
-						$keyword = trim( $keyword );
-						if ( strlen( $keyword ) > 2 ) {
-							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if ( 'incase' == $this->case ) {
-								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+	public function wbbprof_bp_get_activity_content_body($content) {
+		if (!empty($this->wbbprof_settings) && isset($this->wbbprof_settings['filter_contents'])) {
+			if (in_array('status_updates', $this->wbbprof_settings['filter_contents'])) {
+				if (is_array($this->keywords)) {
+					foreach ($this->keywords as $key => $keyword) {
+						$keyword = trim($keyword);
+						if (strlen($keyword) > 2) {
+							$replacement = $this->wbbprof_censor_word($this->word_rendering, $keyword, $this->character);
+							if ('incase' == $this->case) {
+								$content = $this->wbbprof_profain_word_i($keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word);
 							} else {
-								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+								$content = $this->wbbprof_profain_word($keyword, $replacement, $content, $this->whole_word);
 							}
 						}
 					}
 				}
+				
+				// Apply email and phone masking
+				$content = $this->wbbprof_mask_emails($content);
+				$content = $this->wbbprof_mask_phone_numbers($content);
 			}
 		}
 		return $content;
 	}
 
 	/**
-	 *
 	 * Function for filtering activity comment.
 	 *
 	 * @param string $content Activity comment string.
 	 */
-	public function wbbprof_bp_activity_comment_content( $content ) {
-		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
-			if ( in_array( 'activity_comments', $this->wbbprof_settings['filter_contents'] ) ) {
-				if ( is_array( $this->keywords ) ) {
-					foreach ( $this->keywords as $key => $keyword ) {
-						$keyword = trim( $keyword );
-						if ( strlen( $keyword ) > 2 ) {
-							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if ( 'incase' == $this->case ) {
-								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+	public function wbbprof_bp_activity_comment_content($content) {
+		if (!empty($this->wbbprof_settings) && isset($this->wbbprof_settings['filter_contents'])) {
+			if (in_array('activity_comments', $this->wbbprof_settings['filter_contents'])) {
+				if (is_array($this->keywords)) {
+					foreach ($this->keywords as $key => $keyword) {
+						$keyword = trim($keyword);
+						if (strlen($keyword) > 2) {
+							$replacement = $this->wbbprof_censor_word($this->word_rendering, $keyword, $this->character);
+							if ('incase' == $this->case) {
+								$content = $this->wbbprof_profain_word_i($keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word);
 							} else {
-								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+								$content = $this->wbbprof_profain_word($keyword, $replacement, $content, $this->whole_word);
 							}
 						}
 					}
 				}
+				
+				// Apply email and phone masking
+				$content = $this->wbbprof_mask_emails($content);
+				$content = $this->wbbprof_mask_phone_numbers($content);
 			}
 		}
 		return $content;
 	}
 
 	/**
-	 *
 	 * Function for filtering message content.
 	 *
 	 * @param string $content Message string.
 	 */
-	public function wbbprof_bp_get_the_thread_message_content( $content ) {
-		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
-			if ( in_array( 'messages', $this->wbbprof_settings['filter_contents'] ) ) {
-				if ( is_array( $this->keywords ) ) {
-					foreach ( $this->keywords as $key => $keyword ) {
-						$keyword = trim( $keyword );
-						if ( strlen( $keyword ) > 2 ) {
-							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if ( 'incase' == $this->case ) {
-								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+	public function wbbprof_bp_get_the_thread_message_content($content) {
+		if (!empty($this->wbbprof_settings) && isset($this->wbbprof_settings['filter_contents'])) {
+			if (in_array('messages', $this->wbbprof_settings['filter_contents'])) {
+				if (is_array($this->keywords)) {
+					foreach ($this->keywords as $key => $keyword) {
+						$keyword = trim($keyword);
+						if (strlen($keyword) > 2) {
+							$replacement = $this->wbbprof_censor_word($this->word_rendering, $keyword, $this->character);
+							if ('incase' == $this->case) {
+								$content = $this->wbbprof_profain_word_i($keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word);
 							} else {
-								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+								$content = $this->wbbprof_profain_word($keyword, $replacement, $content, $this->whole_word);
 							}
 						}
 					}
 				}
+				
+				// Apply email and phone masking
+				$content = $this->wbbprof_mask_emails($content);
+				$content = $this->wbbprof_mask_phone_numbers($content);
 			}
 		}
 		return $content;
 	}
 
 	/**
-	 *
 	 * Function for filtering message subject.
 	 *
 	 * @param string $content Message string.
 	 */
-	public function wbbprof_bp_get_message_thread_subject( $content ) {
-		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
-			if ( in_array( 'messages', $this->wbbprof_settings['filter_contents'] ) ) {
-				if ( is_array( $this->keywords ) ) {
-					foreach ( $this->keywords as $key => $keyword ) {
-						$keyword = trim( $keyword );
-						if ( strlen( $keyword ) > 2 ) {
-							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if ( 'incase' == $this->case ) {
-								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+	public function wbbprof_bp_get_message_thread_subject($content) {
+		if (!empty($this->wbbprof_settings) && isset($this->wbbprof_settings['filter_contents'])) {
+			if (in_array('messages', $this->wbbprof_settings['filter_contents'])) {
+				if (is_array($this->keywords)) {
+					foreach ($this->keywords as $key => $keyword) {
+						$keyword = trim($keyword);
+						if (strlen($keyword) > 2) {
+							$replacement = $this->wbbprof_censor_word($this->word_rendering, $keyword, $this->character);
+							if ('incase' == $this->case) {
+								$content = $this->wbbprof_profain_word_i($keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word);
 							} else {
-								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+								$content = $this->wbbprof_profain_word($keyword, $replacement, $content, $this->whole_word);
 							}
 						}
 					}
 				}
+				
+				// Apply email and phone masking
+				$content = $this->wbbprof_mask_emails($content);
+				$content = $this->wbbprof_mask_phone_numbers($content);
 			}
 		}
 		return $content;
@@ -398,45 +410,63 @@ class Buddypress_Profanity_Public {
 		return $wbbprof_content;
 	}
 
-	public function wbbprof_bbp_get_title( $title, $bbp_id ) {
-
-		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
-			if ( in_array( 'bbpress_title', $this->wbbprof_settings['filter_contents'] ) ) {
-				if ( is_array( $this->keywords ) ) {
-					foreach ( $this->keywords as $key => $keyword ) {
-						$keyword = trim( $keyword );
-						if ( strlen( $keyword ) > 2 ) {
-							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if ( $this->case == 'incase' ) {
-								$title = $this->wbbprof_profain_word_i( $keyword, $replacement, $title, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+	/**
+	 * Function for filtering bbPress title.
+	 *
+	 * @param string $title BBPress title content.
+	 * @param int    $bbp_id BBPress post ID.
+	 */
+	public function wbbprof_bbp_get_title($title, $bbp_id) {
+		if (!empty($this->wbbprof_settings) && isset($this->wbbprof_settings['filter_contents'])) {
+			if (in_array('bbpress_title', $this->wbbprof_settings['filter_contents'])) {
+				if (is_array($this->keywords)) {
+					foreach ($this->keywords as $key => $keyword) {
+						$keyword = trim($keyword);
+						if (strlen($keyword) > 2) {
+							$replacement = $this->wbbprof_censor_word($this->word_rendering, $keyword, $this->character);
+							if ($this->case == 'incase') {
+								$title = $this->wbbprof_profain_word_i($keyword, $replacement, $title, $this->word_rendering, $keyword, $this->character, $this->whole_word);
 							} else {
-								$title = $this->wbbprof_profain_word( $keyword, $replacement, $title, $this->whole_word );
+								$title = $this->wbbprof_profain_word($keyword, $replacement, $title, $this->whole_word);
 							}
 						}
 					}
 				}
+				
+				// Apply email and phone masking
+				$title = $this->wbbprof_mask_emails($title);
+				$title = $this->wbbprof_mask_phone_numbers($title);
 			}
 		}
 		return $title;
 	}
 
-	public function wbbprof_bbp_get_reply_content( $content, $bbp_id ) {
-
-		if ( ! empty( $this->wbbprof_settings ) && isset( $this->wbbprof_settings['filter_contents'] ) ) {
-			if ( in_array( 'bbpress_content', $this->wbbprof_settings['filter_contents'] ) ) {
-				if ( is_array( $this->keywords ) ) {
-					foreach ( $this->keywords as $key => $keyword ) {
-						$keyword = trim( $keyword );
-						if ( strlen( $keyword ) > 2 ) {
-							$replacement = $this->wbbprof_censor_word( $this->word_rendering, $keyword, $this->character );
-							if ( $this->case == 'incase' ) {
-								$content = $this->wbbprof_profain_word_i( $keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word );
+	/**
+	 * Function for filtering bbPress content.
+	 *
+	 * @param string $content BBPress content.
+	 * @param int    $bbp_id BBPress post ID.
+	 */
+	public function wbbprof_bbp_get_reply_content($content, $bbp_id) {
+		if (!empty($this->wbbprof_settings) && isset($this->wbbprof_settings['filter_contents'])) {
+			if (in_array('bbpress_content', $this->wbbprof_settings['filter_contents'])) {
+				if (is_array($this->keywords)) {
+					foreach ($this->keywords as $key => $keyword) {
+						$keyword = trim($keyword);
+						if (strlen($keyword) > 2) {
+							$replacement = $this->wbbprof_censor_word($this->word_rendering, $keyword, $this->character);
+							if ($this->case == 'incase') {
+								$content = $this->wbbprof_profain_word_i($keyword, $replacement, $content, $this->word_rendering, $keyword, $this->character, $this->whole_word);
 							} else {
-								$content = $this->wbbprof_profain_word( $keyword, $replacement, $content, $this->whole_word );
+								$content = $this->wbbprof_profain_word($keyword, $replacement, $content, $this->whole_word);
 							}
 						}
 					}
 				}
+				
+				// Apply email and phone masking
+				$content = $this->wbbprof_mask_emails($content);
+				$content = $this->wbbprof_mask_phone_numbers($content);
 			}
 		}
 		return $content;
@@ -466,6 +496,130 @@ class Buddypress_Profanity_Public {
 		$text = strtr( $text, $escaped );
 
 		return $text;
+	}
+	
+	/**
+	 * Mask email addresses in content
+	 *
+	 * @param string $content Content to filter
+	 * @return string Filtered content with masked emails
+	 */
+	public function wbbprof_mask_emails($content) {
+		if (!isset($this->wbbprof_settings['mask_emails']) || $this->wbbprof_settings['mask_emails'] !== 'on') {
+			return $content;
+		}
+		
+		// Regex pattern to catch email addresses
+		$email_pattern = '/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/';
+		
+		// Replace email with masked version
+		return preg_replace_callback($email_pattern, function($matches) {
+			$email = $matches[0];
+			$parts = explode('@', $email);
+			
+			if (count($parts) !== 2) {
+				return $email; // Not a valid email
+			}
+			
+			$username = $parts[0];
+			$domain = $parts[1];
+			
+			// Keep first and last character of username, mask the rest
+			if (strlen($username) > 2) {
+				$first_char = substr($username, 0, 1);
+				$last_char = substr($username, -1);
+				$masked_username = $first_char . str_repeat($this->character, strlen($username) - 2) . $last_char;
+			} else {
+				$masked_username = str_repeat($this->character, strlen($username));
+			}
+			
+			// Keep domain extension but mask the domain name
+			$domain_parts = explode('.', $domain);
+			$tld = array_pop($domain_parts);
+			$domain_name = implode('.', $domain_parts);
+			
+			if (strlen($domain_name) > 2) {
+				$first_char = substr($domain_name, 0, 1);
+				$masked_domain = $first_char . str_repeat($this->character, strlen($domain_name) - 1);
+			} else {
+				$masked_domain = str_repeat($this->character, strlen($domain_name));
+			}
+			
+			return $masked_username . '@' . $masked_domain . '.' . $tld;
+		}, $content);
+	}
+
+	/**
+	 * Mask phone numbers in content
+	 *
+	 * @param string $content Content to filter
+	 * @return string Filtered content with masked phone numbers
+	 */
+	public function wbbprof_mask_phone_numbers($content) {
+		if (!isset($this->wbbprof_settings['mask_phones']) || $this->wbbprof_settings['mask_phones'] !== 'on') {
+			return $content;
+		}
+		
+		// Array of regex patterns to catch different phone number formats
+		$phone_patterns = array(
+			// International format with + (e.g., +1-123-456-7890)
+			'/\+\d{1,4}[-\s]?\d{1,4}[-\s]?\d{1,4}[-\s]?\d{1,4}/',
+			
+			// US format with parentheses (e.g., (123) 456-7890)
+			'/\(\d{3}\)[-\s]?\d{3}[-\s]?\d{4}/',
+			
+			// Simple 10-digit format with or without separators (e.g., 123-456-7890, 1234567890)
+			'/\b\d{3}[-\s]?\d{3}[-\s]?\d{4}\b/',
+			
+			// 11-digit format starting with 1 (e.g., 1-123-456-7890)
+			'/\b1[-\s]?\d{3}[-\s]?\d{3}[-\s]?\d{4}\b/',
+			
+			// International format with 00 (e.g., 00123456789)
+			'/\b00\d{1,14}\b/',
+		);
+		
+		// Process each pattern
+		foreach ($phone_patterns as $pattern) {
+			$content = preg_replace_callback($pattern, function($matches) {
+				$phone = $matches[0];
+				
+				// Extract all digits
+				$digits_only = preg_replace('/\D/', '', $phone);
+				$length = strlen($digits_only);
+				
+				// Get non-digit characters to preserve format
+				$format_chars = array();
+				preg_match_all('/\D/', $phone, $format_chars);
+				$format_chars = $format_chars[0];
+				
+				// Create masked version - keep first digit and last 2 digits
+				$masked = '';
+				if ($length > 3) {
+					$masked .= substr($digits_only, 0, 1); // Keep first digit
+					$masked .= str_repeat($this->character, $length - 3); // Mask middle
+					$masked .= substr($digits_only, -2); // Keep last 2 digits
+				} else {
+					$masked = str_repeat($this->character, $length);
+				}
+				
+				// Reconstruct the phone number with original format
+				$result = '';
+				$digit_idx = 0; // Initialize counter for each phone number
+				
+				for ($i = 0; $i < strlen($phone); $i++) {
+					if (ctype_digit($phone[$i])) {
+						$result .= $masked[$digit_idx];
+						$digit_idx++;
+					} else {
+						$result .= $phone[$i]; // Preserve formatting character
+					}
+				}
+				
+				return $result;
+			}, $content);
+		}
+		
+		return $content;
 	}
 
 }

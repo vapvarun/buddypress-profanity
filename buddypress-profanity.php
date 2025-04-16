@@ -215,29 +215,31 @@ function wbbprof_plugin_links( $links ) {
  *
  * @param int $blog_id Blog id.
  */
-function wbbprof_update_blog( $blog_id = null ) {
-	if ( $blog_id ) {
-		switch_to_blog( $blog_id );
-	}
-	$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
-	if ( empty( $wbbprof_settings ) ) {
-		$wbbprof_settings = array(
-			'keywords'        => 'FrontGate,Profanity,aeolus,ahole,bitch,bang,bollock,breast,enlargement,erotic,goddamn,heroin,hell,kooch,nad,nigger,pecker,tubgirl,unwed,woody,yeasty,yobbo,zoophile',
-			'filter_contents' => array(
-				'0' => 'status_updates',
-				'1' => 'activity_comments',
-				'2' => 'messages',
-			),
-			'word_render'     => 'first_last',
-			'character'       => 'asterisk',
-			'case'            => 'incase',
-			'strict_filter'   => 'on',
-		);
-		bp_update_option( 'wbbprof_settings', $wbbprof_settings );
-	}
-	if ( $blog_id ) {
-		restore_current_blog();
-	}
+function wbbprof_update_blog($blog_id = null) {
+    if ($blog_id) {
+        switch_to_blog($blog_id);
+    }
+    $wbbprof_settings = bp_get_option('wbbprof_settings');
+    if (empty($wbbprof_settings)) {
+        $wbbprof_settings = array(
+            'keywords'        => 'FrontGate,Profanity,aeolus,ahole,bitch,bang,bollock,breast,enlargement,erotic,goddamn,heroin,hell,kooch,nad,nigger,pecker,tubgirl,unwed,woody,yeasty,yobbo,zoophile',
+            'filter_contents' => array(
+                '0' => 'status_updates',
+                '1' => 'activity_comments',
+                '2' => 'messages',
+            ),
+            'word_render'     => 'first_last',
+            'character'       => 'asterisk',
+            'case'            => 'incase',
+            'strict_filter'   => 'on',
+            'mask_emails'     => 'on',
+            'mask_phones'     => 'on',
+        );
+        bp_update_option('wbbprof_settings', $wbbprof_settings);
+    }
+    if ($blog_id) {
+        restore_current_blog();
+    }
 }
 
 add_action( 'bp_loaded', 'wbbprof_plugin_init' );
