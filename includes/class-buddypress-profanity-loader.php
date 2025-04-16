@@ -5,8 +5,8 @@
  * @link       http://www.wbcomdesigns.com
  * @since      1.0.0
  *
- * @package    Buddypress_Profanity
- * @subpackage Buddypress_Profanity/includes
+ * @package    BuddyPress_Profanity
+ * @subpackage BuddyPress_Profanity/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Buddypress_Profanity
- * @subpackage Buddypress_Profanity/includes
+ * @package    BuddyPress_Profanity
+ * @subpackage BuddyPress_Profanity/includes
  * @author     wbcomdesigns <admin@wbcomdesigns.com>
  */
-class Buddypress_Profanity_Loader {
+class BuddyPress_Profanity_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.

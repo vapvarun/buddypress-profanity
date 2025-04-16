@@ -5,8 +5,8 @@
  * @link       http://www.wbcomdesigns.com
  * @since      1.0.0
  *
- * @package    Buddypress_Profanity
- * @subpackage Buddypress_Profanity/admin
+ * @package    BuddyPress_Profanity
+ * @subpackage BuddyPress_Profanity/admin
  */
 
 /**
@@ -15,11 +15,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Buddypress_Profanity
- * @subpackage Buddypress_Profanity/admin
+ * @package    BuddyPress_Profanity
+ * @subpackage BuddyPress_Profanity/admin
  * @author     wbcomdesigns <admin@wbcomdesigns.com>
  */
-class Buddypress_Profanity_Admin {
+class BuddyPress_Profanity_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -64,21 +64,21 @@ class Buddypress_Profanity_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Buddypress_Profanity_Loader as all of the hooks are defined
+		 * defined in BuddyPress_Profanity_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Buddypress_Profanity_Loader will then create the relationship
+		 * The BuddyPress_Profanity_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		if ( isset( $_GET['page'] ) && ('buddypress_profanity' == $_GET['page']  || 'wbcom-plugins-page' == $_GET['page'] || 'wbcom-support-page' == $_GET['page'] || 'wbcom-license-page' == $_GET['page'] || 'wbcomplugins' == $_GET['page'] ) ) { //phpcs:ignore
+		if ( isset( $_GET['page'] ) && ('buddypress_profanity' == $_GET['page']  || 'wbcom-plugins-page' == $_GET['page'] || 'wbcom-support-page' == $_GET['page'] || 'wbcom-license-page' == $_GET['page'] || 'wbcomplugins' == $_GET['page'] ) ) {
 			global $wp_styles;
 			$srcs = array_map( 'basename', (array) wp_list_pluck( $wp_styles->registered, 'src' ) );
 
 			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-profanity-admin.css', array(), $this->version, 'all' );
 
-			if ( in_array( 'selectize.css', $srcs, true ) || in_array( 'selectize.min.css', $srcs, true ) ) { //phpcs:ignore
+			if ( in_array( 'selectize.css', $srcs, true ) || in_array( 'selectize.min.css', $srcs, true ) ) {
 
 			} else {
 				wp_enqueue_style( 'wbbprof-selectize-css', plugin_dir_url( __FILE__ ) . 'css/selectize.css', array(), '1.0.0', 'all' );
@@ -109,15 +109,15 @@ class Buddypress_Profanity_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Buddypress_Profanity_Loader as all of the hooks are defined
+		 * defined in BuddyPress_Profanity_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Buddypress_Profanity_Loader will then create the relationship
+		 * The BuddyPress_Profanity_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		if ( isset( $_GET['page'] ) && 'buddypress_profanity' == $_GET['page'] ) { //phpcs:ignore
+		if ( isset( $_GET['page'] ) && 'buddypress_profanity' == $_GET['page'] ) {
 			wp_enqueue_script( $this->plugin_name . 'selectize', plugin_dir_url( __FILE__ ) . 'js/selectize.min.js', array( 'jquery' ), '1.0.0', false );
 
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-profanity-admin.js', array( 'jquery' ), $this->version, false );
@@ -146,7 +146,7 @@ class Buddypress_Profanity_Admin {
 			add_menu_page( esc_html__( 'WB Plugins', 'buddypress-profanity' ), esc_html__( 'WB Plugins', 'buddypress-profanity' ), 'manage_options', 'wbcomplugins', array( $this, 'wbbprof_buddypress_profanity_settings_page' ), 'dashicons-lightbulb', 59 );
 			add_submenu_page( 'wbcomplugins', esc_html__( 'General', 'buddypress-profanity' ), esc_html__( 'General', 'buddypress-profanity' ), 'manage_options', 'wbcomplugins' );
 		}
-		add_submenu_page( 'wbcomplugins', esc_html__( 'Buddypress Profanity Settings Page', 'buddypress-profanity' ), esc_html__( 'BuddyPress Profanity', 'buddypress-profanity' ), 'manage_options', 'buddypress_profanity', array( $this, 'wbbprof_buddypress_profanity_settings_page' ) );
+		add_submenu_page( 'wbcomplugins', esc_html__( 'BuddyPress Profanity Settings Page', 'buddypress-profanity' ), esc_html__( 'BuddyPress Profanity', 'buddypress-profanity' ), 'manage_options', 'buddypress_profanity', array( $this, 'wbbprof_buddypress_profanity_settings_page' ) );
 	}
 
 	/**
@@ -156,7 +156,7 @@ class Buddypress_Profanity_Admin {
 	 */
 	public function wbbprof_buddypress_profanity_settings_page() {
 
-		$current = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'welcome'; //phpcs:ignore
+		$current = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'welcome';
 		?>
 		<div class="wrap">
 			<div class="wbcom-bb-plugins-offer-wrapper">
@@ -209,19 +209,19 @@ class Buddypress_Profanity_Admin {
 
 		global $wpdb;
 
-		if ( isset( $_POST['wbbprof_settings'] ) ) { //phpcs:ignore
-			bp_update_option( 'wbbprof_settings', $_POST['wbbprof_settings'] ); //phpcs:ignore
-			wp_redirect( $_POST['_wp_http_referer'] ); //phpcs:ignore
+		if ( isset( $_POST['wbbprof_settings'] ) ) {
+			bp_update_option( 'wbbprof_settings', $_POST['wbbprof_settings'] );
+			wp_redirect( $_POST['_wp_http_referer'] );
 			exit();
 		}
 
-		if ( isset( $_POST['wbbprof_import'] ) ) { //phpcs:ignore
+		if ( isset( $_POST['wbbprof_import'] ) ) {
 			$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
 			$keywords         = array();
-			$wbbprof_settings['keywords'] = isset( $_POST['wbbprof_import']['keywords'] ) ? sanitize_textarea_field( $_POST['wbbprof_import']['keywords'] ) : ''; //phpcs:ignore
+			$wbbprof_settings['keywords'] = isset( $_POST['wbbprof_import']['keywords'] ) ? sanitize_textarea_field( $_POST['wbbprof_import']['keywords'] ) : '';
 
 			bp_update_option( 'wbbprof_settings', $wbbprof_settings );
-			wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' ); //phpcs:ignore
+			wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' );
 			exit;
 		}
 	}

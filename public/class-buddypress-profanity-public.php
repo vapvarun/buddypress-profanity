@@ -5,8 +5,8 @@
  * @link       http://www.wbcomdesigns.com
  * @since      1.0.0
  *
- * @package    Buddypress_Profanity
- * @subpackage Buddypress_Profanity/public
+ * @package    BuddyPress_Profanity
+ * @subpackage BuddyPress_Profanity/public
  */
 
 /**
@@ -15,11 +15,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Buddypress_Profanity
- * @subpackage Buddypress_Profanity/public
+ * @package    BuddyPress_Profanity
+ * @subpackage BuddyPress_Profanity/public
  * @author     wbcomdesigns <admin@wbcomdesigns.com>
  */
-class Buddypress_Profanity_Public {
+class BuddyPress_Profanity_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -169,10 +169,10 @@ class Buddypress_Profanity_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Buddypress_Profanity_Loader as all of the hooks are defined
+		 * defined in BuddyPress_Profanity_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Buddypress_Profanity_Loader will then create the relationship
+		 * The BuddyPress_Profanity_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -193,10 +193,10 @@ class Buddypress_Profanity_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Buddypress_Profanity_Loader as all of the hooks are defined
+		 * defined in BuddyPress_Profanity_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Buddypress_Profanity_Loader will then create the relationship
+		 * The BuddyPress_Profanity_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
