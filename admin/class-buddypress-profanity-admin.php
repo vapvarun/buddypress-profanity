@@ -74,14 +74,23 @@ class Buddypress_Profanity_Admin {
 
 		if ( isset( $_GET['page'] ) && ('buddypress_profanity' == $_GET['page']  || 'wbcom-plugins-page' == $_GET['page'] || 'wbcom-support-page' == $_GET['page'] || 'wbcom-license-page' == $_GET['page'] || 'wbcomplugins' == $_GET['page'] ) ) { //phpcs:ignore
 			global $wp_styles;
+
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+				$extension = is_rtl() ? '.rtl.css' : '.css';
+				$path      = is_rtl() ? '/rtl' : '';
+			} else {
+				$extension = is_rtl() ? '.rtl.css' : '.min.css';
+				$path      = is_rtl() ? '/rtl' : '/min';
+			}
+
 			$srcs = array_map( 'basename', (array) wp_list_pluck( $wp_styles->registered, 'src' ) );
 
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-profanity-admin.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css' . $path . '/buddypress-profanity-admin' . $extension, array(), $this->version, 'all' );
 
 			if ( in_array( 'selectize.css', $srcs, true ) || in_array( 'selectize.min.css', $srcs, true ) ) { //phpcs:ignore
 
 			} else {
-				wp_enqueue_style( 'wbbprof-selectize-css', plugin_dir_url( __FILE__ ) . 'css/selectize.css', array(), '1.0.0', 'all' );
+				wp_enqueue_style( 'wbbprof-selectize-css', plugin_dir_url( __FILE__ ) . 'css/vendor/selectize.css', array(), '1.0.0', 'all' );
 			}
 		}
 
@@ -118,9 +127,17 @@ class Buddypress_Profanity_Admin {
 		 */
 
 		if ( isset( $_GET['page'] ) && 'buddypress_profanity' == $_GET['page'] ) { //phpcs:ignore
-			wp_enqueue_script( $this->plugin_name . 'selectize', plugin_dir_url( __FILE__ ) . 'js/selectize.min.js', array( 'jquery' ), '1.0.0', false );
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+				$extension = '.js';
+				$path      = '';
+			} else {
+				$extension = '.min.js';
+				$path      = '/min';
+			}
 
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-profanity-admin.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . 'selectize', plugin_dir_url( __FILE__ ) . 'js/vendor/selectize.min.js', array( 'jquery' ), '1.0.0', false );
+
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js' . $path . '/buddypress-profanity-admin' . $extension, array( 'jquery' ), $this->version, false );
 
 			wp_localize_script(
 				$this->plugin_name,

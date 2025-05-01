@@ -141,9 +141,17 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 			}
 			if ( ! wp_script_is( 'wbcom_admin_setting_js', 'enqueued' ) ) {
 
+				if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+					$extension = '.js';
+					$path      = '';
+				} else {
+					$extension = '.min.js';
+					$path      = '/min';
+				}
+
 				wp_register_script(
 					$handle    = 'wbcom_admin_setting_js',
-					$src       = BPPROF_PLUGIN_URL . 'admin/wbcom/assets/js/wbcom-admin-setting.js',
+					$src       = BPPROF_PLUGIN_URL . 'admin/wbcom/assets/js' . $path . '/wbcom-admin-setting' . $extension,
 					$deps      = array( 'jquery' ),
 					$ver       = time(),
 					$in_footer = true
@@ -163,7 +171,15 @@ if ( ! class_exists( 'Wbcom_Admin_Settings' ) ) {
 			}
 
 			if ( ! wp_style_is( 'wbcom-admin-setting-css', 'enqueued' ) ) {
-				wp_enqueue_style( 'wbcom-admin-setting-css', BPPROF_PLUGIN_URL . 'admin/wbcom/assets/css/wbcom-admin-setting.css' );
+				if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+					$extension = is_rtl() ? '.rtl.css' : '.css';
+					$path      = is_rtl() ? '/rtl' : '';
+				} else {
+					$extension = is_rtl() ? '.rtl.css' : '.min.css';
+					$path      = is_rtl() ? '/rtl' : '/min';
+				}
+
+				wp_enqueue_style( 'wbcom-admin-setting-css', BPPROF_PLUGIN_URL . 'admin/wbcom/assets/css' . $path . '/wbcom-admin-setting' . $extension );
 			}
 
 		}

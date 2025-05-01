@@ -188,13 +188,21 @@ class Buddypress_Profanity_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() {
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			$extension = is_rtl() ? '.rtl.css' : '.css';
+			$path      = is_rtl() ? '/rtl' : '';
+		} else {
+			$extension = is_rtl() ? '.rtl.css' : '.min.css';
+			$path      = is_rtl() ? '/rtl' : '/min';
+		}
+
 		if ( is_buddypress() ) {
-			wp_enqueue_style( 
-				$this->plugin_name, 
-				plugin_dir_url( __FILE__ ) . 'css/buddypress-profanity-public.css', 
-				array(), 
-				$this->version, 
-				'all' 
+			wp_enqueue_style(
+				$this->plugin_name,
+				plugin_dir_url( __FILE__ ) . 'css' . $path . '/buddypress-profanity-public' . $extension,
+				array(),
+				$this->version,
+				'all'
 			);
 		}
 	}
@@ -205,13 +213,21 @@ class Buddypress_Profanity_Public {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() {
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			$extension = '.js';
+			$path      = '';
+		} else {
+			$extension = '.min.js';
+			$path      = '/min';
+		}
+
 		if ( is_buddypress() ) {
-			wp_enqueue_script( 
-				$this->plugin_name, 
-				plugin_dir_url( __FILE__ ) . 'js/buddypress-profanity-public.js', 
-				array( 'jquery' ), 
-				$this->version, 
-				false 
+			wp_enqueue_script(
+				$this->plugin_name,
+				plugin_dir_url( __FILE__ ) . 'js' . $path . '/buddypress-profanity-public' . $extension,
+				array( 'jquery' ),
+				$this->version,
+				false
 			);
 		}
 	}
