@@ -490,6 +490,14 @@ class Buddypress_Profanity_Public {
 		if (!isset($this->wbbprof_settings['mask_emails']) || $this->wbbprof_settings['mask_emails'] !== 'on') {
 			return $content;
 		}
+
+		// replacing span tag in message component to resolve email masking. 
+		if( bp_is_messages_component() ) {
+
+			$content = preg_replace('/<span[^>]*>/', '', $content);
+		
+			$content = preg_replace('/<\/span>/', '', $content);
+		}
 		
 		// Regex pattern to catch email addresses
 		$email_pattern = '/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/';
