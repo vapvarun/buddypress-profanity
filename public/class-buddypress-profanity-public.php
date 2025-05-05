@@ -183,55 +183,63 @@ class BuddyPress_Profanity_Public {
 	}
 
 	/**
-	 * Register the stylesheets for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
+	 * Conditionally enqueue assets only when needed
 	 */
-	public function enqueue_styles() {
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			$extension = is_rtl() ? '.rtl.css' : '.css';
-			$path      = is_rtl() ? '/rtl' : '';
-		} else {
-			$extension = is_rtl() ? '.rtl.css' : '.min.css';
-			$path      = is_rtl() ? '/rtl' : '/min';
+	public function maybe_enqueue_assets() {
+		// Only load on BuddyPress pages that need our filtering
+		if (!is_buddypress()) {
+			return;
 		}
-
-		if ( is_buddypress() ) {
+		
+		// Initialize settings
+		$this->init_settings();
+		
+		// Only enqueue if we have active filtering settings
+		if (empty($this->wbbprof_settings) || empty($this->wbbprof_settings['filter_contents'])) {
+			return;
+		}
+		
+		// Check if current page requires our assets
+		$current_component = bp_current_component();
+		$needs_assets = false;
+		
+		// Map BP components to our filter settings
+		$component_map = array(
+			'activity' => array('status_updates', 'activity_comments'),
+			'messages' => array('messages'),
+			// Add other mappings as needed
+		);
+		
+		// Check if current component needs our filters
+		if (isset($component_map[$current_component])) {
+			foreach ($component_map[$current_component] as $filter_type) {
+				if (in_array($filter_type, $this->wbbprof_settings['filter_contents'])) {
+					$needs_assets = true;
+					break;
+				}
+			}
+		}
+		
+		if ($needs_assets) {
+			// Enqueue our styles
 			wp_enqueue_style(
-				$this->plugin_name,
-				plugin_dir_url( __FILE__ ) . 'css' . $path . '/buddypress-profanity-public' . $extension,
-				array(),
-				$this->version,
+				$this->plugin_name, 
+				plugin_dir_url(__FILE__) . 'css/buddypress-profanity-public.css', 
+				array(), 
+				$this->version, 
 				'all'
 			);
-		}
-	}
-
-	/**
-	 * Register the JavaScript for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() {
-		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-			$extension = '.js';
-			$path      = '';
-		} else {
-			$extension = '.min.js';
-			$path      = '/min';
-		}
-
-		if ( is_buddypress() ) {
+			
+			// Enqueue our scripts
 			wp_enqueue_script(
-				$this->plugin_name,
-				plugin_dir_url( __FILE__ ) . 'js' . $path . '/buddypress-profanity-public' . $extension,
-				array( 'jquery' ),
-				$this->version,
+				$this->plugin_name, 
+				plugin_dir_url(__FILE__) . 'js/buddypress-profanity-public.js', 
+				array('jquery'), 
+				$this->version, 
 				false
 			);
 		}
 	}
-
 	/**
 	 * Check if a specific content type should be filtered
 	 *

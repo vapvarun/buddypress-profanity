@@ -176,8 +176,7 @@ class BuddyPress_Profanity {
 		$plugin_public = new BuddyPress_Profanity_Public( $this->get_plugin_name(), $this->get_version() );
 
 		// Enqueue scripts and styles
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'maybe_enqueue_assets' );
 		
 		// BuddyPress Activity filters
 		$this->loader->add_filter( 'bp_get_activity_content_body', $plugin_public, 'wbbprof_bp_get_activity_content_body', 20 );
