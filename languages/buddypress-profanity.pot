@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-01T06:50:55+00:00\n"
+"POT-Creation-Date: 2025-05-05T06:42:27+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: buddypress-profanity\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #. Description of the plugin
 #: buddypress-profanity.php
-msgid "This buddypress plugin filters out any foul language and gives your community peace of mind. The plugin keeps your content family-friendly and shows no profanity in your community’s posts or comments."
+msgid "This BuddyPress plugin filters out any foul language and gives your community peace of mind. The plugin keeps your content family-friendly and shows no Profanity in your community’s posts or comments."
 msgstr ""
 
 #. Author of the plugin
@@ -39,47 +39,47 @@ msgstr ""
 msgid "http://www.wbcomdesigns.com"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:163
+#: admin/class-buddypress-profanity-admin.php:146
 msgid "WB Plugins"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:164
-#: admin/class-buddypress-profanity-admin.php:198
+#: admin/class-buddypress-profanity-admin.php:147
+#: admin/class-buddypress-profanity-admin.php:184
 msgid "General"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:166
-msgid "Buddypress Profanity Settings Page"
+#: admin/class-buddypress-profanity-admin.php:149
+msgid "BuddyPress Profanity Settings Page"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:166
-#: buddypress-profanity.php:279
+#: admin/class-buddypress-profanity-admin.php:149
+#: buddypress-profanity.php:272
 msgid "BuddyPress Profanity"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:187
+#: admin/class-buddypress-profanity-admin.php:173
 msgid "BuddyPress Profanity Settings"
 msgstr ""
 
 #. translators: %s:
-#: admin/class-buddypress-profanity-admin.php:189
+#: admin/class-buddypress-profanity-admin.php:175
 msgid "Version %s"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:197
+#: admin/class-buddypress-profanity-admin.php:183
 msgid "Welcome"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:199
+#: admin/class-buddypress-profanity-admin.php:185
 msgid "Bulk Save"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:200
+#: admin/class-buddypress-profanity-admin.php:186
 #: admin/wbcom/templates/wbcom-support-page.php:9
 #: admin/wbcom/wbcom-admin-settings.php:212
 #: admin/wbcom/wbcom-admin-settings.php:213
 #: admin/wbcom/wbcom-admin-settings.php:291
-#: buddypress-profanity.php:208
+#: buddypress-profanity.php:206
 msgid "Support"
 msgstr ""
 
@@ -155,7 +155,7 @@ msgid "Strict Filtering"
 msgstr ""
 
 #: admin/inc/wbbprof-general-setting-tab.php:158
-msgid "When strict filtering is ON, embedded keywords are filtered."
+msgid "When Strict Filtering is ON, embedded keywords are filtered."
 msgstr ""
 
 #: admin/inc/wbbprof-general-setting-tab.php:165
@@ -1012,37 +1012,37 @@ msgid "Our Plugins"
 msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:279
-#: buddypress-profanity.php:207
+#: buddypress-profanity.php:205
 msgid "Settings"
 msgstr ""
 
-#: buddypress-profanity.php:115
+#: buddypress-profanity.php:114
 msgid "BuddyPress Profanity requires to be activated on the blog where BuddyPress is activated."
 msgstr ""
 
-#: buddypress-profanity.php:120
+#: buddypress-profanity.php:119
 msgid "BuddyPress Profanity and BuddyPress need to share the same network configuration."
 msgstr ""
 
-#: buddypress-profanity.php:135
+#: buddypress-profanity.php:134
 msgid "BuddyPress Private Community Pro requires to be activated on the blog where BuddyPress is activated."
 msgstr ""
 
-#: buddypress-profanity.php:144
+#: buddypress-profanity.php:143
 msgid "BuddyPress Private Community Pro and BuddyPress need to share the same network configuration."
 msgstr ""
 
 #. translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress
-#: buddypress-profanity.php:192
+#: buddypress-profanity.php:190
 msgid "%1$s is ineffective as it requires %2$s to be installed and active."
 msgstr ""
 
-#: buddypress-profanity.php:280
+#: buddypress-profanity.php:273
 msgid "BuddyPress"
 msgstr ""
 
 #. translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress
-#: buddypress-profanity.php:283
+#: buddypress-profanity.php:276
 msgid "%1$s is ineffective now as it requires %2$s to be installed and active."
 msgstr ""
 
@@ -1134,42 +1134,42 @@ msgstr ""
 msgid "Messages"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:26
+#: includes/wbbprof-admin-public-functions.php:29
 msgid "bbPress Forums, Topics and Replies Title"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:27
+#: includes/wbbprof-admin-public-functions.php:30
 msgid "bbPress Forums, Topics and Replies Content"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:38
+#: includes/wbbprof-admin-public-functions.php:41
 msgid "[*] Asterisk"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:39
+#: includes/wbbprof-admin-public-functions.php:42
 msgid "[$] Dollar"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:40
+#: includes/wbbprof-admin-public-functions.php:43
 msgid "[?] Question"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:41
+#: includes/wbbprof-admin-public-functions.php:44
 msgid "[!] Exclamation"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:42
+#: includes/wbbprof-admin-public-functions.php:45
 msgid "[-] Hyphen"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:43
+#: includes/wbbprof-admin-public-functions.php:46
 msgid "[#] Hash"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:44
+#: includes/wbbprof-admin-public-functions.php:47
 msgid "[~] Tilde"
 msgstr ""
 
-#: includes/wbbprof-admin-public-functions.php:45
+#: includes/wbbprof-admin-public-functions.php:48
 msgid "[ ] Blank"
 msgstr ""

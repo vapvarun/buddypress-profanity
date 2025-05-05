@@ -66,7 +66,6 @@ function activate_buddypress_profanity() {
 			wbbprof_update_blog();
 		}
 	}
-
 }
 
 /**
@@ -177,7 +176,6 @@ function run_buddypress_profanity() {
 
 	$plugin = new BuddyPress_Profanity();
 	$plugin->run();
-
 }
 
 /**
@@ -210,11 +208,6 @@ function wbbprof_plugin_links( $links ) {
 	return array_merge( $links, $wbbprof_links );
 }
 
-/**
- * Function to add plugin links.
- *
- * @param int $blog_id Blog id.
- */
 function wbbprof_update_blog( $blog_id = null ) {
 	if ( $blog_id ) {
 		switch_to_blog( $blog_id );
@@ -229,4 +222,81 @@ function wbbprof_update_blog( $blog_id = null ) {
 				'2' => 'messages',
 			),
 			'word_render'     => 'first_last',
-			'character'
+			'character'       => 'asterisk',
+			'case'            => 'incase',
+			'strict_filter'   => 'on',
+			'mask_emails'     => 'on',
+			'mask_phones'     => 'on',
+		);
+		bp_update_option( 'wbbprof_settings', $wbbprof_settings );
+	}
+	if ( $blog_id ) {
+		restore_current_blog();
+	}
+}
+
+add_action( 'bp_loaded', 'wbbprof_plugin_init' );
+
+/**
+ * Function to check buddypress is active to enable disable plugin functionality.
+ */
+function wbbprof_plugin_init() {
+	if ( bp_profanity_check_config() ) {
+		run_buddypress_profanity();
+		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'wbbprof_plugin_links' );
+	}
+}
+
+/**
+ *  Check if buddypress activate.
+ */
+function bpprofanity_requires_buddypress() {
+	if ( ! class_exists( 'BuddyPress' ) ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+		add_action( 'admin_notices', 'bpprofanity_required_plugin_admin_notice' );
+		if ( null !== filter_input( INPUT_GET, 'activate' ) ) {
+			$activate = filter_input( INPUT_GET, 'activate' );
+			unset( $activate );
+		}
+	}
+}
+add_action( 'admin_init', 'bpprofanity_requires_buddypress' );
+
+/**
+ * Throw an Alert to tell the Admin why it didn't activate.
+ *
+ * @author wbcomdesigns
+ * @since  1.2.0
+ */
+function bpprofanity_required_plugin_admin_notice() {
+	$bpquotes_plugin = esc_html__( 'BuddyPress Profanity', 'buddypress-profanity' );
+	$bp_plugin       = esc_html__( 'BuddyPress', 'buddypress-profanity' );
+	echo '<div class="error"><p>';
+	/* translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress */
+	printf( esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'buddypress-profanity' ), '<strong>' . esc_html( $bpquotes_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' );
+	echo '</p></div>';
+	if ( null !== filter_input( INPUT_GET, 'activate' ) ) {
+		$activate = filter_input( INPUT_GET, 'activate' );
+		unset( $activate );
+	}
+}
+
+
+/**
+ * Redirect to plugin settings page after activated.
+ *
+ * @param plugin $plugin plugin.
+ */
+function bpprofanity_activation_redirect_settings( $plugin ) {
+	$plugins = filter_input( INPUT_GET, 'plugin' ) ? filter_input( INPUT_GET, 'plugin' ) : '';
+	if ( ! isset( $plugins ) ) {
+		return;
+	}
+	if ( plugin_basename( __FILE__ ) === $plugin && class_exists( 'BuddyPress' ) ) {
+		if ( isset( $_REQUEST['action'] ) && $_REQUEST['action']  == 'activate' && isset( $_REQUEST['plugin'] ) && $_REQUEST['plugin'] == $plugin) { //phpcs:ignore
+			wp_safe_redirect( admin_url( 'admin.php?page=buddypress_profanity' ) );
+			exit;
+		}
+	}
+}
+add_action( 'activated_plugin', 'bpprofanity_activation_redirect_settings' );
