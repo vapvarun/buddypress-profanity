@@ -176,53 +176,6 @@ $rendering_symbols = word_rendering_symbols();
 						</div>
 					</div>
 				</div>
-				<div class="form-table">
-					<div class="wbcom-settings-section-wrap">
-						<div class="wbcom-settings-section-options-heading">
-							<label><?php esc_html_e( 'Mask Email Addresses', 'buddypress-profanity' ); ?></label>
-							<p class="description"><?php esc_html_e( 'When enabled, email addresses will be masked to protect user privacy.', 'buddypress-profanity' ); ?></p>
-						</div>
-						<div class="wbcom-settings-section-options">
-							<fieldset>
-								<legend class="screen-reader-text"><span><?php esc_html_e( 'Mask Email Addresses', 'buddypress-profanity' ); ?></span></legend>
-								<label>
-									<input name="wbbprof_settings[mask_emails]" value="on" type="radio" <?php isset( $wbbprof_settings['mask_emails'] ) ? checked( $wbbprof_settings['mask_emails'], 'on' ) : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e( 'Yes', 'buddypress-profanity' ); ?></span>
-								</label>
-								<br>
-								<label>
-									<input name="wbbprof_settings[mask_emails]" value="off" type="radio" <?php isset( $wbbprof_settings['mask_emails'] ) ? checked( $wbbprof_settings['mask_emails'], 'off' ) : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e( 'No', 'buddypress-profanity' ); ?></span>
-								</label>
-								<br>
-							</fieldset>
-						</div>
-					</div>
-				</div>
-
-				<div class="form-table">
-					<div class="wbcom-settings-section-wrap">
-						<div class="wbcom-settings-section-options-heading">
-							<label><?php esc_html_e( 'Mask Phone Numbers', 'buddypress-profanity' ); ?></label>
-							<p class="description"><?php esc_html_e( 'When enabled, phone numbers will be masked to protect user privacy.', 'buddypress-profanity' ); ?></p>
-						</div>
-						<div class="wbcom-settings-section-options">
-							<fieldset>
-								<legend class="screen-reader-text"><span><?php esc_html_e( 'Mask Phone Numbers', 'buddypress-profanity' ); ?></span></legend>
-								<label>
-									<input name="wbbprof_settings[mask_phones]" value="on" type="radio" <?php isset( $wbbprof_settings['mask_phones'] ) ? checked( $wbbprof_settings['mask_phones'], 'on' ) : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e( 'Yes', 'buddypress-profanity' ); ?></span>
-								</label>
-								<br>
-								<label>
-									<input name="wbbprof_settings[mask_phones]" value="off" type="radio" <?php isset( $wbbprof_settings['mask_phones'] ) ? checked( $wbbprof_settings['mask_phones'], 'off' ) : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e( 'No', 'buddypress-profanity' ); ?></span>
-								</label>
-								<br>
-							</fieldset>
-						</div>
-					</div>
-				</div>
 				<?php submit_button(); ?>
 			</form>
 		</div>

@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<div class="wbcom-support-inner">
 						<h3><span class="dashicons dashicons-book"></span><?php esc_html_e( 'Documentation', 'buddypress-profanity' ); ?></h3>
 						<p><?php esc_html_e( 'We have prepared an extensive guide on BuddyPress Profanity to learn all aspects of the plugin. You will find most of your answers here.', 'buddypress-profanity' ); ?></p>
-						<a href="<?php echo esc_url( 'https://docs.wbcomdesigns.com/doc_category/buddypress-profanity/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'buddypress-profanity' ); ?></a>
+						<a href="<?php echo esc_url( 'https://wbcomdesigns.com/docs/buddypress-paid-addons/buddypress-profanity/' ); ?>" class="button button-primary button-welcome-support" target="_blank"><?php esc_html_e( 'Read Documentation', 'buddypress-profanity' ); ?></a>
 						</div>
 					</div>
 
