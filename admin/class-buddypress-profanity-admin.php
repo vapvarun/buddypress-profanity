@@ -50,7 +50,6 @@ class BuddyPress_Profanity_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
-
 	}
 
 	/**
@@ -72,19 +71,27 @@ class BuddyPress_Profanity_Admin {
 		 * class.
 		 */
 
-		if ( isset( $_GET['page'] ) && ('buddypress_profanity' == $_GET['page']  || 'wbcom-plugins-page' == $_GET['page'] || 'wbcom-support-page' == $_GET['page'] || 'wbcom-license-page' == $_GET['page'] || 'wbcomplugins' == $_GET['page'] ) ) {
+		if ( isset( $_GET['page'] ) && ('buddypress_profanity' == $_GET['page']  || 'wbcom-plugins-page' == $_GET['page'] || 'wbcom-support-page' == $_GET['page'] || 'wbcom-license-page' == $_GET['page'] || 'wbcomplugins' == $_GET['page'] ) ) { //phpcs:ignore
 			global $wp_styles;
+
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+				$extension = is_rtl() ? '.rtl.css' : '.css';
+				$path      = is_rtl() ? '/rtl' : '';
+			} else {
+				$extension = is_rtl() ? '.rtl.css' : '.min.css';
+				$path      = is_rtl() ? '/rtl' : '/min';
+			}
+
 			$srcs = array_map( 'basename', (array) wp_list_pluck( $wp_styles->registered, 'src' ) );
 
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/buddypress-profanity-admin.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css' . $path . '/buddypress-profanity-admin' . $extension, array(), $this->version, 'all' );
 
-			if ( in_array( 'selectize.css', $srcs, true ) || in_array( 'selectize.min.css', $srcs, true ) ) {
+			if ( in_array( 'selectize.css', $srcs, true ) || in_array( 'selectize.min.css', $srcs, true ) ) { //phpcs:ignore
 
 			} else {
-				wp_enqueue_style( 'wbbprof-selectize-css', plugin_dir_url( __FILE__ ) . 'css/selectize.css', array(), '1.0.0', 'all' );
+				wp_enqueue_style( 'wbbprof-selectize-css', plugin_dir_url( __FILE__ ) . 'css/vendor/selectize.css', array(), '1.0.0', 'all' );
 			}
 		}
-
 	}
 
 
@@ -117,10 +124,18 @@ class BuddyPress_Profanity_Admin {
 		 * class.
 		 */
 
-		if ( isset( $_GET['page'] ) && 'buddypress_profanity' == $_GET['page'] ) {
-			wp_enqueue_script( $this->plugin_name . 'selectize', plugin_dir_url( __FILE__ ) . 'js/selectize.min.js', array( 'jquery' ), '1.0.0', false );
+		if ( isset( $_GET['page'] ) && 'buddypress_profanity' == $_GET['page'] ) { //phpcs:ignore
+			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+				$extension = '.js';
+				$path      = '';
+			} else {
+				$extension = '.min.js';
+				$path      = '/min';
+			}
 
-			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/buddypress-profanity-admin.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name . 'selectize', plugin_dir_url( __FILE__ ) . 'js/vendor/selectize.min.js', array( 'jquery' ), '1.0.0', false );
+
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js' . $path . '/buddypress-profanity-admin' . $extension, array( 'jquery' ), $this->version, false );
 
 			wp_localize_script(
 				$this->plugin_name,
@@ -131,7 +146,6 @@ class BuddyPress_Profanity_Admin {
 				)
 			);
 		}
-
 	}
 
 	/**
@@ -156,14 +170,11 @@ class BuddyPress_Profanity_Admin {
 	 */
 	public function wbbprof_buddypress_profanity_settings_page() {
 
-		$current = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'welcome';
+		$current = isset( $_GET['tab'] ) ? sanitize_text_field( $_GET['tab'] ) : 'welcome'; //phpcs:ignore
 		?>
 		<div class="wrap">
 			<div class="wbcom-bb-plugins-offer-wrapper">
 				<div id="wb_admin_logo">
-					<a href="https://wbcomdesigns.com/downloads/buddypress-community-bundle/" target="_blank">
-						<img src="<?php echo esc_url( BPPROF_PLUGIN_URL ) . 'admin/wbcom/assets/imgs/wbcom-offer-notice.png'; ?>">
-					</a>
 				</div>
 			</div>
 			<div class="wbcom-wrap">
@@ -171,7 +182,7 @@ class BuddyPress_Profanity_Admin {
 					<div class="wbcom_admin_header-wrapper">
 						<div id="wb_admin_plugin_name">
 							<?php esc_html_e( 'BuddyPress Profanity Settings', 'buddypress-profanity' ); ?>
-							<?php  /* translators: %s: */ ?>
+							<?php /* translators: %s: */ ?>
 							<span><?php printf( esc_html__( 'Version %s', 'buddypress-profanity' ), esc_attr( BPPROF_PLUGIN_VERSION ) ); ?></span>
 						</div>
 							<?php echo do_shortcode( '[wbcom_admin_setting_header]' ); ?>
@@ -189,7 +200,7 @@ class BuddyPress_Profanity_Admin {
 						$tab_html = '<div class="wbcom-tabs-section"><div class="nav-tab-wrapper"><div class="wb-responsive-menu"><span>' . esc_html( 'Menu' ) . '</span><input class="wb-toggle-btn" type="checkbox" id="wb-toggle-btn"><label class="wb-toggle-icon" for="wb-toggle-btn"><span class="wb-icon-bars"></span></label></div><ul>';
 				foreach ( $wbbprof_tabs as $wbbprof_tab => $wbbpro_name ) {
 					$class     = ( $wbbprof_tab == $current ) ? 'nav-tab-active' : '';
-					$tab_html .= '<li class='. $wbbpro_name .'><a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a></li>';
+					$tab_html .= '<li class=' . $wbbpro_name . '><a class="nav-tab ' . $class . '" href="admin.php?page=buddypress_profanity&tab=' . $wbbprof_tab . '">' . $wbbpro_name . '</a></li>';
 				}
 				$tab_html .= '</div></ul></div>';
 				echo wp_kses_post( $tab_html );
@@ -197,7 +208,6 @@ class BuddyPress_Profanity_Admin {
 				echo '</div>'; /* end of .wbcom-admin-settings-page */
 				echo '</div>'; /* end of .wbcom-wrpa div. */
 				echo '</div>'; /* end of .wrap div. */
-
 	}
 
 	/**
@@ -209,19 +219,19 @@ class BuddyPress_Profanity_Admin {
 
 		global $wpdb;
 
-		if ( isset( $_POST['wbbprof_settings'] ) ) {
-			bp_update_option( 'wbbprof_settings', $_POST['wbbprof_settings'] );
-			wp_redirect( $_POST['_wp_http_referer'] );
+		if ( isset( $_POST['wbbprof_settings'] ) ) { //phpcs:ignore
+			bp_update_option( 'wbbprof_settings', $_POST['wbbprof_settings'] ); //phpcs:ignore
+			wp_redirect( $_POST['_wp_http_referer'] ); //phpcs:ignore
 			exit();
 		}
 
-		if ( isset( $_POST['wbbprof_import'] ) ) {
-			$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
-			$keywords         = array();
-			$wbbprof_settings['keywords'] = isset( $_POST['wbbprof_import']['keywords'] ) ? sanitize_textarea_field( $_POST['wbbprof_import']['keywords'] ) : '';
+		if ( isset( $_POST['wbbprof_import'] ) ) { //phpcs:ignore
+			$wbbprof_settings             = bp_get_option( 'wbbprof_settings' );
+			$keywords                     = array();
+			$wbbprof_settings['keywords'] = isset( $_POST['wbbprof_import']['keywords'] ) ? sanitize_textarea_field( $_POST['wbbprof_import']['keywords'] ) : ''; //phpcs:ignore
 
 			bp_update_option( 'wbbprof_settings', $wbbprof_settings );
-			wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' );
+			wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' ); //phpcs:ignore
 			exit;
 		}
 	}
@@ -239,5 +249,4 @@ class BuddyPress_Profanity_Admin {
 		}
 		wp_die();
 	}
-
 }

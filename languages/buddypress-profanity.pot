@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-05-05T06:42:27+00:00\n"
+"POT-Creation-Date: 2025-05-05T07:14:49+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: buddypress-profanity\n"
@@ -39,47 +39,47 @@ msgstr ""
 msgid "http://www.wbcomdesigns.com"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:146
+#: admin/class-buddypress-profanity-admin.php:160
 msgid "WB Plugins"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:147
-#: admin/class-buddypress-profanity-admin.php:184
+#: admin/class-buddypress-profanity-admin.php:161
+#: admin/class-buddypress-profanity-admin.php:195
 msgid "General"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:149
+#: admin/class-buddypress-profanity-admin.php:163
 msgid "BuddyPress Profanity Settings Page"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:149
-#: buddypress-profanity.php:272
+#: admin/class-buddypress-profanity-admin.php:163
+#: buddypress-profanity.php:279
 msgid "BuddyPress Profanity"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:173
+#: admin/class-buddypress-profanity-admin.php:184
 msgid "BuddyPress Profanity Settings"
 msgstr ""
 
 #. translators: %s:
-#: admin/class-buddypress-profanity-admin.php:175
+#: admin/class-buddypress-profanity-admin.php:186
 msgid "Version %s"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:183
+#: admin/class-buddypress-profanity-admin.php:194
 msgid "Welcome"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:185
+#: admin/class-buddypress-profanity-admin.php:196
 msgid "Bulk Save"
 msgstr ""
 
-#: admin/class-buddypress-profanity-admin.php:186
+#: admin/class-buddypress-profanity-admin.php:197
 #: admin/wbcom/templates/wbcom-support-page.php:9
 #: admin/wbcom/wbcom-admin-settings.php:212
 #: admin/wbcom/wbcom-admin-settings.php:213
 #: admin/wbcom/wbcom-admin-settings.php:291
-#: buddypress-profanity.php:206
+#: buddypress-profanity.php:208
 msgid "Support"
 msgstr ""
 
@@ -1012,37 +1012,37 @@ msgid "Our Plugins"
 msgstr ""
 
 #: admin/wbcom/wbcom-admin-settings.php:279
-#: buddypress-profanity.php:205
+#: buddypress-profanity.php:207
 msgid "Settings"
 msgstr ""
 
-#: buddypress-profanity.php:114
+#: buddypress-profanity.php:115
 msgid "BuddyPress Profanity requires to be activated on the blog where BuddyPress is activated."
 msgstr ""
 
-#: buddypress-profanity.php:119
+#: buddypress-profanity.php:120
 msgid "BuddyPress Profanity and BuddyPress need to share the same network configuration."
 msgstr ""
 
-#: buddypress-profanity.php:134
+#: buddypress-profanity.php:135
 msgid "BuddyPress Private Community Pro requires to be activated on the blog where BuddyPress is activated."
 msgstr ""
 
-#: buddypress-profanity.php:143
+#: buddypress-profanity.php:144
 msgid "BuddyPress Private Community Pro and BuddyPress need to share the same network configuration."
 msgstr ""
 
 #. translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress
-#: buddypress-profanity.php:190
+#: buddypress-profanity.php:192
 msgid "%1$s is ineffective as it requires %2$s to be installed and active."
 msgstr ""
 
-#: buddypress-profanity.php:273
+#: buddypress-profanity.php:280
 msgid "BuddyPress"
 msgstr ""
 
 #. translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress
-#: buddypress-profanity.php:276
+#: buddypress-profanity.php:283
 msgid "%1$s is ineffective now as it requires %2$s to be installed and active."
 msgstr ""
 

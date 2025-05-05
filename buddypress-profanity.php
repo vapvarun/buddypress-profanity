@@ -66,6 +66,7 @@ function activate_buddypress_profanity() {
 			wbbprof_update_blog();
 		}
 	}
+
 }
 
 /**
@@ -176,6 +177,7 @@ function run_buddypress_profanity() {
 
 	$plugin = new BuddyPress_Profanity();
 	$plugin->run();
+
 }
 
 /**
@@ -208,31 +210,36 @@ function wbbprof_plugin_links( $links ) {
 	return array_merge( $links, $wbbprof_links );
 }
 
-function wbbprof_update_blog( $blog_id = null ) {
-	if ( $blog_id ) {
-		switch_to_blog( $blog_id );
-	}
-	$wbbprof_settings = bp_get_option( 'wbbprof_settings' );
-	if ( empty( $wbbprof_settings ) ) {
-		$wbbprof_settings = array(
-			'keywords'        => 'FrontGate,Profanity,aeolus,ahole,bitch,bang,bollock,breast,enlargement,erotic,goddamn,heroin,hell,kooch,nad,nigger,pecker,tubgirl,unwed,woody,yeasty,yobbo,zoophile',
-			'filter_contents' => array(
-				'0' => 'status_updates',
-				'1' => 'activity_comments',
-				'2' => 'messages',
-			),
-			'word_render'     => 'first_last',
-			'character'       => 'asterisk',
-			'case'            => 'incase',
-			'strict_filter'   => 'on',
-			'mask_emails'     => 'on',
-			'mask_phones'     => 'on',
-		);
-		bp_update_option( 'wbbprof_settings', $wbbprof_settings );
-	}
-	if ( $blog_id ) {
-		restore_current_blog();
-	}
+/**
+ * Function to add plugin links.
+ *
+ * @param int $blog_id Blog id.
+ */
+function wbbprof_update_blog($blog_id = null) {
+    if ($blog_id) {
+        switch_to_blog($blog_id);
+    }
+    $wbbprof_settings = bp_get_option('wbbprof_settings');
+    if (empty($wbbprof_settings)) {
+        $wbbprof_settings = array(
+            'keywords'        => 'FrontGate,Profanity,aeolus,ahole,bitch,bang,bollock,breast,enlargement,erotic,goddamn,heroin,hell,kooch,nad,nigger,pecker,tubgirl,unwed,woody,yeasty,yobbo,zoophile',
+            'filter_contents' => array(
+                '0' => 'status_updates',
+                '1' => 'activity_comments',
+                '2' => 'messages',
+            ),
+            'word_render'     => 'first_last',
+            'character'       => 'asterisk',
+            'case'            => 'incase',
+            'strict_filter'   => 'on',
+            'mask_emails'     => 'on',
+            'mask_phones'     => 'on',
+        );
+        bp_update_option('wbbprof_settings', $wbbprof_settings);
+    }
+    if ($blog_id) {
+        restore_current_blog();
+    }
 }
 
 add_action( 'bp_loaded', 'wbbprof_plugin_init' );
@@ -273,7 +280,7 @@ function bpprofanity_required_plugin_admin_notice() {
 	$bp_plugin       = esc_html__( 'BuddyPress', 'buddypress-profanity' );
 	echo '<div class="error"><p>';
 	/* translators: %1$s: BuddyPress Profanity, %2$s: BuddyPress */
-	printf( esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'buddypress-profanity' ), '<strong>' . esc_html( $bpquotes_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' );
+	echo sprintf( esc_html__( '%1$s is ineffective now as it requires %2$s to be installed and active.', 'buddypress-profanity' ), '<strong>' . esc_html( $bpquotes_plugin ) . '</strong>', '<strong>' . esc_html( $bp_plugin ) . '</strong>' );
 	echo '</p></div>';
 	if ( null !== filter_input( INPUT_GET, 'activate' ) ) {
 		$activate = filter_input( INPUT_GET, 'activate' );
@@ -300,3 +307,4 @@ function bpprofanity_activation_redirect_settings( $plugin ) {
 	}
 }
 add_action( 'activated_plugin', 'bpprofanity_activation_redirect_settings' );
+
