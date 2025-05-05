@@ -23,9 +23,12 @@ function content_to_filter_array() {
 		'status_updates'    => __( 'Status Updates', 'buddypress-profanity' ),
 		'activity_comments' => __( 'Activity Comments', 'buddypress-profanity' ),
 		'messages'          => __( 'Messages', 'buddypress-profanity' ),
-		'bbpress_title'     => __( 'bbPress Forums, Topics and Replies Title', 'buddypress-profanity' ),
-		'bbpress_content'   => __( 'bbPress Forums, Topics and Replies Content', 'buddypress-profanity' ),
 	);
+
+	if( class_exists( 'bbPress' ) ){
+		$content_filter['bbpress_title'] = __( 'bbPress Forums, Topics and Replies Title', 'buddypress-profanity' );
+		$content_filter['bbpress_content'] = __( 'bbPress Forums, Topics and Replies Content', 'buddypress-profanity' );
+	}
 	return $content_filter = apply_filters( 'wbbprof_content_to_filter_array', $content_filter );
 }
 
