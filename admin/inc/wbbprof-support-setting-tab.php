@@ -18,7 +18,7 @@ if (! defined('ABSPATH')) {
 <div class="wbcom-tab-content">
 	<div class="wbcom-faq-admin-setting">
 		<div class="wbcom-admin-title-section">
-			<h3><?php esc_html_e('Have some questions?', 'buddypress-profanity'); ?></h3>
+			<h3><?php esc_html_e('Frequently Asked Questions', 'buddypress-profanity'); ?></h3>
 		</div>
 		<div class="wbcom-faq-admin-settings-block">
 			<div id="wbcom-faq-settings-section" class="wbcom-faq-table">
@@ -48,11 +48,11 @@ if (! defined('ABSPATH')) {
 				<div class="wbcom-faq-section-row">
 					<div class="wbcom-faq-admin-row">
 						<button class="wbcom-faq-accordion">
-							<?php esc_html_e('How do I specify a character other than the defined character to replace keywords?', 'buddypress-profanity'); ?>
+							<?php esc_html_e('How do I specify a custom character to replace filtered keywords?', 'buddypress-profanity'); ?>
 						</button>
 						<div class="wbcom-faq-panel">
 							<p><?php esc_html_e('This can be achieved by using the filters provided in the plugin. To replace keywords with a custom character, e.g., @, add the following code in your theme\'s functions.php file or wherever appropriate:', 'buddypress-profanity'); ?></p>
-							<pre><code>
+							<pre>
 add_filter( 'wbbprof_word_rendering_symbols', 'custom_wbbprof_word_rendering_symbols', 10, 1 );
 function custom_wbbprof_word_rendering_symbols( $rendering_symbols ) {
 	$rendering_symbols['at_the_rate'] = '[ @] At the rate';
@@ -64,7 +64,7 @@ function custom_wbbprof_custom_character( $symbol ) {
 	$symbol = '@';
 	return $symbol;
 }
-							</code></pre>
+							</pre>
 							<p><?php esc_html_e('After adding this code, a new option will appear under "Filter Character". Select the newly added option and save the settings.', 'buddypress-profanity'); ?></p>
 						</div>
 					</div>

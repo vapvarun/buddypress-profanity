@@ -37,9 +37,9 @@ $rendering_symbols = word_rendering_symbols();
 				<div class="form-table buddypress-profanity-admin-table">
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
-							<label for="keywords"><?php esc_html_e( 'Keywords to Remove', 'buddypress-profanity' ); ?></label>
+							<label for="keywords"><?php esc_html_e( 'Blocked Keywords', 'buddypress-profanity' ); ?></label>
 							<p class="description" id="keywords-description">
-								<?php esc_html_e( 'Enter the keywords you want to remove from your community.', 'buddypress-profanity' ); ?>
+								<?php esc_html_e( 'Enter specific words or phrases you want to filter out from your community content.', 'buddypress-profanity' ); ?>
 							</p>
 							<p>
 								<a href="javascript:void(0)" class="button" id="wbbprof_to_reset"><?php esc_html_e( 'Reset to Default', 'buddypress-profanity' ); ?></a>
@@ -53,7 +53,10 @@ $rendering_symbols = word_rendering_symbols();
 				<div class="form-table">
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
-							<label><?php esc_html_e( 'Content to be Filtered', 'buddypress-profanity' ); ?></label>
+							<label><?php esc_html_e( 'Filter Scope', 'buddypress-profanity' ); ?></label>
+							<p class="description" id="keywords-description">
+								<?php esc_html_e( 'Select which types of content (posts, comments, messages, etc.) will be subject to filtering.', 'buddypress-profanity' ); ?>
+							</p>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<ul class="wbcom-settings-member-retraction wbcom-settings-section-options-flex">
@@ -79,6 +82,9 @@ $rendering_symbols = word_rendering_symbols();
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
 							<label><?php esc_html_e( 'Word Rendering', 'buddypress-profanity' ); ?></label>
+							<p class="description" id="keywords-description">
+								<?php esc_html_e( 'Choose how blocked words appear to users.', 'buddypress-profanity' ); ?>
+							</p>
 						</div>
 						<div class="wbcom-settings-section-options word-rendering-wrapper">
 							<fieldset>
@@ -115,6 +121,9 @@ $rendering_symbols = word_rendering_symbols();
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
 							<label for="character"><?php esc_html_e( 'Filter Character', 'buddypress-profanity' ); ?></label>
+							<p class="description" id="keywords-description">
+								<?php esc_html_e( 'Select the symbol that will replace filtered content.', 'buddypress-profanity' ); ?>
+							</p>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<select name="wbbprof_settings[character]">
@@ -132,7 +141,7 @@ $rendering_symbols = word_rendering_symbols();
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
 							<label><?php esc_html_e( 'Case Matching', 'buddypress-profanity' ); ?></label>
-							<p class="description"><?php esc_html_e( 'Case Insensitive matching is recommended as it captures more words.', 'buddypress-profanity' ); ?></p>
+							<p class="description"><?php esc_html_e( 'The "Case Matching" setting offers two options: Case Sensitive and Case Insensitive. Case Sensitive filters keywords with strict case matching. Case Insensitive captures more words while filtering, which is recommended.', 'buddypress-profanity' ); ?></p>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<fieldset>
@@ -168,7 +177,7 @@ $rendering_symbols = word_rendering_symbols();
 								<br>
 								<label>
 									<input name="wbbprof_settings[strict_filter]" value="on" type="radio" <?php isset( $wbbprof_settings['strict_filter'] ) ? checked( $wbbprof_settings['strict_filter'], 'on' ) : ''; ?>>
-									<span class="wbbprof-span-text"><?php esc_html_e( 'Strict Filtering OFF ', 'buddypress-profanity' ); ?></span>
+									<span class="wbbprof-span-text"><?php esc_html_e( 'Strict Filtering OFF', 'buddypress-profanity' ); ?></span>
 									<code>[e.g., "ass" becomes "passable"] </code>
 								</label>
 								<br>
@@ -180,7 +189,7 @@ $rendering_symbols = word_rendering_symbols();
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
 							<label><?php esc_html_e( 'Mask Email Addresses', 'buddypress-profanity' ); ?></label>
-							<p class="description"><?php esc_html_e( 'When enabled, email addresses will be masked to protect user privacy.', 'buddypress-profanity' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Automatically detect and mask email addresses to protect user privacy and prevent data harvesting.', 'buddypress-profanity' ); ?></p>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<fieldset>
@@ -204,7 +213,7 @@ $rendering_symbols = word_rendering_symbols();
 					<div class="wbcom-settings-section-wrap">
 						<div class="wbcom-settings-section-options-heading">
 							<label><?php esc_html_e( 'Mask Phone Numbers', 'buddypress-profanity' ); ?></label>
-							<p class="description"><?php esc_html_e( 'When enabled, phone numbers will be masked to protect user privacy.', 'buddypress-profanity' ); ?></p>
+							<p class="description"><?php esc_html_e( 'Automatically detect and mask phone numbers to protect user privacy and prevent data harvesting.', 'buddypress-profanity' ); ?></p>
 						</div>
 						<div class="wbcom-settings-section-options">
 							<fieldset>
