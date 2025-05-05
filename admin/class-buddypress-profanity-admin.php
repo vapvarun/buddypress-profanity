@@ -86,7 +86,7 @@ class BuddyPress_Profanity_Admin {
 			'wbcomplugins'
 		);
 		
-		$current_page = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : '';
+		$current_page = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : '';		// phpcs:ignore
 		
 		if (!in_array($current_page, $allowed_pages)) {
 			return;
