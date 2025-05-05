@@ -243,7 +243,7 @@ class BuddyPress_Profanity_Admin {
 
 		if ( isset( $_POST['wbbprof_settings'] ) ) { //phpcs:ignore
 			bp_update_option( 'wbbprof_settings', $_POST['wbbprof_settings'] ); //phpcs:ignore
-			wp_redirect( $_POST['_wp_http_referer'] ); //phpcs:ignore
+			wp_redirect( $_POST['_wp_http_referer'] . '&msg=success' ); //phpcs:ignore
 			exit();
 		}
 

@@ -21,7 +21,14 @@ $wbbprof_settings = bp_get_option( 'wbbprof_settings' );
 // Content to be filtered and word rendering symbols.
 $content_to_filter = content_to_filter_array();
 $rendering_symbols = word_rendering_symbols();
-
+// Display a success message if the settings were saved successfully.
+if (isset($_GET['msg']) && 'success' === $_GET['msg']) { // phpcs:ignore
+	?>
+		<div id="setting-error-settings_updated" class="notice notice-success settings-error is-dismissible">
+			<p><strong><?php esc_html_e('Changes saved successfully', 'buddypress-profanity'); ?></strong></p>
+		</div>
+	<?php
+	}
 ?>
 <div class="wbcom-tab-content">
 	<div class="wbcom-wrapper-admin">
