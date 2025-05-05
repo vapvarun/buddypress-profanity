@@ -71,26 +71,48 @@ class BuddyPress_Profanity_Admin {
 		 * class.
 		 */
 
-		if ( isset( $_GET['page'] ) && ('buddypress_profanity' == $_GET['page']  || 'wbcom-plugins-page' == $_GET['page'] || 'wbcom-support-page' == $_GET['page'] || 'wbcom-license-page' == $_GET['page'] || 'wbcomplugins' == $_GET['page'] ) ) { //phpcs:ignore
-			global $wp_styles;
-
-			if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
-				$extension = is_rtl() ? '.rtl.css' : '.css';
-				$path      = is_rtl() ? '/rtl' : '';
-			} else {
-				$extension = is_rtl() ? '.rtl.css' : '.min.css';
-				$path      = is_rtl() ? '/rtl' : '/min';
-			}
-
-			$srcs = array_map( 'basename', (array) wp_list_pluck( $wp_styles->registered, 'src' ) );
-
-			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css' . $path . '/buddypress-profanity-admin' . $extension, array(), $this->version, 'all' );
-
-			if ( in_array( 'selectize.css', $srcs, true ) || in_array( 'selectize.min.css', $srcs, true ) ) { //phpcs:ignore
-
-			} else {
-				wp_enqueue_style( 'wbbprof-selectize-css', plugin_dir_url( __FILE__ ) . 'css/vendor/selectize.css', array(), '1.0.0', 'all' );
-			}
+		if ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) {
+			$extension = is_rtl() ? '.rtl.css' : '.css';
+			$path      = is_rtl() ? '/rtl' : '';
+		} else {
+			$extension = is_rtl() ? '.rtl.css' : '.min.css';
+			$path      = is_rtl() ? '/rtl' : '/min';
+		}
+		$allowed_pages = array(
+			'buddypress_profanity',
+			'wbcom-plugins-page',
+			'wbcom-support-page',
+			'wbcom-license-page',
+			'wbcomplugins'
+		);
+		
+		$current_page = isset($_GET['page']) ? sanitize_text_field($_GET['page']) : '';
+		
+		if (!in_array($current_page, $allowed_pages)) {
+			return;
+		}
+		
+		wp_enqueue_style(
+			$this->plugin_name, 
+			plugin_dir_url(__FILE__) . 'css' . $path . '/buddypress-profanity-admin'. $extension, 
+			array(), 
+			$this->version, 
+			'all'
+		);
+		
+		// Check if selectize is already enqueued
+		global $wp_styles;
+		$srcs = array_map('basename', (array) wp_list_pluck($wp_styles->registered, 'src'));
+		$selectize_loaded = in_array('selectize.css', $srcs, true) || in_array('selectize.min.css', $srcs, true);
+		
+		if (!$selectize_loaded) {
+			wp_enqueue_style(
+				'wbbprof-selectize-css', 
+				plugin_dir_url(__FILE__) . 'css/vendor/selectize.css', 
+				array(), 
+				'1.0.0', 
+				'all'
+			);
 		}
 	}
 
