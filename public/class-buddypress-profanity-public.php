@@ -192,7 +192,7 @@ class BuddyPress_Profanity_Public {
 		}
 		
 		// Initialize settings
-		$this->init_settings();
+		// $this->init_settings();
 		
 		// Only enqueue if we have active filtering settings
 		if (empty($this->wbbprof_settings) || empty($this->wbbprof_settings['filter_contents'])) {
