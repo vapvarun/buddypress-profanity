@@ -481,7 +481,7 @@ class Buddypress_Profanity_Public {
 	}
 	
 	/**
-	 * Mask email addresses in content
+	 * Mask email addresses in content and remove mailto anchors/src
 	 *
 	 * @param string $content Content to filter
 	 * @return string Filtered content with masked emails
@@ -491,30 +491,33 @@ class Buddypress_Profanity_Public {
 			return $content;
 		}
 
-		// replacing span tag in message component to resolve email masking. 
-		if( bp_is_messages_component() ) {
-
+		// Remove span tags from BuddyPress messages
+		if (function_exists( 'bp_is_messages_component' ) && bp_is_messages_component()) {
 			$content = preg_replace('/<span[^>]*>/', '', $content);
-		
 			$content = preg_replace('/<\/span>/', '', $content);
 		}
-		
-		// Regex pattern to catch email addresses
+
+		// Remove anchor tags with mailto:
+		$content = preg_replace('/<a\s+[^>]*href=["\']mailto:[^"\']*["\'][^>]*>(.*?)<\/a>/i', '$1', $content);
+
+		// Remove src="mailto:..." just in case it's used
+		$content = preg_replace('/src=["\']mailto:[^"\']*["\']/i', '', $content);
+
+		// Regex to match email addresses
 		$email_pattern = '/\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b/';
-		
+
 		// Replace email with masked version
 		return preg_replace_callback($email_pattern, function($matches) {
 			$email = $matches[0];
 			$parts = explode('@', $email);
-			
+
 			if (count($parts) !== 2) {
-				return $email; // Not a valid email
+				return $email;
 			}
-			
+
 			$username = $parts[0];
 			$domain = $parts[1];
-			
-			// Keep first and last character of username, mask the rest
+
 			if (strlen($username) > 2) {
 				$first_char = substr($username, 0, 1);
 				$last_char = substr($username, -1);
@@ -522,19 +525,18 @@ class Buddypress_Profanity_Public {
 			} else {
 				$masked_username = str_repeat($this->character, strlen($username));
 			}
-			
-			// Keep domain extension but mask the domain name
+
 			$domain_parts = explode('.', $domain);
 			$tld = array_pop($domain_parts);
 			$domain_name = implode('.', $domain_parts);
-			
+
 			if (strlen($domain_name) > 2) {
 				$first_char = substr($domain_name, 0, 1);
 				$masked_domain = $first_char . str_repeat($this->character, strlen($domain_name) - 1);
 			} else {
 				$masked_domain = str_repeat($this->character, strlen($domain_name));
 			}
-			
+
 			return $masked_username . '@' . $masked_domain . '.' . $tld;
 		}, $content);
 	}
