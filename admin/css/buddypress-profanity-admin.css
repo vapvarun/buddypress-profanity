@@ -71,6 +71,7 @@ div#setting-error-settings_updated {
     border: none;
     box-shadow: none;
     color: #10AB00;
+    margin: 0;
 }
 
 button.notice-dismiss:before {
