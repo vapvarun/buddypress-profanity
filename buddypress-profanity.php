@@ -227,6 +227,8 @@ function wbbprof_update_blog($blog_id = null) {
                 '0' => 'status_updates',
                 '1' => 'activity_comments',
                 '2' => 'messages',
+				'3' => 'bbpress_title',
+                '4' => 'bbpress_content',
             ),
             'word_render'     => 'first_last',
             'character'       => 'asterisk',
