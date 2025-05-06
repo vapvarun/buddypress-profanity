@@ -180,6 +180,7 @@ class BuddyPress_Profanity {
 		
 		// BuddyPress Activity filters
 		$this->loader->add_filter( 'bp_get_activity_content_body', $plugin_public, 'wbbprof_bp_get_activity_content_body', 20 );
+		$this->loader->add_filter( 'bp_get_activity_action', $plugin_public, 'wbbprof_bp_get_activity_content_body', 20 );
 		$this->loader->add_filter( 'bp_get_activity_content', $plugin_public, 'wbbprof_bp_activity_comment_content', 1 );
 		
 		// BuddyPress Messages filters
