@@ -270,14 +270,14 @@ function wbcom_render_wbbprof_license_section() {
 
 	$license_output = edd_wbcom_WBBPROF_active_license_message();
 
-	if ( false !== $status && 'valid' === $status && ! empty( $license_output ) && $license_output['license_data']->license == 'valid' ) {
+	if ( false !== $status && 'valid' === $status && ! empty( $license_output ) && ! empty($license_output['license_data']) && $license_output['license_data']->license == 'valid' ) {
 		$status_class = 'active';
 		$status_text  = 'Active';
-	} else if ( ! empty( $license_output ) && $license_output['license_data']->license != '' && $license_output['license_data']->license == 'expired' ) {
+	} else if ( ! empty( $license_output ) && ! empty($license_output['license_data']) && $license_output['license_data']->license != '' && $license_output['license_data']->license == 'expired' ) {
 		$status_class = 'expired';
 		$status_text  = ucfirst( str_replace( '_', ' ', $license_output['license_data']->license ) );
 
-	} else if ( ! empty( $license_output ) && $license_output['license_data']->license != '' && $license_output['license_data']->license == 'invalid' ) {
+	} else if ( ! empty( $license_output ) && ! empty($license_output['license_data']) &&  $license_output['license_data']->license != '' && $license_output['license_data']->license == 'invalid' ) {
 		$status_class = 'invalid';
 		$status_text  = ucfirst( str_replace( '_', ' ', $license_output['license_data']->license ) );
 
