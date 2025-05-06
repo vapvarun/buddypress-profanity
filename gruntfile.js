@@ -44,15 +44,6 @@ module.exports = function (grunt) {
 
 			// Task for CSS minification
 			cssmin: {
-				public: {
-					files: [{
-						expand: true,
-						cwd: 'public/css/', // Source directory for frontend CSS files
-						src: ['*.css', '!*.min.css', '!vendor/*.css'], // Minify all frontend CSS files except already minified ones
-						dest: 'public/css/min', // Destination directory for minified frontend CSS
-						ext: '.min.css', // Extension for minified files
-					}],
-				},
 				admin: {
 					files: [{
 						expand: true,
@@ -75,18 +66,6 @@ module.exports = function (grunt) {
 
 			// Task for JavaScript minification
 			uglify: {
-				public: {
-					options: {
-						mangle: false, // Prevents variable name mangling
-					},
-					files: [{
-						expand: true,
-						cwd: 'public/js/', // Source directory for frontend JS files
-						src: ['*.js', '!*.min.js', '!vendor/*.js'], // Minify all frontend JS files except already minified ones
-						dest: 'public/js/min/', // Destination directory for minified frontend JS
-						ext: '.min.js', // Extension for minified files
-					}],
-				},
 				admin: {
 					options: {
 						mangle: false, // Prevents variable name mangling
@@ -115,17 +94,9 @@ module.exports = function (grunt) {
 
 			// Task for watching file changes
 			watch: {
-				css: {
-					files: ['public/css/*.css'], // Watch for changes in frontend CSS files
-					tasks: ['cssmin:public'], // Run frontend CSS minification task
-				},
 				adminCss: {
 					files: ['admin/css/*.css'], // Watch for changes in admin CSS files
 					tasks: ['cssmin:admin'], // Run admin CSS minification task
-				},
-				js: {
-					files: ['public/js/*.js'], // Watch for changes in frontend JS files
-					tasks: ['uglify:public'], // Run frontend JS minification task
 				},
 				adminJs: {
 					files: ['admin/js/*.js'], // Watch for changes in admin JS files
@@ -153,14 +124,6 @@ module.exports = function (grunt) {
 						saveUnmodified: true,
 					},
 					files: [
-						{
-							expand: true,
-							cwd: 'public/css/', // Source directory for public CSS
-							src: ['**/*.min.css', '!vendor/**/*.css'], // Source files, excluding vendor CSS
-							dest: 'public/css/rtl/', // Destination directory for public RTL CSS
-							ext: '.rtl.css', // Extension for RTL files
-							flatten: true // Prevents creating subdirectories
-						},
 						{
 							expand: true,
 							cwd: 'admin/css/', // Source directory for admin CSS
