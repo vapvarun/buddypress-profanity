@@ -15,7 +15,7 @@
  * Plugin Name:       Wbcom Designs - BuddyPress Profanity
  * Plugin URI:        https://wbcomdesigns.com/downloads/buddypress-profanity/
  * Description:       This BuddyPress plugin filters out any foul language and gives your community peace of mind. The plugin keeps your content family-friendly and shows no Profanity in your community’s posts or comments.
- * Version:           2.0.0
+ * Version:           2.0.1
  * Author:            Wbcom Designs
  * Author URI:        http://www.wbcomdesigns.com
  * License:           GPL-2.0+
@@ -39,7 +39,7 @@ if ( ! defined( 'BP_ENABLE_MULTIBLOG' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 if ( ! defined( 'BPPROF_PLUGIN_VERSION' ) ) {
-	define( 'BPPROF_PLUGIN_VERSION', '2.0.0' );
+	define( 'BPPROF_PLUGIN_VERSION', '2.0.1' );
 }
 if ( ! defined( 'BPPROF_PLUGIN_FILE' ) ) {
 	define( 'BPPROF_PLUGIN_FILE', __FILE__ );
