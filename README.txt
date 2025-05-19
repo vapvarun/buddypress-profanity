@@ -13,75 +13,32 @@ Keep your BuddyPress community family-friendly by filtering inappropriate langua
 
 == Description ==
 
-**BuddyPress Profanity** is a comprehensive content filtering plugin designed to maintain your BuddyPress community's safe and family-friendly environment. The plugin intelligently filters offensive language from various content types while preserving the integrity of your community discussions.
+**BuddyPress Profanity** is a comprehensive content filtering plugin designed to maintain a safe and family-friendly environment in your BuddyPress community. The plugin intelligently filters offensive language from various content types while preserving the integrity of your community discussions.
 
 = Key Features =
 
-**Smart Content Filtering**
-* Filter profanity from activity updates, comments, and private messages
-* bbPress forum integration for complete community coverage
-* Real-time content filtering without affecting database storage
-* Advanced regex-based pattern matching for accurate detection
+* **Smart Content Filtering** - Filter profanity from activity updates, comments, private messages, and bbPress forums
+* **Advanced Word Management** - Easy keyword management with bulk import functionality and 200+ default inappropriate terms
+* **Flexible Replacement Options** - Multiple rendering modes with various replacement characters (*, $, ?, etc.)
+* **Privacy Protection** - Automatic email address and phone number masking to prevent harvesting
+* **Real-time Filtering** - Content filtering without affecting database storage using advanced regex patterns
+* **Developer-Friendly** - Extensive filter hooks, clean code architecture, and translation-ready
+* **Multisite Compatible** - Full support for WordPress multisite networks
+* **Performance Optimized** - Cached regex patterns and conditional asset loading for minimal overhead
 
-**Flexible Word Management**
-* Easy-to-use keyword management system
-* Bulk import functionality for custom word lists
-* Default profanity database with 200+ common inappropriate terms
-* Case-sensitive and case-insensitive filtering options
+= Supported Content Types =
 
-**Customizable Replacement Options**
-* Multiple rendering modes: first letter, last letter, first+last, or complete masking
-* Various replacement characters: asterisk (*), dollar ($), question (?), and more
-* Custom character support through developer filters
-* Maintains original word length for context preservation
+* BuddyPress activity streams, comments, and private messages
+* bbPress forum topics and replies  
+* BuddyPress notifications and user-generated content
+* Email addresses and phone numbers (privacy masking)
 
-**Privacy Protection**
-* Automatic email address masking to prevent harvesting
-* Phone number detection and masking
-* Configurable masking patterns for enhanced privacy
+= Professional Configuration =
 
-**Developer-Friendly**
-* Extensive filter hooks for customization
-* Clean, well-documented code architecture
-* Translation-ready with complete .pot file
-* Multisite compatible with network activation support
-
-= Content Types Supported =
-
-* BuddyPress activity stream updates
-* Activity comments and replies
-* Private messages and group messages
-* bbPress forum topics and replies
-* BuddyPress notifications
-* User-generated content tokens
-
-= Performance Optimized =
-
-* Cached regex patterns for improved performance
-* Conditional asset loading to reduce overhead
-* Efficient string processing algorithms
-* Minimal database impact with front-end filtering
-
-= Multilingual Ready =
-
-* Complete internationalization support
-* Translation files included
-* RTL language support
-* Developer-friendly text domains
-
-= Advanced Configuration =
-
-**Strict Filtering Options**
 * Toggle between whole-word and partial word matching
-* Configure case sensitivity preferences
-* Set custom replacement characters
-* Define filtering scope per content type
-
-**Admin Dashboard**
-* Intuitive settings interface
-* Real-time preview of filtering effects
-* Bulk keyword management tools
-* Comprehensive help documentation
+* Configure case sensitivity and custom replacement characters
+* Intuitive admin dashboard with real-time preview
+* Bulk keyword management and comprehensive help documentation
 
 = Community & Support =
 
@@ -186,7 +143,7 @@ Yes, we provide support through our [helpdesk](https://wbcomdesigns.com/support/
 
 == Changelog ==
 
-= 2.0.1 - 2024-03-15 =
+= 2.0.1 =
 **Fixed**
 * Resolved fatal error on activity pages in certain configurations
 * Fixed bbPress-related options visibility when bbPress is inactive
@@ -213,7 +170,7 @@ Yes, we provide support through our [helpdesk](https://wbcomdesigns.com/support/
 * Cleaned up unused files and redundant code
 * Removed deprecated function calls and hardcoded dependencies
 
-= 2.0.0 - 2024-01-10 =
+= 2.0.0 =
 **Added**
 * Complete admin interface redesign with modern UI components
 * Advanced email and phone number masking capabilities
@@ -234,7 +191,7 @@ Yes, we provide support through our [helpdesk](https://wbcomdesigns.com/support/
 * Improved handling of special characters in keywords
 * Better error handling for malformed content
 
-= 1.9.9 - 2023-11-05 =
+= 1.9.9 =
 **Improved**
 * Removed dependency on hardG library for better consistency
 * Updated language translation files with new strings
@@ -246,7 +203,7 @@ Yes, we provide support through our [helpdesk](https://wbcomdesigns.com/support/
 * Fixed translation loading issues in some environments
 * Corrected minor UI inconsistencies in admin dashboard
 
-= 1.9.8 - 2023-09-20 =
+= 1.9.8 =
 **Enhanced**
 * Streamlined `filter_content` method for better performance
 * Improved content sanitization mechanisms throughout
@@ -258,13 +215,13 @@ Yes, we provide support through our [helpdesk](https://wbcomdesigns.com/support/
 * Fixed edge cases in regex pattern matching
 * Improved compatibility with custom BuddyPress themes
 
-= 1.9.7 - 2023-08-15 =
+= 1.9.7 =
 **Fixed**
 * Resolved license deactivation issues when API response fails
 * Improved error handling for network connectivity problems
 * Enhanced fallback mechanisms for license validation
 
-= 1.9.6 - 2023-07-10 =
+= 1.9.6 =
 **Updated**
 * Refreshed plugin promotional banners and assets
 * Updated external documentation and support links
@@ -274,55 +231,55 @@ Yes, we provide support through our [helpdesk](https://wbcomdesigns.com/support/
 * Resolved deprecated function warnings in newer PHP versions
 * Fixed minor CSS conflicts with certain admin themes
 
-= 1.9.5 - 2023-06-01 =
+= 1.9.5 =
 **Fixed**
 * Resolved filtering issues in BuddyPress notification system
 * Fixed plugin redirect conflicts during bulk plugin activation
 * Improved activation process for multisite installations
 
-= 1.9.4 - 2023-05-15 =
+= 1.9.4 =
 **Improved**
 * Enhanced bulk save functionality with better visual feedback
 * Optimized admin interface for improved user experience
 * Added progress indicators for bulk operations
 
-= 1.9.3 - 2023-04-20 =
+= 1.9.3 =
 **Fixed**
 * Resolved keyword import functionality issues
 * Fixed file upload validation and processing
 * Improved error messages for failed operations
 
-= 1.9.2 - 2023-03-25 =
+= 1.9.2 =
 **Fixed**
 * Resolved admin notice conflicts with BuddyBoss platform
 * Improved compatibility with BuddyBoss theme frameworks
 * Fixed styling conflicts in admin dashboard
 
-= 1.9.0 - 2023-02-15 =
+= 1.9.0 =
 **Enhanced**
 * Complete admin UI redesign with modern iconography
 * Improved navigation and user experience
 * Enhanced visual hierarchy and accessibility features
 
-= 1.8.0 - 2023-01-10 =
+= 1.8.0 =
 **Added**
 * Full bbPress forums, topics, and replies support
 * Enhanced backend administration interface
 * Improved performance monitoring and diagnostics
 
-= 1.7.0 - 2022-12-05 =
+= 1.7.0 =
 **Added**
 * BP Better Messages plugin integration support
 * Enhanced bulk import options for custom word lists
 * Advanced filtering options with pattern recognition
 
-= 1.5.0 - 2022-09-15 =
+= 1.5.0 =
 **Added**
 * Dynamic keyword addition interface
 * Real-time filtering preview capabilities
 * Enhanced user permission management
 
-= 1.0.0 - 2022-01-01 =
+= 1.0.0 =
 **Initial Release**
 * Core profanity filtering functionality
 * BuddyPress activity and message filtering
