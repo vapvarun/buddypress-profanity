@@ -3,12 +3,12 @@ Contributors: wbcomdesigns
 Donate link: https://wbcomdesigns.com  
 Tags: buddypress, profanity, filter, community, activity, comments, messages  
 Requires at least: 3.0.1  
-Tested up to: 6.7.2  
-Stable tag: 2.0.0  
+Tested up to: 6.8.1
+Stable tag: 2.0.1  
 License: GPLv2 or later  
 License URI: http://www.gnu.org/licenses/gpl-2.0.html  
 
-Keep your BuddyPress community free from inappropriate language with this powerful profanity filtering plugin. Maintain a family-friendly environment by ensuring that posts, comments, and messages are clean and respectful.
+With this powerful profanity filtering plugin, you can keep your BuddyPress community free from inappropriate language. Ensure that posts, comments, and messages are clean and respectful to maintain a family-friendly environment.
 
 == Description ==
 
@@ -30,7 +30,7 @@ Follow these steps to install and activate the plugin:
 4. Alternatively, install the plugin directly through the WordPress Plugins Installer (Dashboard → Plugins → Add New).
 5. Configure the plugin through the settings menu and enjoy a profanity-free community!  
 
-For advanced customizations, feel free to contact us for [Custom Development](https://wbcomdesigns.com/hire-us/).
+For advanced customisations, you can contact us for [Custom Development](https://wbcomdesigns.com/hire-us/).
 
 == Frequently Asked Questions ==
 
@@ -38,17 +38,17 @@ For advanced customizations, feel free to contact us for [Custom Development](ht
 Yes, BuddyPress must be installed and activated for this plugin to work.
 
 = Can I filter multiple keywords? =  
-Absolutely! You can define multiple keywords to filter under the "Keywords to Remove" setting in the General tab.
+Absolutely! Under the "Keywords to Remove" setting in the General tab, you can define multiple filters for keywords.
 
 = How can I use a custom character to replace filtered keywords? =  
-You can use the plugin’s provided filters for this purpose. An example is detailed in the "Support" tab within the plugin settings.
+You can use the filters provided by the plugin for this purpose. An example is detailed in the "Support" tab within the plugin settings.
 
 = Does this plugin modify the BuddyPress database? =  
 No, the plugin only filters content for display purposes. The BuddyPress database remains unchanged.
 
 = What does the Case Matching setting do? =  
 The Case Matching setting offers two options:
-- **Case Sensitive:** Filters exact matches, considering letter casing.  
+- **Case Sensitive:** Filters exactly match, considering letter casing.  
 - **Case Insensitive:** Filters all occurrences regardless of letter casing.  
 For broader filtering, we recommend using the Case Insensitive option.
 
@@ -57,9 +57,25 @@ Strict Filtering ensures embedded keywords are filtered appropriately. Turning t
 
 == Changelog ==
 
+= 2.0.1 =
+* Fixed: Fatal error on activity page.
+* Fixed: bbPress-related options now only show when bbPress is active.
+* Fixed: Email input in activity/messages now correctly masked.
+* Fixed: Blocked keywords now filter properly when forum activities are created.
+* Fixed: Settings saved notice and backend UI issues with bb platform.
+* Fixed: PHPCS issues in various plugin files for improved code standards.
+* Fixed: Attempt to read license on license page now properly handled.
+* Improved: Admin script loading optimized for better performance.
+* Improved: Minified and optimized CSS, JS with RTL support.
+* Improved: Email and phone masking logic across activity/message content.
+* Improved: Content filtering refactored into a unified method.
+* Updated: Strings for consistency and grammar.
+* Updated: Documentation link and license page handling.
+* Removed: Unused files and redundant code.
+
 = 2.0.0 =  
 * Enhanced UI for managing notices and keyword imports.  
-* Optimized plugin settings registration.  
+* Optimised plugin settings registration.  
 * Corrected user feedback form link.  
 
 = 1.9.9 =  
@@ -69,7 +85,7 @@ Strict Filtering ensures embedded keywords are filtered appropriately. Turning t
 
 = 1.9.8 =  
 * Streamlined `filter_content` method for better performance.  
-* Enhanced sanitization mechanisms.  
+* Enhanced sanitisation mechanisms.  
 * Improved multisite support.  
 
 = 1.9.7 =  
