@@ -13,7 +13,7 @@ Keep your BuddyPress community family-friendly by filtering inappropriate langua
 
 == Description ==
 
-**BuddyPress Profanity** is a comprehensive content filtering plugin designed to maintain a safe and family-friendly environment in your BuddyPress community. The plugin intelligently filters offensive language from various content types while preserving the integrity of your community discussions.
+**BuddyPress Profanity** is a comprehensive content filtering plugin designed to maintain your BuddyPress community's safe and family-friendly environment. The plugin intelligently filters offensive language from various content types while preserving the integrity of your community discussions.
 
 = Key Features =
 
@@ -82,17 +82,6 @@ Keep your BuddyPress community family-friendly by filtering inappropriate langua
 * Real-time preview of filtering effects
 * Bulk keyword management tools
 * Comprehensive help documentation
-
-= Free vs Pro Features =
-
-This is the **free version** of BuddyPress Profanity, offering essential filtering capabilities. For advanced features like:
-* Advanced AI-powered content analysis
-* Sentiment analysis integration
-* Custom user reporting system
-* Priority support and updates
-* White-label options
-
-Consider upgrading to [BuddyPress Profanity Pro](https://wbcomdesigns.com/downloads/buddypress-profanity/).
 
 = Community & Support =
 
